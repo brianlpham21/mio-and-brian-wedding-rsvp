@@ -4,6 +4,10 @@ export async function POST(req: Request) {
   const body = await req.json();
   const { name } = body;
 
+  console.log("GOOGLE_CLIENT_EMAIL loaded:", !!process.env.GOOGLE_CLIENT_EMAIL);
+  console.log("GOOGLE_PRIVATE_KEY loaded:", !!process.env.GOOGLE_PRIVATE_KEY);
+  console.log("GOOGLE_SHEET_ID loaded:", !!process.env.GOOGLE_SHEET_ID);
+
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
