@@ -1,9 +1,4 @@
-type GuestNameCheckProps = {
-  name: string;
-  setName: (name: string) => void;
-  fetchGuest: () => void;
-  loading: boolean;
-};
+import { GuestNameCheckProps } from '../types';
 
 export default function GuestNameCheck({
   name,

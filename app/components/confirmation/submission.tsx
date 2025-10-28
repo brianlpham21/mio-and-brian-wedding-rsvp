@@ -1,9 +1,4 @@
-type SubmissionProps = {
-  nameAvailable: boolean | null;
-  attending: boolean | null;
-  submitting: boolean;
-  handleSubmit: (e: React.MouseEvent<HTMLButtonElement>) => Promise<void>;
-};
+import { SubmissionProps } from '@/app/types';
 
 export default function Submission({
   nameAvailable,

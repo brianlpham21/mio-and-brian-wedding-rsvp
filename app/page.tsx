@@ -2,18 +2,12 @@
 
 import React from 'react';
 
-import Hero from './components/hero';
+import HeroSection from './components/heroSection';
 import GuestNameCheck from './components/guestNameCheck';
-import AttendingConfirmation from './components/attendingConfirmation';
+import AttendingConfirmation from './components/confirmation/attendingConfirmation';
 import GuestsDisplay from './components/guestsDisplay';
-import Submission from './components/submission';
 
-interface RsvpPayload {
-  rowIndex: number;
-  attending: boolean;
-  plusOneFirst?: string;
-  plusOneLast?: string;
-}
+import { RsvpPayload } from './types';
 
 export default function Main() {
   const [name, setName] = React.useState('');
@@ -24,8 +18,8 @@ export default function Main() {
   const [attending, setAttending] = React.useState<boolean | null>(null);
   const [plusOne, setPlusOne] = React.useState<boolean | null>(null);
   const [bringingPlusOne, setBringingPlusOne] = React.useState(false);
-  const [plusOneFirst, setPlusOneFirst] = React.useState('');
-  const [plusOneLast, setPlusOneLast] = React.useState('');
+  const [plusOneFirstName, setPlusOneFirstName] = React.useState('');
+  const [plusOneLastName, setPlusOneLastName] = React.useState('');
 
   const [loading, setLoading] = React.useState(false);
   const [submitting, setSubmitting] = React.useState(false);
@@ -50,9 +44,7 @@ export default function Main() {
       setRowIndex(data.row || null);
       setPlusOne(data.plus_one || null);
 
-      if (!data.available) {
-        alert('Name not found in guest list.');
-      }
+      if (!data.available) alert('Name not found in guest list.');
     } catch (err) {
       console.error(err);
       alert('Error checking name.');
@@ -71,8 +63,8 @@ export default function Main() {
     };
 
     if (bringingPlusOne) {
-      payload.plusOneFirst = plusOneFirst;
-      payload.plusOneLast = plusOneLast;
+      payload.plusOneFirst = plusOneFirstName;
+      payload.plusOneLast = plusOneLastName;
     }
 
     setSubmitting(true);
@@ -99,14 +91,11 @@ export default function Main() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center font-sans">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-10 sm:items-start">
-        <Hero />
-
+    <div className="flex items-center justify-center font-sans">
+      <main className="flex w-full flex-col items-center justify-between py-20 px-8 sm:items-start">
+        <HeroSection />
         <GuestNameCheck name={name} setName={setName} fetchGuest={fetchGuest} loading={loading} />
-
         <GuestsDisplay party={party} />
-
         <AttendingConfirmation
           nameAvailable={nameAvailable}
           attending={attending}
@@ -114,15 +103,10 @@ export default function Main() {
           plusOne={plusOne}
           setBringingPlusOne={setBringingPlusOne}
           bringingPlusOne={bringingPlusOne}
-          plusOneFirst={plusOneFirst}
-          setPlusOneFirst={setPlusOneFirst}
-          plusOneLast={plusOneLast}
-          setPlusOneLast={setPlusOneLast}
-        />
-
-        <Submission
-          nameAvailable={nameAvailable}
-          attending={attending}
+          plusOneFirstName={plusOneFirstName}
+          setPlusOneFirstName={setPlusOneFirstName}
+          plusOneLastName={plusOneLastName}
+          setPlusOneLastName={setPlusOneLastName}
           submitting={submitting}
           handleSubmit={handleSubmit}
         />
