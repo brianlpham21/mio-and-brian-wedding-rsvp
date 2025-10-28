@@ -168,14 +168,14 @@ export default function Home() {
                   type="text"
                   value={plusOneFirst}
                   onChange={(e) => setPlusOneFirst(e.target.value)}
-                  placeholder="Plus One First Name"
+                  placeholder="First Name"
                   className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 />
                 <input
                   type="text"
                   value={plusOneLast}
                   onChange={(e) => setPlusOneLast(e.target.value)}
-                  placeholder="Plus One Last Name"
+                  placeholder="Last Name"
                   className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 />
               </div>
