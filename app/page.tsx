@@ -7,6 +7,8 @@ import GuestNameCheck from './components/guestNameCheck';
 import AttendingConfirmation from './components/confirmation/attendingConfirmation';
 
 import { RsvpPayload } from './types';
+import WeddingInfoSection from './components/weddingInfoSection';
+import ReturnInfoSection from './components/returnInfoSection';
 
 export default function Main() {
   const [name, setName] = React.useState('');
@@ -96,8 +98,9 @@ export default function Main() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 font-sans text-gray-800">
+      <HeroSection />
+      <WeddingInfoSection />
       <main className="flex flex-col w-full max-w-2xl px-6 py-12 sm:px-8 md:px-10">
-        <HeroSection />
         <GuestNameCheck
           nameAvailable={nameAvailable}
           name={name}
@@ -123,6 +126,7 @@ export default function Main() {
           submitted={submitted}
         />
       </main>
+      <ReturnInfoSection />
     </div>
   );
 }
