@@ -7,9 +7,11 @@ export interface RsvpPayload {
 
 export type GuestsDisplayProps = {
   party: string[];
+  startOver: () => void;
 };
 
 export type GuestNameCheckProps = {
+  nameAvailable: boolean | null;
   name: string;
   setName: (name: string) => void;
   fetchGuest: () => void;

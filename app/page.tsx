@@ -24,6 +24,20 @@ export default function Main() {
   const [loading, setLoading] = React.useState(false);
   const [submitting, setSubmitting] = React.useState(false);
 
+  function startOver() {
+    setName('');
+    setNameAvailable(null);
+    setParty([]);
+    setRowIndex(null);
+    setAttending(null);
+    setPlusOne(null);
+    setBringingPlusOne(false);
+    setPlusOneFirstName('');
+    setPlusOneLastName('');
+    setLoading(false);
+    setSubmitting(false);
+  }
+
   async function fetchGuest() {
     if (!name) return;
     setLoading(true);
@@ -95,8 +109,14 @@ export default function Main() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 font-sans text-gray-800">
       <main className="flex flex-col w-full max-w-2xl px-6 py-12 sm:px-8 md:px-10">
         <HeroSection />
-        <GuestNameCheck name={name} setName={setName} fetchGuest={fetchGuest} loading={loading} />
-        <GuestsDisplay party={party} />
+        <GuestNameCheck
+          nameAvailable={nameAvailable}
+          name={name}
+          setName={setName}
+          fetchGuest={fetchGuest}
+          loading={loading}
+        />
+        <GuestsDisplay party={party} startOver={startOver} />
         <AttendingConfirmation
           nameAvailable={nameAvailable}
           attending={attending}

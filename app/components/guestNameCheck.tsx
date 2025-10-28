@@ -1,13 +1,22 @@
 import { GuestNameCheckProps } from '../types';
 
 export default function GuestNameCheck({
+  nameAvailable,
   name,
   setName,
   fetchGuest,
   loading,
 }: GuestNameCheckProps) {
+  if (nameAvailable !== null) return null;
+
   return (
-    <div className="w-full max-w-md mx-auto flex flex-col sm:flex-row items-stretch gap-3 mt-6">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault(); // prevent page reload
+        if (name && !loading) fetchGuest();
+      }}
+      className="w-full max-w-md mx-auto flex flex-col sm:flex-row items-stretch gap-3 mt-6"
+    >
       <input
         type="text"
         value={name}
@@ -17,7 +26,7 @@ export default function GuestNameCheck({
                focus:border-pink-400 focus:ring-2 focus:ring-pink-300 focus:outline-none transition"
       />
       <button
-        onClick={fetchGuest}
+        type="submit"
         disabled={!name || loading}
         className={`flex items-center justify-center gap-2 rounded-lg px-5 py-3 font-medium text-white 
                 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-pink-300 transition 
@@ -29,6 +38,6 @@ export default function GuestNameCheck({
         )}
         {loading ? 'Checking...' : 'Check Name'}
       </button>
-    </div>
+    </form>
   );
 }
