@@ -13,32 +13,36 @@ export default function PlusOneConfirmation({
   if (!attending || !plusOne) return null;
 
   return (
-    <div>
-      <label className="flex items-center gap-2">
+    <div className="w-full">
+      {/* Checkbox */}
+      <label className="flex items-center gap-2 text-gray-800 cursor-pointer">
         <input
           type="checkbox"
           checked={bringingPlusOne}
           onChange={(e) => setBringingPlusOne(e.target.checked)}
-          className="w-4 h-4"
+          className="w-4 h-4 text-pink-500 rounded focus:ring-pink-300"
         />
-        I will be bringing a plus one
+        <span className="text-sm sm:text-base">I will be bringing a plus one</span>
       </label>
 
+      {/* Plus One Inputs */}
       {bringingPlusOne && (
-        <div className="flex flex-col gap-2 mt-2">
+        <div className="flex flex-col gap-3 mt-4">
           <input
             type="text"
             value={plusOneFirstName}
             onChange={(e) => setPlusOneFirstName(e.target.value)}
             placeholder="First Name"
-            className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-700 placeholder-gray-400
+                   focus:border-pink-400 focus:ring-2 focus:ring-pink-200 focus:outline-none transition"
           />
           <input
             type="text"
             value={plusOneLastName}
             onChange={(e) => setPlusOneLastName(e.target.value)}
             placeholder="Last Name"
-            className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-700 placeholder-gray-400
+                   focus:border-pink-400 focus:ring-2 focus:ring-pink-200 focus:outline-none transition"
           />
         </div>
       )}

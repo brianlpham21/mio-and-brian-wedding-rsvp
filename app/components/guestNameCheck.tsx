@@ -7,20 +7,22 @@ export default function GuestNameCheck({
   loading,
 }: GuestNameCheckProps) {
   return (
-    <div className="flex w-full max-w-md">
+    <div className="w-full max-w-md mx-auto flex flex-col sm:flex-row items-stretch gap-3 mt-6">
       <input
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
         placeholder="Full Name"
-        className="mt-4 mr-2 w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-700 placeholder-gray-400 
+               focus:border-pink-400 focus:ring-2 focus:ring-pink-300 focus:outline-none transition"
       />
       <button
         onClick={fetchGuest}
         disabled={!name || loading}
-        className={`mt-4 flex items-center justify-center gap-2 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed ${
-          loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600'
-        }`}
+        className={`flex items-center justify-center gap-2 rounded-lg px-5 py-3 font-medium text-white 
+                whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-pink-300 transition 
+                disabled:opacity-50 disabled:cursor-not-allowed
+                ${loading ? 'bg-pink-300 cursor-not-allowed' : 'bg-pink-500 hover:bg-pink-600'}`}
       >
         {loading && (
           <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></span>

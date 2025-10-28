@@ -49,6 +49,7 @@ export default function Main() {
       console.error(err);
       alert('Error checking name.');
     } finally {
+      setName('');
       setLoading(false);
     }
   }
@@ -91,8 +92,8 @@ export default function Main() {
   }
 
   return (
-    <div className="flex items-center justify-center font-sans">
-      <main className="flex w-full flex-col items-center justify-between py-20 px-8 sm:items-start">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 font-sans text-gray-800">
+      <main className="flex flex-col w-full max-w-2xl px-6 py-12 sm:px-8 md:px-10">
         <HeroSection />
         <GuestNameCheck name={name} setName={setName} fetchGuest={fetchGuest} loading={loading} />
         <GuestsDisplay party={party} />
