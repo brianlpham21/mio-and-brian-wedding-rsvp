@@ -5,7 +5,6 @@ import React from 'react';
 import HeroSection from './components/heroSection';
 import GuestNameCheck from './components/guestNameCheck';
 import AttendingConfirmation from './components/confirmation/attendingConfirmation';
-import GuestsDisplay from './components/guestsDisplay';
 
 import { RsvpPayload } from './types';
 
@@ -14,6 +13,7 @@ export default function Main() {
   const [nameAvailable, setNameAvailable] = React.useState<boolean | null>(null);
   const [party, setParty] = React.useState<string[]>([]);
   const [rowIndex, setRowIndex] = React.useState<number | null>(null);
+  const [rsvp, setRsvp] = React.useState<string | null>(null);
 
   const [attending, setAttending] = React.useState<boolean | null>(null);
   const [plusOne, setPlusOne] = React.useState<boolean | null>(null);
@@ -23,20 +23,7 @@ export default function Main() {
 
   const [loading, setLoading] = React.useState(false);
   const [submitting, setSubmitting] = React.useState(false);
-
-  function startOver() {
-    setName('');
-    setNameAvailable(null);
-    setParty([]);
-    setRowIndex(null);
-    setAttending(null);
-    setPlusOne(null);
-    setBringingPlusOne(false);
-    setPlusOneFirstName('');
-    setPlusOneLastName('');
-    setLoading(false);
-    setSubmitting(false);
-  }
+  const [submitted, setSubmitted] = React.useState(false);
 
   async function fetchGuest() {
     if (!name) return;
@@ -57,6 +44,7 @@ export default function Main() {
       setParty(data.party || []);
       setRowIndex(data.row || null);
       setPlusOne(data.plus_one || null);
+      setRsvp(data.rsvp || null);
 
       if (!data.available) alert('Name not found in guest list.');
     } catch (err) {
@@ -78,6 +66,7 @@ export default function Main() {
     };
 
     if (bringingPlusOne) {
+      payload.plusOne = true;
       payload.plusOneFirst = plusOneFirstName;
       payload.plusOneLast = plusOneLastName;
     }
@@ -93,7 +82,7 @@ export default function Main() {
       });
 
       if (res.ok) {
-        alert('RSVP submitted successfully!');
+        setSubmitted(true);
       } else {
         alert('Something went wrong, please try again.');
       }
@@ -116,9 +105,10 @@ export default function Main() {
           fetchGuest={fetchGuest}
           loading={loading}
         />
-        <GuestsDisplay party={party} startOver={startOver} />
         <AttendingConfirmation
           nameAvailable={nameAvailable}
+          rsvp={rsvp}
+          party={party}
           attending={attending}
           setAttending={setAttending}
           plusOne={plusOne}
@@ -130,6 +120,7 @@ export default function Main() {
           setPlusOneLastName={setPlusOneLastName}
           submitting={submitting}
           handleSubmit={handleSubmit}
+          submitted={submitted}
         />
       </main>
     </div>

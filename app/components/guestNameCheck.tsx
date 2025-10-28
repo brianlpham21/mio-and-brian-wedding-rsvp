@@ -7,7 +7,7 @@ export default function GuestNameCheck({
   fetchGuest,
   loading,
 }: GuestNameCheckProps) {
-  if (nameAvailable !== null) return null;
+  if (nameAvailable) return null;
 
   return (
     <form
@@ -30,7 +30,7 @@ export default function GuestNameCheck({
         disabled={!name || loading}
         className={`flex items-center justify-center gap-2 rounded-lg px-5 py-3 font-medium text-white 
                 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-pink-300 transition 
-                disabled:opacity-50 disabled:cursor-not-allowed
+                disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer
                 ${loading ? 'bg-pink-300 cursor-not-allowed' : 'bg-pink-500 hover:bg-pink-600'}`}
       >
         {loading && (

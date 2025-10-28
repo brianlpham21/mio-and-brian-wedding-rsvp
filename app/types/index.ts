@@ -1,13 +1,13 @@
 export interface RsvpPayload {
   rowIndex: number;
   attending: boolean;
+  plusOne?: boolean;
   plusOneFirst?: string;
   plusOneLast?: string;
 }
 
 export type GuestsDisplayProps = {
   party: string[];
-  startOver: () => void;
 };
 
 export type GuestNameCheckProps = {
@@ -20,6 +20,8 @@ export type GuestNameCheckProps = {
 
 export type AttendingConfirmationProps = {
   nameAvailable: boolean | null;
+  rsvp: string | null;
+  party: string[];
   attending: boolean | null;
   setAttending: (attending: boolean) => void;
   plusOne: boolean | null;
@@ -31,6 +33,7 @@ export type AttendingConfirmationProps = {
   setPlusOneLastName: (name: string) => void;
   submitting: boolean;
   handleSubmit: (e: React.MouseEvent<HTMLButtonElement>) => Promise<void>;
+  submitted: boolean;
 };
 
 export type PlusOneConfirmationProps = {

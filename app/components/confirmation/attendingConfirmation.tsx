@@ -1,9 +1,15 @@
-import { AttendingConfirmationProps } from '@/app/types';
 import PlusOneConfirmation from './plusOneConfirmation';
 import Submission from './submission';
+import SuccessConfirmation from './successConfirmation';
+import GuestsDisplay from '../guestsDisplay';
+
+import { AttendingConfirmationProps } from '@/app/types';
+import ExistingConfirmation from './existingConfirmation';
 
 export default function AttendingConfirmation({
   nameAvailable,
+  rsvp,
+  party,
   attending,
   setAttending,
   plusOne,
@@ -15,11 +21,18 @@ export default function AttendingConfirmation({
   setPlusOneLastName,
   submitting,
   handleSubmit,
+  submitted,
 }: AttendingConfirmationProps) {
   if (!nameAvailable) return null;
 
+  if (submitted) return <SuccessConfirmation />;
+
+  if (rsvp) return <ExistingConfirmation />;
+
   return (
     <div className="w-full max-w-md mx-auto mt-8 bg-white rounded-lg shadow-sm px-6 py-5 text-gray-800">
+      <GuestsDisplay party={party} />
+
       {/* Attendance Selection */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
         <label className="flex items-center gap-2 cursor-pointer">
