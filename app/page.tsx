@@ -1,7 +1,13 @@
 'use client';
 
 import React from 'react';
-import { capitalizeWords } from './helpers/capitalize';
+
+import Hero from './components/hero';
+import GuestNameCheck from './components/guestNameCheck';
+import AttendingConfirmation from './components/attendingConfirmation';
+import PlusOneConfirmation from './components/plusOneConfirmation';
+import GuestsDisplay from './components/guestsDisplay';
+import Submission from './components/submission';
 
 interface RsvpPayload {
   rowIndex: number;
@@ -31,8 +37,12 @@ export default function Home() {
     try {
       const res = await fetch('/api/check-name', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+        }),
       });
 
       const data = await res.json();
@@ -70,7 +80,9 @@ export default function Home() {
     try {
       const res = await fetch('/api/rsvp', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify(payload),
       });
 
@@ -90,65 +102,18 @@ export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center font-sans">
       <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-10 sm:items-start">
-        <h1 className="text-xl font-semibold mb-4">Mio & Brian&apos;s Wedding RSVP</h1>
+        <Hero />
 
         {/* Name input + check button */}
-        <div className="flex w-full max-w-md">
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Full Name"
-            className="mt-4 mr-2 w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-          />
-          <button
-            onClick={fetchGuest}
-            disabled={!name || loading}
-            className={`mt-4 flex items-center justify-center gap-2 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed ${
-              loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600'
-            }`}
-          >
-            {loading && (
-              <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></span>
-            )}
-            {loading ? 'Checking...' : 'Check Name'}
-          </button>
-        </div>
+        <GuestNameCheck name={name} setName={setName} fetchGuest={fetchGuest} loading={loading} />
 
         {/* Party list */}
-        {party.length > 1 && (
-          <div className="mt-4 text-gray-700 dark:text-gray-300">
-            Guests: {party.map((name) => capitalizeWords(name)).join(', ')}
-          </div>
-        )}
+        <GuestsDisplay party={party} />
 
         {/* RSVP options */}
         {nameAvailable && (
           <div className="mt-4 flex flex-col gap-2">
-            <div>
-              <label className="mr-4">
-                <input
-                  type="radio"
-                  name="attending"
-                  value="yes"
-                  checked={attending === true}
-                  onChange={() => setAttending(true)}
-                  className="mr-1"
-                />
-                Attending
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="attending"
-                  value="no"
-                  checked={attending === false}
-                  onChange={() => setAttending(false)}
-                  className="mr-1"
-                />
-                Not Attending
-              </label>
-            </div>
+            <AttendingConfirmation attending={attending} setAttending={setAttending} />
 
             {attending && plusOne && (
               <label className="flex items-center gap-2">
@@ -162,40 +127,23 @@ export default function Home() {
               </label>
             )}
 
-            {bringingPlusOne && (
-              <div className="flex flex-col gap-2 mt-2">
-                <input
-                  type="text"
-                  value={plusOneFirst}
-                  onChange={(e) => setPlusOneFirst(e.target.value)}
-                  placeholder="First Name"
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                />
-                <input
-                  type="text"
-                  value={plusOneLast}
-                  onChange={(e) => setPlusOneLast(e.target.value)}
-                  placeholder="Last Name"
-                  className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-                />
-              </div>
-            )}
+            <PlusOneConfirmation
+              bringingPlusOne={bringingPlusOne}
+              plusOneFirst={plusOneFirst}
+              setPlusOneFirst={setPlusOneFirst}
+              plusOneLast={plusOneLast}
+              setPlusOneLast={setPlusOneLast}
+            />
           </div>
         )}
 
         {/* Submit button with spinner */}
-        <button
-          disabled={!nameAvailable || attending === null || submitting}
-          onClick={handleSubmit}
-          className={`mt-6 flex items-center justify-center gap-2 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed ${
-            submitting ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600'
-          }`}
-        >
-          {submitting && (
-            <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></span>
-          )}
-          {submitting ? 'Submitting...' : 'Submit'}
-        </button>
+        <Submission
+          nameAvailable={nameAvailable}
+          attending={attending}
+          submitting={submitting}
+          handleSubmit={handleSubmit}
+        />
       </main>
     </div>
   );
