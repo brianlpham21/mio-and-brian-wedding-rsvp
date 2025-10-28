@@ -1,6 +1,7 @@
 'use client';
 
-import React from "react";
+import React from 'react';
+import { capitalizeWords } from './helpers/capitalize';
 
 interface RsvpPayload {
   rowIndex: number;
@@ -10,23 +11,27 @@ interface RsvpPayload {
 }
 
 export default function Home() {
-  const [name, setName] = React.useState("");
+  const [name, setName] = React.useState('');
+  const [nameAvailable, setNameAvailable] = React.useState<boolean | null>(null);
   const [party, setParty] = React.useState<string[]>([]);
   const [rowIndex, setRowIndex] = React.useState<number | null>(null);
-  const [plusOne, setPlusOne] = React.useState<boolean | null>(null);
-  const [nameAvailable, setNameAvailable] = React.useState<boolean | null>(null);
+
   const [attending, setAttending] = React.useState<boolean | null>(null);
+  const [plusOne, setPlusOne] = React.useState<boolean | null>(null);
   const [bringingPlusOne, setBringingPlusOne] = React.useState(false);
-  const [plusOneFirst, setPlusOneFirst] = React.useState("");
-  const [plusOneLast, setPlusOneLast] = React.useState("");
+  const [plusOneFirst, setPlusOneFirst] = React.useState('');
+  const [plusOneLast, setPlusOneLast] = React.useState('');
+
+  const [loading, setLoading] = React.useState(false);
+  const [submitting, setSubmitting] = React.useState(false);
 
   async function fetchGuest() {
     if (!name) return;
-
+    setLoading(true);
     try {
-      const res = await fetch("/api/check-name", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const res = await fetch('/api/check-name', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name }),
       });
 
@@ -36,14 +41,14 @@ export default function Home() {
       setRowIndex(data.row || null);
       setPlusOne(data.plus_one || null);
 
-      if (data.available) {
-        alert(`Found party: ${data.party.join(", ")}`);
-      } else {
-        alert("Name not found in guest list.");
+      if (!data.available) {
+        alert('Name not found in guest list.');
       }
     } catch (err) {
       console.error(err);
-      alert("Error checking name.");
+      alert('Error checking name.');
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -61,49 +66,63 @@ export default function Home() {
       payload.plusOneLast = plusOneLast;
     }
 
+    setSubmitting(true);
     try {
-      const res = await fetch("/api/rsvp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const res = await fetch('/api/rsvp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
 
       if (res.ok) {
-        alert("RSVP submitted successfully!");
+        alert('RSVP submitted successfully!');
       } else {
-        alert("Something went wrong, please try again.");
+        alert('Something went wrong, please try again.');
       }
     } catch (err) {
       console.error(err);
-      alert("Failed to submit RSVP.");
+      alert('Failed to submit RSVP.');
+    } finally {
+      setSubmitting(false);
     }
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        Mio and Brian&apos;s Wedding RSVP:
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Name"
-          className="mt-4 w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        />
-        <button
-          onClick={fetchGuest}
-          disabled={name === ''}
-          className="mt-4 rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        >
-          Check Name
-        </button>
+    <div className="flex min-h-screen items-center justify-center font-sans">
+      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-10 sm:items-start">
+        <h1 className="text-xl font-semibold mb-4">Mio & Brian&apos;s Wedding RSVP</h1>
 
-        {party.length > 0 && (
+        {/* Name input + check button */}
+        <div className="flex w-full max-w-md">
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Full Name"
+            className="mt-4 mr-2 w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          />
+          <button
+            onClick={fetchGuest}
+            disabled={!name || loading}
+            className={`mt-4 flex items-center justify-center gap-2 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed ${
+              loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600'
+            }`}
+          >
+            {loading && (
+              <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></span>
+            )}
+            {loading ? 'Checking...' : 'Check Name'}
+          </button>
+        </div>
+
+        {/* Party list */}
+        {party.length > 1 && (
           <div className="mt-4 text-gray-700 dark:text-gray-300">
-            Party Members: {party.join(", ")}
+            Guests: {party.map((name) => capitalizeWords(name)).join(', ')}
           </div>
         )}
 
+        {/* RSVP options */}
         {nameAvailable && (
           <div className="mt-4 flex flex-col gap-2">
             <div>
@@ -164,12 +183,18 @@ export default function Home() {
           </div>
         )}
 
+        {/* Submit button with spinner */}
         <button
-          disabled={!nameAvailable || attending === null}
+          disabled={!nameAvailable || attending === null || submitting}
           onClick={handleSubmit}
-          className="mt-4 rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          className={`mt-6 flex items-center justify-center gap-2 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed ${
+            submitting ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600'
+          }`}
         >
-          Submit
+          {submitting && (
+            <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></span>
+          )}
+          {submitting ? 'Submitting...' : 'Submit'}
         </button>
       </main>
     </div>

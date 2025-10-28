@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mio and Brian's Wedding",
-  description: "RSVP for Mio and Brian's Wedding",
+  title: "Mio & Brian's Wedding",
+  description: "RSVP for Mio & Brian's Wedding",
 };
 
 export default function RootLayout({
