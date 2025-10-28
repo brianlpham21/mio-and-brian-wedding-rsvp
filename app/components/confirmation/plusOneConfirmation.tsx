@@ -13,7 +13,7 @@ export default function PlusOneConfirmation({
   if (!attending || !plusOne) return null;
 
   return (
-    <div className="w-full">
+    <div className="w-full mt-4">
       {/* Checkbox */}
       <label className="flex items-center gap-2 text-gray-800 cursor-pointer">
         <input
@@ -26,26 +26,36 @@ export default function PlusOneConfirmation({
       </label>
 
       {/* Plus One Inputs */}
-      {bringingPlusOne && (
-        <div className="flex flex-col gap-3 mt-4">
-          <input
-            type="text"
-            value={plusOneFirstName}
-            onChange={(e) => setPlusOneFirstName(e.target.value)}
-            placeholder="First Name"
-            className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-700 placeholder-gray-400
-                   focus:border-pink-400 focus:ring-2 focus:ring-pink-200 focus:outline-none transition"
-          />
-          <input
-            type="text"
-            value={plusOneLastName}
-            onChange={(e) => setPlusOneLastName(e.target.value)}
-            placeholder="Last Name"
-            className="w-full rounded-lg border border-gray-300 px-4 py-2.5 text-gray-700 placeholder-gray-400
-                   focus:border-pink-400 focus:ring-2 focus:ring-pink-200 focus:outline-none transition"
-          />
-        </div>
-      )}
+      <div className="flex flex-col gap-3 mt-4">
+        <input
+          type="text"
+          value={plusOneFirstName}
+          onChange={(e) => setPlusOneFirstName(e.target.value)}
+          placeholder="First Name"
+          disabled={!bringingPlusOne}
+          className={`w-full rounded-lg border px-4 py-2.5 text-gray-700 placeholder-gray-400 transition 
+            focus:outline-none focus:ring-2 
+            ${
+              bringingPlusOne
+                ? 'border-gray-300 focus:border-pink-400 focus:ring-pink-200 bg-white'
+                : 'border-gray-200 bg-gray-100 cursor-not-allowed opacity-60'
+            }`}
+        />
+        <input
+          type="text"
+          value={plusOneLastName}
+          onChange={(e) => setPlusOneLastName(e.target.value)}
+          placeholder="Last Name"
+          disabled={!bringingPlusOne}
+          className={`w-full rounded-lg border px-4 py-2.5 text-gray-700 placeholder-gray-400 transition 
+            focus:outline-none focus:ring-2 
+            ${
+              bringingPlusOne
+                ? 'border-gray-300 focus:border-pink-400 focus:ring-pink-200 bg-white'
+                : 'border-gray-200 bg-gray-100 cursor-not-allowed opacity-60'
+            }`}
+        />
+      </div>
     </div>
   );
 }
