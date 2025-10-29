@@ -5,25 +5,25 @@ import { motion } from 'framer-motion';
 const itinerary = [
   {
     time: '3:00 PM',
-    title: 'Ceremony Begins',
+    title: 'Welcome',
     location: 'Rose Garden, Los Angeles Arboretum',
     description: 'Join us for an intimate ceremony surrounded by nature and love.',
   },
   {
-    time: '4:30 PM',
-    title: 'Cocktail Hour',
+    time: '4:00 PM',
+    title: 'Ceremony',
     location: 'The Courtyard',
     description: 'Enjoy drinks and hors d’oeuvres while we take wedding photos.',
   },
   {
-    time: '6:00 PM',
-    title: 'Dinner & Reception',
+    time: '5:30 PM',
+    title: 'Cocktails',
     location: 'Main Hall',
     description: 'Let’s celebrate with dinner, speeches, and dancing!',
   },
   {
-    time: '10:00 PM',
-    title: 'Farewell Sendoff',
+    time: '6:00 PM',
+    title: 'Reception',
     location: 'Front Courtyard',
     description: 'Help us close the night with a sparkler sendoff!',
   },

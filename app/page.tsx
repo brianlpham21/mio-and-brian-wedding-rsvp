@@ -11,6 +11,7 @@ import Itinerary from './components/itinerary';
 
 import { RsvpPayload } from './types';
 import AdditionalDetails from './components/additionalDetails';
+import OurStory from './components/ourStory';
 
 export default function Main() {
   const [name, setName] = React.useState('');
@@ -129,6 +130,7 @@ export default function Main() {
           submitted={submitted}
         />
       </main>
+      <OurStory />
       <AdditionalDetails />
       <ReturnInfo />
     </div>

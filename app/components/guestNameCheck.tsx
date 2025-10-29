@@ -11,6 +11,7 @@ export default function GuestNameCheck({
 
   return (
     <form
+      id="rsvp"
       onSubmit={(e) => {
         e.preventDefault(); // prevent page reload
         if (name && !loading) fetchGuest();

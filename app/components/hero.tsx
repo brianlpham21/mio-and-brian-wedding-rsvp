@@ -1,23 +1,22 @@
 'use client';
 
-import { motion, useViewportScroll, useTransform } from 'framer-motion';
+import { motion, useTransform, useScroll } from 'framer-motion';
+import { useCallback } from 'react';
 
 export default function Hero() {
   // Scroll-based fade for text
-  const { scrollY } = useViewportScroll();
+  const { scrollY } = useScroll();
   const scrollOpacity = useTransform(scrollY, [0, 300], [1, 0]);
   const scrollYPos = useTransform(scrollY, [0, 300], [0, -20]);
 
-  function smoothScrollTo(targetY: number, duration = 1000) {
+  const smoothScrollTo = useCallback((targetY: number, duration = 1000) => {
     const startY = window.scrollY;
     const distance = targetY - startY;
     let startTime: number | null = null;
 
-    function easeOutCubic(t: number) {
-      return 1 - Math.pow(1 - t, 3);
-    }
+    const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
 
-    function step(currentTime: number) {
+    const step = (currentTime: number) => {
       if (!startTime) startTime = currentTime;
       const timeElapsed = currentTime - startTime;
       const progress = Math.min(timeElapsed / duration, 1);
@@ -25,13 +24,23 @@ export default function Hero() {
 
       window.scrollTo(0, startY + distance * ease);
 
-      if (timeElapsed < duration) {
-        requestAnimationFrame(step);
-      }
-    }
+      if (timeElapsed < duration) requestAnimationFrame(step);
+    };
 
     requestAnimationFrame(step);
-  }
+  }, []);
+
+  const handleScrollToSection = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, sectionId: string) => {
+      e.preventDefault();
+      const section = document.querySelector(sectionId);
+      if (section) {
+        const targetY = section.getBoundingClientRect().top + window.scrollY;
+        smoothScrollTo(targetY, 1200); // adjust duration for smoother deceleration
+      }
+    },
+    [smoothScrollTo]
+  );
 
   return (
     <section className="relative w-full h-screen flex flex-col items-center justify-center text-center overflow-hidden">
@@ -52,16 +61,32 @@ export default function Hero() {
           {/* <h1 className="invisible sm:visible text-md font-medium tracking-wide">Mio & Brian</h1> */}
           <div></div>
           <nav className="flex gap-6 text-sm font-medium">
-            <a href="#our-story" className="hidden sm:flex hover:text-pastel-green-250 transition">
+            <a
+              href="#our-story"
+              onClick={(e) => handleScrollToSection(e, '#our-story')}
+              className="hidden sm:flex hover:text-pastel-green-250 transition"
+            >
               Our Story
             </a>
-            <a href="#info" className="hover:text-pastel-green-250 transition">
+            <a
+              href="#info"
+              onClick={(e) => handleScrollToSection(e, '#info')}
+              className="hover:text-pastel-green-250 transition"
+            >
               Info
             </a>
-            <a href="#itinerary" className="hidden sm:flex hover:text-pastel-green-250 transition">
+            <a
+              href="#itinerary"
+              onClick={(e) => handleScrollToSection(e, '#itinerary')}
+              className="hidden sm:flex hover:text-pastel-green-250 transition"
+            >
               Itinerary
             </a>
-            <a href="#rsvp" className="hover:text-pastel-green-250 transition">
+            <a
+              href="#rsvp"
+              onClick={(e) => handleScrollToSection(e, '#rsvp')}
+              className="hover:text-pastel-green-250 transition"
+            >
               RSVP
             </a>
           </nav>
