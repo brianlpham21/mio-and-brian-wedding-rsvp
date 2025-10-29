@@ -5,29 +5,29 @@ import { motion } from 'framer-motion';
 const itinerary = [
   {
     time: '3:00 PM',
-    title: 'Welcome',
+    title: 'WELCOME',
     description: 'Join us for an intimate ceremony surrounded by nature and love.',
   },
   {
     time: '4:00 PM',
-    title: 'Ceremony',
+    title: 'CEREMONY',
     description: 'Enjoy drinks and hors d’oeuvres while we take wedding photos.',
   },
   {
     time: '5:30 PM',
-    title: 'Cocktails',
+    title: 'COCKTAILS',
     description: 'Let’s celebrate with dinner, speeches, and dancing!',
   },
   {
     time: '6:00 PM',
-    title: 'Reception',
+    title: 'RECEPTION',
     description: 'Help us close the night with a sparkler sendoff!',
   },
 ];
 
 export default function Itinerary() {
   return (
-    <section id="itinerary" className="w-full bg-white py-16 px-6 sm:px-8 md:px-12 text-gray-800">
+    <section id="itinerary" className="w-full py-16 px-6 sm:px-8 md:px-12 text-gray-800">
       <div className="max-w-5xl mx-auto text-center mb-12">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -59,10 +59,7 @@ export default function Itinerary() {
             viewport={{ once: true }}
             className="bg-pastel-green-25 rounded-xl shadow-sm p-6 border border-gray-100 text-center"
           >
-            <h3
-              className="text-black"
-              style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(3.5rem, 6vw, 2rem)' }}
-            >
+            <h3 className="text-gray-600 tracking-[.001em] text-xl font-medium mb-1">
               {event.title}
             </h3>
             <p className="text-sm text-gray-500 mb-2">

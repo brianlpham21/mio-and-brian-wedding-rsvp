@@ -1,9 +1,6 @@
 export default function WeddingInfo() {
   return (
-    <section
-      id="info"
-      className="w-full bg-white sm:px-8 md:px-12 text-gray-800 py-10 md:py-16 px-6"
-    >
+    <section id="info" className="w-full sm:px-8 md:px-12 text-gray-800 py-12 md:py-16 px-6">
       <div className="max-w-5xl mx-auto">
         <h2
           className="text-center mb-10 leading-[1em]"
@@ -23,7 +20,7 @@ export default function WeddingInfo() {
               <strong>Time:</strong> 4:00 PM
             </p>
             <p className="text-gray-700 mb-2">
-              <strong>Location:</strong> Seventh/Place, 802 Mateo St, Los Angeles, CA 90021
+              <strong>Location:</strong> 802 Mateo St, Los Angeles, CA 90021
             </p>
             <p className="text-gray-600 mt-4">
               Please arrive 30 minutes early to be seated. The ceremony will be outdoors — light
@@ -38,7 +35,7 @@ export default function WeddingInfo() {
               <strong>Time:</strong> 6:00 PM – 11:00 PM
             </p>
             <p className="text-gray-700 mb-2">
-              <strong>Location:</strong> Seventh/Place, 802 Mateo St, Los Angeles, CA 90021
+              <strong>Location:</strong> 802 Mateo St, Los Angeles, CA 90021
             </p>
             <p className="text-gray-600 mt-4">
               Dinner, drinks, and dancing to follow. Valet parking will be available on-site.

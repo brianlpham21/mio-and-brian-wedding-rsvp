@@ -29,7 +29,7 @@ export default function AdditionalDetails() {
   return (
     <section
       id="details"
-      className="w-full bg-pastel-green-25 py-20 px-6 sm:px-8 md:px-12 text-gray-800"
+      className="w-full bg-pastel-green-25 py-12 md:py-16 px-6 sm:px-8 md:px-12 text-gray-800"
     >
       <div className="max-w-5xl mx-auto text-center mb-12">
         <motion.h2
@@ -38,7 +38,7 @@ export default function AdditionalDetails() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-black"
-          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(2.5rem, 5vw, 5.5rem)' }}
+          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(3rem, 5vw, 5.5rem)' }}
         >
           Additional Details
         </motion.h2>
@@ -64,7 +64,7 @@ export default function AdditionalDetails() {
             className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 text-left"
           >
             <div className="flex items-center gap-3 mb-3">
-              <h3 className="text-xl font-semibold text-black">{item.title}</h3>
+              <h3 className="text-xl font-medium text-black">{item.title}</h3>
             </div>
             <p className="text-gray-700 leading-relaxed">{item.description}</p>
           </motion.div>
