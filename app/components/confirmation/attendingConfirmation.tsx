@@ -30,7 +30,7 @@ export default function AttendingConfirmation({
   if (rsvp) return <ExistingConfirmation />;
 
   return (
-    <div className="w-full max-w-md mx-auto mt-8 bg-white rounded-lg shadow-sm px-6 py-5 text-gray-800">
+    <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-sm px-6 py-5 text-gray-800">
       <GuestsDisplay party={party} />
 
       {/* Attendance Selection */}

@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer';
 
 export default function ReturnInfoSection() {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: true });
+  const [ref, inView] = useInView({ threshold: 1, triggerOnce: true });
 
   const containerVariants: Variants = {
     hidden: {},
@@ -19,7 +19,7 @@ export default function ReturnInfoSection() {
 
   const itemVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+    visible: { opacity: 1, y: 0, transition: { duration: 1, ease: 'easeOut' } },
   };
 
   useEffect(() => {

@@ -15,7 +15,7 @@ export default function GuestNameCheck({
         e.preventDefault(); // prevent page reload
         if (name && !loading) fetchGuest();
       }}
-      className="w-full max-w-md mx-auto flex flex-col sm:flex-row items-stretch gap-3 mt-6"
+      className="w-full max-w-md mx-auto flex flex-col sm:flex-row items-stretch gap-3"
     >
       <input
         type="text"
