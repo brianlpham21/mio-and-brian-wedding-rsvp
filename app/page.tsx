@@ -50,8 +50,6 @@ export default function Main() {
       setRowIndex(data.row || null);
       setPlusOne(data.plus_one || null);
       setRsvp(data.rsvp || null);
-
-      if (!data.available) alert('Name not found in guest list.');
     } catch (err) {
       console.error(err);
       alert('Error checking name.');
@@ -104,32 +102,44 @@ export default function Main() {
       <Hero />
       <WeddingInfo />
       <Itinerary />
-      <main id="rsvp" className="flex flex-col w-full max-w-2xl px-6 py-12 sm:px-8 md:px-10">
-        <GuestNameCheck
-          nameAvailable={nameAvailable}
-          name={name}
-          setName={setName}
-          fetchGuest={fetchGuest}
-          loading={loading}
-        />
-        <AttendingConfirmation
-          nameAvailable={nameAvailable}
-          rsvp={rsvp}
-          party={party}
-          attending={attending}
-          setAttending={setAttending}
-          plusOne={plusOne}
-          setBringingPlusOne={setBringingPlusOne}
-          bringingPlusOne={bringingPlusOne}
-          plusOneFirstName={plusOneFirstName}
-          setPlusOneFirstName={setPlusOneFirstName}
-          plusOneLastName={plusOneLastName}
-          setPlusOneLastName={setPlusOneLastName}
-          submitting={submitting}
-          handleSubmit={handleSubmit}
-          submitted={submitted}
-        />
-      </main>
+      <section id="rsvp" className="w-full py-12 px-6 sm:px-8 md:px-12 bg-pastel-green-25">
+        <div className="max-w-5xl mx-auto text-center">
+          <h2
+            className="text-center leading-[1em]"
+            style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' }}
+          >
+            Rsvp
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
+            We’d love to know if you can join us in celebrating our wedding day. Please RSVP by
+            January 20, 2026 so we can plan accordingly.
+          </p>
+          <GuestNameCheck
+            nameAvailable={nameAvailable}
+            name={name}
+            setName={setName}
+            fetchGuest={fetchGuest}
+            loading={loading}
+          />
+          <AttendingConfirmation
+            nameAvailable={nameAvailable}
+            rsvp={rsvp}
+            party={party}
+            attending={attending}
+            setAttending={setAttending}
+            plusOne={plusOne}
+            setBringingPlusOne={setBringingPlusOne}
+            bringingPlusOne={bringingPlusOne}
+            plusOneFirstName={plusOneFirstName}
+            setPlusOneFirstName={setPlusOneFirstName}
+            plusOneLastName={plusOneLastName}
+            setPlusOneLastName={setPlusOneLastName}
+            submitting={submitting}
+            handleSubmit={handleSubmit}
+            submitted={submitted}
+          />
+        </div>
+      </section>
       <OurStory />
       <AdditionalDetails />
       <ReturnInfo />

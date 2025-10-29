@@ -6,7 +6,7 @@ export default function OurStory() {
   return (
     <section
       id="our-story"
-      className="relative flex flex-col justify-center items-center text-center px-6 sm:px-12 py-20"
+      className="w-full relative flex flex-col justify-center items-center text-center px-6 sm:px-12 py-20"
     >
       {/* Background accent (optional subtle texture or overlay) */}
       <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-5 pointer-events-none" />
@@ -21,7 +21,7 @@ export default function OurStory() {
       >
         <h2
           className="text-5xl sm:text-6xl text-gray-800 mb-6 tracking-tight"
-          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(3.5rem, 6vw, 5.5rem)' }}
+          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' }}
         >
           Our Story
         </h2>

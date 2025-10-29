@@ -38,7 +38,7 @@ export default function AdditionalDetails() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="text-black"
-          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(3rem, 5vw, 5.5rem)' }}
+          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(3.2rem, 5vw, 5.5rem)' }}
         >
           Additional Details
         </motion.h2>

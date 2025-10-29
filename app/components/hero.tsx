@@ -64,28 +64,28 @@ export default function Hero() {
             <a
               href="#our-story"
               onClick={(e) => handleScrollToSection(e, '#our-story')}
-              className="hidden sm:flex hover:text-pastel-green-250 transition"
+              className="hidden sm:flex transition hover:text-black/50"
             >
               Our Story
             </a>
             <a
               href="#info"
               onClick={(e) => handleScrollToSection(e, '#info')}
-              className="hover:text-pastel-green-250 transition"
+              className="transition hover:text-black/50"
             >
               Information
             </a>
             <a
               href="#itinerary"
               onClick={(e) => handleScrollToSection(e, '#itinerary')}
-              className="hidden sm:flex hover:text-pastel-green-250 transition"
+              className="hidden sm:flex transition hover:text-black/50"
             >
               Itinerary
             </a>
             <a
               href="#rsvp"
               onClick={(e) => handleScrollToSection(e, '#rsvp')}
-              className="hover:text-pastel-green-250 transition border border-black/12 px-3 py-1 font-semibold rounded-md hover:bg-white/20"
+              className="transition border border-black/12 px-3 py-1 font-semibold rounded-md hover:bg-white/20 hover:text-black/70"
             >
               RSVP
             </a>
@@ -119,11 +119,11 @@ export default function Hero() {
       <div className="absolute bottom-15 left-1/2 -translate-x-1/2 z-10">
         <button
           onClick={() => smoothScrollTo(window.innerHeight, 1000)} // scroll 1 viewport height in 1s
-          className="w-8 h-8 text-pink-400 flex items-center justify-center cursor-pointer"
+          className="w-8 h-8 flex items-center justify-center cursor-pointer"
           aria-label="Scroll down"
         >
           <svg
-            className="w-8 h-8 text-white animate-bounce"
+            className="w-8 h-8 text-white animate-bounce hover:text-black/40 transition"
             fill="none"
             stroke="currentColor"
             strokeWidth="2"

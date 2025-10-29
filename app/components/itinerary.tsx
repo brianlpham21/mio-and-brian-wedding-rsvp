@@ -34,7 +34,7 @@ export default function Itinerary() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(3.5rem, 6vw, 5.5rem)' }}
+          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' }}
         >
           Itinerary
         </motion.h2>

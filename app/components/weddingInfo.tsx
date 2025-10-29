@@ -1,10 +1,13 @@
 export default function WeddingInfo() {
   return (
-    <section id="info" className="w-full sm:px-8 md:px-12 text-gray-800 py-12 md:py-16 px-6">
+    <section
+      id="info"
+      className="w-full sm:px-8 md:px-12 text-gray-800 pt-16 md:pt-20 pb-2 md:pb-6 lg:pb-10 px-6"
+    >
       <div className="max-w-5xl mx-auto">
         <h2
           className="text-center mb-10 leading-[1em]"
-          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(3.5rem, 6vw, 5.5rem)' }}
+          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' }}
         >
           Wedding Day Information
         </h2>
