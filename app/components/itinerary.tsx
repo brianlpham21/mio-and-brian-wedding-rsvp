@@ -61,9 +61,9 @@ export default function Itinerary() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.15 }}
             viewport={{ once: true }}
-            className="bg-pink-50 rounded-xl shadow-sm p-6 border border-pink-100 text-left"
+            className="bg-pastel-green-25 rounded-xl shadow-sm p-6 border border-pink-100 text-left"
           >
-            <h3 className="text-xl font-semibold text-pink-600 mb-1">{event.title}</h3>
+            <h3 className="text-xl font-semibold text-black mb-1">{event.title}</h3>
             <p className="text-sm text-gray-500 mb-2">
               <span className="font-medium">{event.time}</span> • {event.location}
             </p>

@@ -1,9 +1,16 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist, Geist_Mono, Montserrat } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
 
 const brother = localFont({ src: './BrotherSignature.otf' });
+
+const montserrat = Montserrat({
+  weight: ['300', '400', '500', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-montserrat',
+});
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -28,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${brother.className} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${brother.className} ${montserrat.variable} antialiased`}
       >
         {children}
       </body>

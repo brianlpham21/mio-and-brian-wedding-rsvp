@@ -20,7 +20,7 @@ export default function PlusOneConfirmation({
           type="checkbox"
           checked={bringingPlusOne}
           onChange={(e) => setBringingPlusOne(e.target.checked)}
-          className="w-4 h-4 text-pink-500 rounded focus:ring-pink-300"
+          className="w-4 h-4 text-pastel-green-250 rounded focus:ring-pink-300"
         />
         <span className="text-sm sm:text-base">I will be bringing a plus one</span>
       </label>

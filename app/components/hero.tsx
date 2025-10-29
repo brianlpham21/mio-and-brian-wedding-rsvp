@@ -13,7 +13,6 @@ export default function Hero() {
     const distance = targetY - startY;
     let startTime: number | null = null;
 
-    // Stronger ease-out
     function easeOutCubic(t: number) {
       return 1 - Math.pow(1 - t, 3);
     }
@@ -50,18 +49,19 @@ export default function Hero() {
       {/* Header */}
       <header className="absolute top-0 left-0 w-full z-20 bg-white/20 backdrop-blur-md border-b border-white/30">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between text-gray-800">
-          <h1 className="invisible sm:visible text-lg font-semibold tracking-wide">Mio & Brian</h1>
+          {/* <h1 className="invisible sm:visible text-md font-medium tracking-wide">Mio & Brian</h1> */}
+          <div></div>
           <nav className="flex gap-6 text-sm font-medium">
-            <a href="#our-story" className="hidden sm:flex hover:text-pink-500 transition">
+            <a href="#our-story" className="hidden sm:flex hover:text-pastel-green-250 transition">
               Our Story
             </a>
-            <a href="#info" className="hover:text-pink-500 transition">
+            <a href="#info" className="hover:text-pastel-green-250 transition">
               Info
             </a>
-            <a href="#itinerary" className="hidden sm:flex hover:text-pink-500 transition">
+            <a href="#itinerary" className="hidden sm:flex hover:text-pastel-green-250 transition">
               Itinerary
             </a>
-            <a href="#rsvp" className="hover:text-pink-500 transition">
+            <a href="#rsvp" className="hover:text-pastel-green-250 transition">
               RSVP
             </a>
           </nav>
@@ -76,15 +76,17 @@ export default function Hero() {
         style={{ opacity: scrollOpacity, y: scrollYPos }} // scroll effect
         className="relative z-10 container mx-auto px-6 sm:px-8"
       >
+        <p className="text-base sm:text-lg text-white max-w-xl mx-auto md:tracking-[.2em] lg:translate-y-5">
+          THE WEDDING OF
+        </p>
         <h2
-          className="text-white mb-4"
-          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(4.14rem, 11vw, 9rem)' }}
+          className="text-white"
+          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(4.5rem, 15vw, 11.5rem)' }}
         >
-          Mio & Brian&apos;s Wedding
+          Mio & Brian
         </h2>
-        <p className="text-base sm:text-lg text-white max-w-xl mx-auto leading-relaxed">
-          We are so excited to celebrate our special day with you! Please RSVP below to let us know
-          if you can join us.
+        <p className="text-base sm:text-lg text-white max-w-xl mx-auto md:tracking-[.2em]">
+          MARCH 20, 2026 | LOS ANGELES, CA
         </p>
       </motion.div>
 

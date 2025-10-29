@@ -11,8 +11,8 @@ export default function WeddingInfo() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Ceremony Details */}
-          <div className="bg-pink-50 rounded-2xl shadow-sm p-6">
-            <h3 className="text-xl font-semibold mb-3 text-pink-600">Ceremony</h3>
+          <div className="bg-pastel-green-25 rounded-2xl shadow-sm p-6">
+            <h3 className="text-xl font-semibold mb-3 text-black">Ceremony</h3>
             <p className="text-gray-700 mb-2">
               <strong>Date:</strong> Friday, March 20, 2025
             </p>
@@ -29,8 +29,8 @@ export default function WeddingInfo() {
           </div>
 
           {/* Reception Details */}
-          <div className="bg-pink-50 rounded-2xl shadow-sm p-6">
-            <h3 className="text-xl font-semibold mb-3 text-pink-600">Reception</h3>
+          <div className="bg-pastel-green-25 rounded-2xl shadow-sm p-6">
+            <h3 className="text-xl font-semibold mb-3 text-black">Reception</h3>
             <p className="text-gray-700 mb-2">
               <strong>Time:</strong> 6:00 PM – 11:00 PM
             </p>

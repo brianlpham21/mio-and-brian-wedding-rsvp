@@ -42,7 +42,7 @@ export default function AttendingConfirmation({
             value="yes"
             checked={attending === true}
             onChange={() => setAttending(true)}
-            className="h-4 w-4 text-pink-500 focus:ring-pink-300"
+            className="h-4 w-4 text-pastel-green-250 focus:ring-pink-300"
           />
           <span className="text-sm sm:text-base">Attending</span>
         </label>
@@ -54,7 +54,7 @@ export default function AttendingConfirmation({
             value="no"
             checked={attending === false}
             onChange={() => setAttending(false)}
-            className="h-4 w-4 text-pink-500 focus:ring-pink-300"
+            className="h-4 w-4 text-pastel-green-250 focus:ring-pink-300"
           />
           <span className="text-sm sm:text-base">Not Attending</span>
         </label>

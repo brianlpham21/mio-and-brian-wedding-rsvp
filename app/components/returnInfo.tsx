@@ -27,7 +27,7 @@ export default function ReturnInfo() {
   }, [controls, inView]);
 
   return (
-    <section className="w-full bg-pink-50 py-16 px-6 sm:px-8 md:px-12 text-gray-800 overflow-hidden">
+    <section className="w-full bg-pastel-green-25 py-16 px-6 sm:px-8 md:px-12 text-gray-800 overflow-hidden">
       <motion.div
         ref={ref}
         initial="hidden"

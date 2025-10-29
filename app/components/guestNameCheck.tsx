@@ -31,7 +31,7 @@ export default function GuestNameCheck({
         className={`flex items-center justify-center gap-2 rounded-lg px-5 py-3 font-medium text-white 
                 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-pink-300 transition 
                 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer
-                ${loading ? 'bg-pink-300 cursor-not-allowed' : 'bg-pink-500 hover:bg-pink-600'}`}
+                ${loading ? 'bg-pink-300 cursor-not-allowed' : 'bg-pastel-green-250 hover:bg-black'}`}
       >
         {loading && (
           <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></span>

@@ -25,7 +25,7 @@ export default function ExistingConfirmation() {
 
       <button
         onClick={() => window.location.reload()}
-        className="px-6 py-3 rounded-lg font-medium text-white bg-pink-500 hover:bg-pink-600 transition focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-offset-2 cursor-pointer"
+        className="px-6 py-3 rounded-lg font-medium text-white bg-pastel-green-250 hover:bg-black transition focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-offset-2 cursor-pointer"
       >
         Back to Start
       </button>
