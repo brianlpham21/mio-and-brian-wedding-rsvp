@@ -2,7 +2,7 @@
 
 import { motion, useViewportScroll, useTransform } from 'framer-motion';
 
-export default function HeroSection() {
+export default function Hero() {
   // Scroll-based fade for text
   const { scrollY } = useViewportScroll();
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
@@ -14,6 +14,9 @@ export default function HeroSection() {
       <video
         className="absolute inset-0 w-full h-full object-cover"
         src="/field.mp4"
+        style={{
+          objectPosition: '60% center', // focus right side for mobile
+        }}
         autoPlay
         muted
         loop

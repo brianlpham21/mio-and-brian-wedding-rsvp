@@ -4,7 +4,7 @@ import { motion, useAnimation, Variants } from 'framer-motion';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-export default function ReturnInfoSection() {
+export default function ReturnInfo() {
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 1, triggerOnce: true });
 
