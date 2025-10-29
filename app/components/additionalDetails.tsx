@@ -61,7 +61,7 @@ export default function AdditionalDetails() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.15 }}
             viewport={{ once: true }}
-            className="bg-white rounded-xl shadow-sm p-6 border border-pink-100 text-left"
+            className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 text-left"
           >
             <div className="flex items-center gap-3 mb-3">
               <h3 className="text-xl font-semibold text-black">{item.title}</h3>

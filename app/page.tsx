@@ -104,7 +104,7 @@ export default function Main() {
       <Hero />
       <WeddingInfo />
       <Itinerary />
-      <main className="flex flex-col w-full max-w-2xl px-6 py-12 sm:px-8 md:px-10">
+      <main id="rsvp" className="flex flex-col w-full max-w-2xl px-6 py-12 sm:px-8 md:px-10">
         <GuestNameCheck
           nameAvailable={nameAvailable}
           name={name}

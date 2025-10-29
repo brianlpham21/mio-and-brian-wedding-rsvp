@@ -6,25 +6,21 @@ const itinerary = [
   {
     time: '3:00 PM',
     title: 'Welcome',
-    location: 'Rose Garden, Los Angeles Arboretum',
     description: 'Join us for an intimate ceremony surrounded by nature and love.',
   },
   {
     time: '4:00 PM',
     title: 'Ceremony',
-    location: 'The Courtyard',
     description: 'Enjoy drinks and hors d’oeuvres while we take wedding photos.',
   },
   {
     time: '5:30 PM',
     title: 'Cocktails',
-    location: 'Main Hall',
     description: 'Let’s celebrate with dinner, speeches, and dancing!',
   },
   {
     time: '6:00 PM',
     title: 'Reception',
-    location: 'Front Courtyard',
     description: 'Help us close the night with a sparkler sendoff!',
   },
 ];
@@ -38,7 +34,7 @@ export default function Itinerary() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(2.5rem, 5vw, 5.5rem)' }}
+          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(3.5rem, 6vw, 5.5rem)' }}
         >
           Itinerary
         </motion.h2>
@@ -61,13 +57,18 @@ export default function Itinerary() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.15 }}
             viewport={{ once: true }}
-            className="bg-pastel-green-25 rounded-xl shadow-sm p-6 border border-pink-100 text-left"
+            className="bg-pastel-green-25 rounded-xl shadow-sm p-6 border border-gray-100 text-center"
           >
-            <h3 className="text-xl font-semibold text-black mb-1">{event.title}</h3>
+            <h3
+              className="text-black"
+              style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(3.5rem, 6vw, 2rem)' }}
+            >
+              {event.title}
+            </h3>
             <p className="text-sm text-gray-500 mb-2">
-              <span className="font-medium">{event.time}</span> • {event.location}
+              <span className="font-medium">{event.time}</span>
             </p>
-            <p className="text-gray-700 leading-relaxed">{event.description}</p>
+            <p className="text-gray-700 leading-relaxed text-left">{event.description}</p>
           </motion.div>
         ))}
       </div>

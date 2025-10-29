@@ -11,7 +11,6 @@ export default function GuestNameCheck({
 
   return (
     <form
-      id="rsvp"
       onSubmit={(e) => {
         e.preventDefault(); // prevent page reload
         if (name && !loading) fetchGuest();
@@ -30,7 +29,7 @@ export default function GuestNameCheck({
         type="submit"
         disabled={!name || loading}
         className={`flex items-center justify-center gap-2 rounded-lg px-5 py-3 font-medium text-white 
-                whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-pink-300 transition 
+                whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-pink-300 transition bg-gray-800
                 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer
                 ${loading ? 'bg-pink-300 cursor-not-allowed' : 'bg-pastel-green-250 hover:bg-black'}`}
       >
