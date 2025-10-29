@@ -46,7 +46,10 @@ export default function Hero() {
 
       {/* Hero Text */}
       <motion.div style={{ opacity, y }} className="relative z-10 container mx-auto px-6 sm:px-8">
-        <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight text-white mb-4">
+        <h2
+          className="text-white mb-4"
+          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 10vw, 9rem)' }}
+        >
           Mio & Brian&apos;s Wedding
         </h2>
         <p className="text-base sm:text-lg text-white max-w-xl mx-auto leading-relaxed">
