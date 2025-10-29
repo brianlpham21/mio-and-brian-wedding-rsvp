@@ -60,7 +60,7 @@ export default function Hero() {
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between text-gray-800">
           {/* <h1 className="invisible sm:visible text-md font-medium tracking-wide">Mio & Brian</h1> */}
           <div></div>
-          <nav className="flex gap-6 text-sm font-medium">
+          <nav className="flex gap-6 text-sm font-medium items-center">
             <a
               href="#our-story"
               onClick={(e) => handleScrollToSection(e, '#our-story')}
@@ -73,7 +73,7 @@ export default function Hero() {
               onClick={(e) => handleScrollToSection(e, '#info')}
               className="hover:text-pastel-green-250 transition"
             >
-              Info
+              Information
             </a>
             <a
               href="#itinerary"
@@ -85,7 +85,7 @@ export default function Hero() {
             <a
               href="#rsvp"
               onClick={(e) => handleScrollToSection(e, '#rsvp')}
-              className="hover:text-pastel-green-250 transition"
+              className="hover:text-pastel-green-250 transition border border-black/12 px-3 py-1 font-semibold rounded-md hover:bg-white/20"
             >
               RSVP
             </a>
