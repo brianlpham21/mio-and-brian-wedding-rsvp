@@ -1,7 +1,7 @@
 import PlusOneConfirmation from './plusOneConfirmation';
 import Submission from './submission';
 import SuccessConfirmation from './successConfirmation';
-import GuestsDisplay from '../guestsDisplay';
+import GuestsDisplay from './guestsDisplay';
 
 import { AttendingConfirmationProps } from '@/app/types';
 import ExistingConfirmation from './existingConfirmation';

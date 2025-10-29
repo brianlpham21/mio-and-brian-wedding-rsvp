@@ -1,5 +1,5 @@
-import { capitalizeWords } from '../helpers/capitalize';
-import { GuestsDisplayProps } from '../types';
+import { capitalizeWords } from '../../helpers/capitalize';
+import { GuestsDisplayProps } from '../../types';
 
 export default function GuestsDisplay({ party }: GuestsDisplayProps) {
   if (party.length < 1) return null;
