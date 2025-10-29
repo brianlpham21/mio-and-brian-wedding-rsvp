@@ -3,36 +3,56 @@
 import { motion, useViewportScroll, useTransform } from 'framer-motion';
 
 export default function HeroSection() {
+  // Scroll-based fade for text
   const { scrollY } = useViewportScroll();
-
-  // Fade out the text as the user scrolls down
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]); // 0→300px scroll => opacity 1→0
-  const y = useTransform(scrollY, [0, 300], [0, -20]); // slight upward movement
+  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const y = useTransform(scrollY, [0, 300], [0, -20]);
 
   return (
-    <section
-      className="relative w-full h-screen flex flex-col items-center justify-center text-center bg-gradient-to-b from-white to-pink-50"
-      style={{
-        backgroundImage: "url('/hero-image.jpg')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
-    >
-      {/* Optional gradient overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/50 to-pink-50/50"></div>
+    <section className="relative w-full h-screen flex flex-col items-center justify-center text-center overflow-hidden">
+      {/* Background video */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        src="/field.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
 
+      {/* Header */}
+      <header className="absolute top-0 left-0 w-full z-20 bg-white/20 backdrop-blur-md border-b border-white/30">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between text-gray-800">
+          <h1 className="text-lg font-semibold tracking-wide">Mio & Brian</h1>
+          <nav className="hidden sm:flex gap-6 text-sm font-medium">
+            <a href="#our-story" className="hover:text-pink-500 transition">
+              Our Story
+            </a>
+            <a href="#info" className="hover:text-pink-500 transition">
+              Info
+            </a>
+            <a href="#itinerary" className="hover:text-pink-500 transition">
+              Itinerary
+            </a>
+            <a href="#rsvp" className="hover:text-pink-500 transition">
+              RSVP
+            </a>
+          </nav>
+        </div>
+      </header>
+
+      {/* Hero Text */}
       <motion.div style={{ opacity, y }} className="relative z-10 container mx-auto px-6 sm:px-8">
-        <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight text-gray-800 mb-4">
+        <h2 className="text-4xl sm:text-5xl font-semibold tracking-tight text-white mb-4">
           Mio & Brian&apos;s Wedding
-        </h1>
-
-        <p className="text-base sm:text-lg text-gray-600 max-w-xl mx-auto leading-relaxed">
+        </h2>
+        <p className="text-base sm:text-lg text-white max-w-xl mx-auto leading-relaxed">
           We are so excited to celebrate our special day with you! Please RSVP below to let us know
           if you can join us.
         </p>
       </motion.div>
 
-      {/* Bouncing Down Arrow */}
+      {/* Bouncing arrow */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
         <svg
           className="w-8 h-8 text-pink-400 animate-bounce"
