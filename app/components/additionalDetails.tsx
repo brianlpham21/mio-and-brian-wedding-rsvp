@@ -38,7 +38,8 @@ export default function AdditionalDetails() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-3xl sm:text-4xl font-semibold text-pink-600 mb-3"
+          className="text-pink-600"
+          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(2.5rem, 5vw, 5.5rem)' }}
         >
           Additional Details
         </motion.h2>

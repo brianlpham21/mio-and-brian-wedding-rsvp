@@ -2,7 +2,10 @@ export default function WeddingInfo() {
   return (
     <section className="w-full bg-white py-16 px-6 sm:px-8 md:px-12 text-gray-800">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-semibold text-center mb-10">
+        <h2
+          className="text-center mb-10"
+          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(2.5rem, 5vw, 5.5rem)' }}
+        >
           Wedding Day Information
         </h2>
 
