@@ -6,7 +6,6 @@ import { motion, useTransform, useScroll } from 'framer-motion';
 
 import { HeroProps } from '../types';
 import { useTranslation } from '@/hooks/useTranslation';
-import { capitalizeWords } from '../helpers/capitalize';
 
 export default function Hero({ selectedLang, setSelectedLang, languages }: HeroProps) {
   const { t } = useTranslation({ locale: selectedLang.code });
