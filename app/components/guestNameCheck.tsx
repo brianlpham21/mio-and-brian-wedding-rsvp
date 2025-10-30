@@ -1,12 +1,16 @@
+import { useTranslation } from '@/hooks/useTranslation';
 import { GuestNameCheckProps } from '../types';
 
 export default function GuestNameCheck({
+  selectedLang,
   nameAvailable,
   name,
   setName,
   fetchGuest,
   loading,
 }: GuestNameCheckProps) {
+  const { t } = useTranslation({ locale: selectedLang.code });
+
   if (nameAvailable) return null;
 
   const showError = nameAvailable === false;
@@ -39,7 +43,7 @@ export default function GuestNameCheck({
           {loading && (
             <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></span>
           )}
-          {loading ? 'Loading...' : 'RSVP'}
+          {loading ? 'Loading...' : t('rsvp').toUpperCase()}
         </button>
       </form>
 

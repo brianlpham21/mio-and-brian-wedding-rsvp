@@ -19,6 +19,7 @@ export type GuestsDisplayProps = {
 };
 
 export type GuestNameCheckProps = {
+  selectedLang: { code: string; name: string; flag: string };
   nameAvailable: boolean | null;
   name: string;
   setName: (name: string) => void;

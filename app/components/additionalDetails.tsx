@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslation } from '@/hooks/useTranslation';
 import { motion } from 'framer-motion';
 
 const details = [
@@ -25,7 +26,9 @@ const details = [
   },
 ];
 
-export default function AdditionalDetails() {
+export default function AdditionalDetails({ selectedLang }: { selectedLang: { code: string } }) {
+  const { t } = useTranslation({ locale: selectedLang.code });
+
   return (
     <section
       id="details"
@@ -40,7 +43,7 @@ export default function AdditionalDetails() {
           className="text-black"
           style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(3.2rem, 5vw, 5.5rem)' }}
         >
-          Additional Details
+          {t('additional-details')}
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}

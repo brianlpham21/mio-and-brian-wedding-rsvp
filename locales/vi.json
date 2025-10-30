@@ -5,7 +5,16 @@
   "rsvp": "Xác Nhận Tham Dự",
   "the-wedding-of": "Đám Cưới Của",
   "mio-and-brian": "Mio & Brian",
-  "date": "20 tháng 3, 2026",
-  "city-location": "Los Angeles, California",
-  "wedding-day-information": "Thông Tin Ngày Cưới"
+  "wedding-date": "20 tháng 3, 2026",
+  "city-location": "LOS ANGELES, CA",
+  "wedding-day-information": "Thông Tin Ngày Cưới",
+  "ceremony": "Lễ cưới",
+  "reception": "Tiệc cưới",
+  "date": "Ngày",
+  "time": "Thời gian",
+  "location": "Địa điểm",
+  "venue-address": "802 Mateo St, Los Angeles, CA 90021",
+  "welcome": "Chào mừng",
+  "cocktails": "Cocktail",
+  "additional-details": "Thông tin bổ sung"
 }

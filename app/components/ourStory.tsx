@@ -1,9 +1,12 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { useTranslation } from '@/hooks/useTranslation';
 
-export default function OurStory() {
+export default function OurStory({ selectedLang }: { selectedLang: { code: string } }) {
+  const { t } = useTranslation({ locale: selectedLang.code });
+
   return (
     <section
       id="our-story"
@@ -21,7 +24,7 @@ export default function OurStory() {
           className="text-5xl sm:text-6xl text-gray-800 mb-6 tracking-tight"
           style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' }}
         >
-          Our Story
+          {t('our-story')}
         </h2>
         <p className="text-gray-600 text-lg sm:text-xl leading-relaxed">
           It all began with a chance encounter in Los Angeles — two paths crossing unexpectedly,

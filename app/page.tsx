@@ -13,6 +13,8 @@ import { RsvpPayload } from './types';
 import AdditionalDetails from './components/additionalDetails';
 import OurStory from './components/ourStory';
 
+import { useTranslation } from '@/hooks/useTranslation';
+
 /** ---------- LANGUAGE DROPDOWN STATE ---------- */
 const languages = [
   { code: 'en', name: 'English', flag: '/us.svg' },
@@ -22,6 +24,7 @@ const languages = [
 
 export default function Main() {
   const [selectedLang, setSelectedLang] = React.useState(languages[0]);
+  const { t } = useTranslation({ locale: selectedLang.code });
 
   const [name, setName] = React.useState('');
   const [nameAvailable, setNameAvailable] = React.useState<boolean | null>(null);
@@ -110,20 +113,21 @@ export default function Main() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 font-sans text-gray-800">
       <Hero selectedLang={selectedLang} setSelectedLang={setSelectedLang} languages={languages} />
       <WeddingInfo selectedLang={selectedLang} />
-      <Itinerary />
+      <Itinerary selectedLang={selectedLang} />
       <section id="rsvp" className="w-full py-12 px-6 sm:px-8 md:px-12 bg-pastel-green-25">
         <div className="max-w-5xl mx-auto text-center">
           <h2
             className="text-center leading-[1em] mb-3"
             style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' }}
           >
-            Rsvp
+            {t('rsvp')}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
             We’d love to know if you can join us in celebrating our wedding day. Please RSVP by
             January 20, 2026 so we can plan accordingly.
           </p>
           <GuestNameCheck
+            selectedLang={selectedLang}
             nameAvailable={nameAvailable}
             name={name}
             setName={setName}
@@ -149,8 +153,8 @@ export default function Main() {
           />
         </div>
       </section>
-      <OurStory />
-      <AdditionalDetails />
+      <OurStory selectedLang={selectedLang} />
+      <AdditionalDetails selectedLang={selectedLang} />
       <ReturnInfo />
     </div>
   );

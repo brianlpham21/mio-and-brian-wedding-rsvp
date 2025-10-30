@@ -77,15 +77,15 @@ export default function WeddingInfo({ selectedLang }: { selectedLang: { code: st
             style={{ x: rightX, opacity: fadeOut }}
             className="bg-pastel-green-25 rounded-2xl shadow-sm p-6"
           >
-            <h3 className="text-xl font-semibold mb-3 text-black">Ceremony</h3>
+            <h3 className="text-xl font-semibold mb-3 text-black">{t('ceremony')}</h3>
             <p className="text-gray-700 mb-2">
-              <strong>Date:</strong> Friday, March 20, 2025
+              <strong>{t('date')}:</strong> {t('wedding-date')}
             </p>
             <p className="text-gray-700 mb-2">
-              <strong>Time:</strong> 4:00 PM
+              <strong>{t('time')}:</strong> 4:00 PM
             </p>
             <p className="text-gray-700 mb-2">
-              <strong>Location:</strong> 802 Mateo St, Los Angeles, CA 90021
+              <strong>{t('location')}:</strong> 802 Mateo St, Los Angeles, CA 90021
             </p>
             <p className="text-gray-600 mt-4">
               Please arrive 30 minutes early to be seated. The ceremony will be outdoors — light
@@ -94,12 +94,12 @@ export default function WeddingInfo({ selectedLang }: { selectedLang: { code: st
 
             <hr className="my-5 h-0.5 border-t-0 bg-neutral-100 dark:bg-black/5" />
 
-            <h3 className="text-xl font-semibold mb-3 text-black">Reception</h3>
+            <h3 className="text-xl font-semibold mb-3 text-black">{t('reception')}</h3>
             <p className="text-gray-700 mb-2">
-              <strong>Time:</strong> 6:00 PM – 11:00 PM
+              <strong>{t('time')}:</strong> 6:00 PM – 11:00 PM
             </p>
             <p className="text-gray-700 mb-2">
-              <strong>Location:</strong> 802 Mateo St, Los Angeles, CA 90021
+              <strong>{t('location')}:</strong> 802 Mateo St, Los Angeles, CA 90021
             </p>
             <p className="text-gray-600 mt-4">
               Dinner, drinks, and dancing to follow. Valet parking will be available on-site.

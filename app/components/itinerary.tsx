@@ -1,31 +1,34 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const itinerary = [
   {
     time: '3:00 PM',
-    title: 'WELCOME',
+    title: 'welcome',
     description: 'Join us for an intimate ceremony surrounded by nature and love.',
   },
   {
     time: '4:00 PM',
-    title: 'CEREMONY',
+    title: 'ceremony',
     description: 'Enjoy drinks and hors d’oeuvres while we take wedding photos.',
   },
   {
     time: '5:30 PM',
-    title: 'COCKTAILS',
+    title: 'cocktails',
     description: 'Let’s celebrate with dinner, speeches, and dancing!',
   },
   {
     time: '6:00 PM',
-    title: 'RECEPTION',
+    title: 'reception',
     description: 'Help us close the night with a sparkler sendoff!',
   },
 ];
 
-export default function Itinerary() {
+export default function Itinerary({ selectedLang }: { selectedLang: { code: string } }) {
+  const { t } = useTranslation({ locale: selectedLang.code });
+
   return (
     <section id="itinerary" className="w-full py-16 px-6 sm:px-8 md:px-12 text-gray-800">
       <div className="max-w-5xl mx-auto text-center mb-12">
@@ -36,7 +39,7 @@ export default function Itinerary() {
           viewport={{ once: true }}
           style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' }}
         >
-          Itinerary
+          {t('itinerary')}
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -60,7 +63,7 @@ export default function Itinerary() {
             className="bg-pastel-green-25 rounded-xl shadow-sm p-6 border border-gray-100 text-center"
           >
             <h3 className="text-gray-600 tracking-[.001em] text-xl font-medium mb-1">
-              {event.title}
+              {t(event.title)}
             </h3>
             <p className="text-sm text-gray-500 mb-2">
               <span className="font-medium">{event.time}</span>

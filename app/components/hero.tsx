@@ -6,6 +6,7 @@ import { motion, useTransform, useScroll } from 'framer-motion';
 
 import { HeroProps } from '../types';
 import { useTranslation } from '@/hooks/useTranslation';
+import { capitalizeWords } from '../helpers/capitalize';
 
 export default function Hero({ selectedLang, setSelectedLang, languages }: HeroProps) {
   const { t } = useTranslation({ locale: selectedLang.code });
@@ -138,7 +139,7 @@ export default function Hero({ selectedLang, setSelectedLang, languages }: HeroP
               onClick={(e) => handleScrollToSection(e, '#rsvp')}
               className="transition border border-black/12 px-3 py-1 font-semibold rounded-md hover:bg-white/20 hover:text-black/70"
             >
-              {t('rsvp')}
+              {t('rsvp').toUpperCase()}
             </a>
           </nav>
         </div>
@@ -164,7 +165,7 @@ export default function Hero({ selectedLang, setSelectedLang, languages }: HeroP
           {t('mio-and-brian')}
         </h2>
         <p className={`not-prose text-white mx-auto md:tracking-[.2em] ${dateTimeLocationSize}`}>
-          {t('date')} | {t('city-location')}
+          {t('wedding-date')} | {t('city-location')}
         </p>
       </motion.div>
 
