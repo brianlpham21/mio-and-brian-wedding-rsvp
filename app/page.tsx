@@ -13,7 +13,16 @@ import { RsvpPayload } from './types';
 import AdditionalDetails from './components/additionalDetails';
 import OurStory from './components/ourStory';
 
+/** ---------- LANGUAGE DROPDOWN STATE ---------- */
+const languages = [
+  { code: 'en', name: 'English', flag: '/us.svg' },
+  { code: 'ja', name: '日本語', flag: '/japan.svg' },
+  { code: 'vi', name: 'Tiếng Việt', flag: '/vietnam.svg' },
+];
+
 export default function Main() {
+  const [selectedLang, setSelectedLang] = React.useState(languages[0]);
+
   const [name, setName] = React.useState('');
   const [nameAvailable, setNameAvailable] = React.useState<boolean | null>(null);
   const [party, setParty] = React.useState<string[]>([]);
@@ -99,7 +108,7 @@ export default function Main() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 font-sans text-gray-800">
-      <Hero />
+      <Hero selectedLang={selectedLang} setSelectedLang={setSelectedLang} languages={languages} />
       <WeddingInfo />
       <Itinerary />
       <section id="rsvp" className="w-full py-12 px-6 sm:px-8 md:px-12 bg-pastel-green-25">
