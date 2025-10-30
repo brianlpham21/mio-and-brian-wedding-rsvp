@@ -1,11 +1,15 @@
 import { SubmissionProps } from '@/app/types';
+import { useTranslation } from '@/hooks/useTranslation';
 
 export default function Submission({
+  selectedLang,
   nameAvailable,
   attending,
   submitting,
   handleSubmit,
 }: SubmissionProps) {
+  const { t } = useTranslation({ locale: selectedLang.code });
+
   return (
     <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6">
       <button
@@ -19,7 +23,7 @@ export default function Submission({
         {submitting && (
           <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></span>
         )}
-        {submitting ? 'Submitting...' : 'Submit'}
+        {submitting ? t('submitting') : t('submit')}
       </button>
 
       <button
@@ -28,7 +32,7 @@ export default function Submission({
                bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300
                focus:ring-offset-2 transition whitespace-nowrap cursor-pointer"
       >
-        Start Over
+        {t('start-over')}
       </button>
     </div>
   );

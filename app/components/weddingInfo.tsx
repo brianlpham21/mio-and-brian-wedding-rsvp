@@ -87,10 +87,7 @@ export default function WeddingInfo({ selectedLang }: { selectedLang: { code: st
             <p className="text-gray-700 mb-2">
               <strong>{t('location')}:</strong> 802 Mateo St, Los Angeles, CA 90021
             </p>
-            <p className="text-gray-600 mt-4">
-              Please arrive 30 minutes early to be seated. The ceremony will be outdoors — light
-              attire recommended!
-            </p>
+            <p className="text-gray-600 mt-4">{t('ceremony-details')}</p>
 
             <hr className="my-5 h-0.5 border-t-0 bg-neutral-100 dark:bg-black/5" />
 
@@ -101,9 +98,7 @@ export default function WeddingInfo({ selectedLang }: { selectedLang: { code: st
             <p className="text-gray-700 mb-2">
               <strong>{t('location')}:</strong> 802 Mateo St, Los Angeles, CA 90021
             </p>
-            <p className="text-gray-600 mt-4">
-              Dinner, drinks, and dancing to follow. Valet parking will be available on-site.
-            </p>
+            <p className="text-gray-600 mt-4">{t('reception-details')}</p>
           </motion.div>
         </div>
       </div>

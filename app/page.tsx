@@ -122,10 +122,7 @@ export default function Main() {
           >
             {t('rsvp')}
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
-            We’d love to know if you can join us in celebrating our wedding day. Please RSVP by
-            January 20, 2026 so we can plan accordingly.
-          </p>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">{t('rsvp-subheader')}</p>
           <GuestNameCheck
             selectedLang={selectedLang}
             nameAvailable={nameAvailable}
@@ -135,6 +132,7 @@ export default function Main() {
             loading={loading}
           />
           <AttendingConfirmation
+            selectedLang={selectedLang}
             nameAvailable={nameAvailable}
             rsvp={rsvp}
             party={party}
@@ -155,7 +153,7 @@ export default function Main() {
       </section>
       <OurStory selectedLang={selectedLang} />
       <AdditionalDetails selectedLang={selectedLang} />
-      <ReturnInfo />
+      <ReturnInfo selectedLang={selectedLang} />
     </div>
   );
 }

@@ -7,22 +7,18 @@ const itinerary = [
   {
     time: '3:00 PM',
     title: 'welcome',
-    description: 'Join us for an intimate ceremony surrounded by nature and love.',
   },
   {
     time: '4:00 PM',
     title: 'ceremony',
-    description: 'Enjoy drinks and hors d’oeuvres while we take wedding photos.',
   },
   {
     time: '5:30 PM',
     title: 'cocktails',
-    description: 'Let’s celebrate with dinner, speeches, and dancing!',
   },
   {
     time: '6:00 PM',
     title: 'reception',
-    description: 'Help us close the night with a sparkler sendoff!',
   },
 ];
 
@@ -48,7 +44,7 @@ export default function Itinerary({ selectedLang }: { selectedLang: { code: stri
           viewport={{ once: true }}
           className="text-lg text-gray-600 max-w-2xl mx-auto"
         >
-          Here’s a look at the special moments planned for our big day.
+          {t('itinerary-subheader')}
         </motion.p>
       </div>
 
@@ -68,7 +64,9 @@ export default function Itinerary({ selectedLang }: { selectedLang: { code: stri
             <p className="text-sm text-gray-500 mb-2">
               <span className="font-medium">{event.time}</span>
             </p>
-            <p className="text-gray-700 leading-relaxed text-left">{event.description}</p>
+            <p className="text-gray-700 leading-relaxed text-left">
+              {t(`${event.title}-itinerary-description`)}
+            </p>
           </motion.div>
         ))}
       </div>

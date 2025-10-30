@@ -43,7 +43,7 @@ export default function GuestNameCheck({
           {loading && (
             <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></span>
           )}
-          {loading ? 'Loading...' : t('rsvp').toUpperCase()}
+          {loading ? t('loading') : t('rsvp').toUpperCase()}
         </button>
       </form>
 

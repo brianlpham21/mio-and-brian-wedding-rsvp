@@ -28,6 +28,7 @@ export type GuestNameCheckProps = {
 };
 
 export type AttendingConfirmationProps = {
+  selectedLang: { code: string; name: string; flag: string };
   nameAvailable: boolean | null;
   rsvp: string | null;
   party: string[];
@@ -57,6 +58,7 @@ export type PlusOneConfirmationProps = {
 };
 
 export type SubmissionProps = {
+  selectedLang: { code: string; name: string; flag: string };
   nameAvailable: boolean | null;
   attending: boolean | null;
   submitting: boolean;

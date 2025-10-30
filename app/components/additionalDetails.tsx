@@ -52,7 +52,7 @@ export default function AdditionalDetails({ selectedLang }: { selectedLang: { co
           viewport={{ once: true }}
           className="text-lg text-gray-600 max-w-2xl mx-auto"
         >
-          Here’s everything you might want to know to help plan your time with us.
+          {t('additional-details-subheader')}
         </motion.p>
       </div>
 

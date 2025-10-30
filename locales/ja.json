@@ -16,5 +16,22 @@
   "venue-address": "802 Mateo St, ロサンゼルス, CA 90021",
   "welcome": "ようこそ",
   "cocktails": "カクテル",
-  "additional-details": "追加情報"
+  "additional-details": "追加情報",
+  "ceremony-details": "30分前までにご着席いただけるようお越しください。挙式は屋外で行われますので、軽装をおすすめします。",
+  "reception-details": "お食事、ドリンク、そしてダンスをお楽しみください。会場ではバレーサービスをご利用いただけます。",
+  "itinerary-subheader": "私たちの特別な一日の流れをご紹介します。",
+  "welcome-itinerary-description": "自然と愛に囲まれた親しい挙式にご参加ください。",
+  "ceremony-itinerary-description": "私たちが写真撮影をしている間、ドリンクとオードブルをお楽しみください。",
+  "cocktails-itinerary-description": "ディナーやスピーチ、そしてダンスで一緒にお祝いしましょう！",
+  "reception-itinerary-description": "スパークラーを手に夜を締めくくりましょう！",
+  "rsvp-subheader": "私たちの結婚式にご参加いただけるかどうか、ぜひお知らせください。2026年1月20日までにご返信をお願いいたします。",
+  "enter-your-full-name": "氏名を入力してください",
+  "loading": "読み込み中...",
+  "attending": "出席します",
+  "not-attending": "欠席します",
+  "submit": "送信",
+  "submitting": "送信中...",
+  "start-over": "最初からやり直す",
+  "additional-details-subheader": "滞在の計画に役立つ情報をこちらにまとめました。",
+  "thank-you-message": "私たちの結婚式を一緒にお祝いしてくださり、ありがとうございます！挙式後は、このウェブサイトで写真や思い出をぜひご覧ください。"
 }

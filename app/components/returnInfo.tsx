@@ -1,11 +1,14 @@
 'use client';
 
-import { motion, useAnimation, Variants } from 'framer-motion';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
+import { motion, useAnimation, Variants } from 'framer-motion';
+import { useTranslation } from '@/hooks/useTranslation';
 
-export default function ReturnInfo() {
+export default function ReturnInfo({ selectedLang }: { selectedLang: { code: string } }) {
+  const { t } = useTranslation({ locale: selectedLang.code });
+
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 1, triggerOnce: true });
 
@@ -40,8 +43,7 @@ export default function ReturnInfo() {
           variants={itemVariants}
           className="text-lg sm:text-xl text-gray-700 leading-relaxed"
         >
-          Thank you for celebrating with us! After the wedding, please return to this website to see
-          all the photos and relive the memories from our special day.
+          {t('thank-you-message')}
         </motion.p>
       </motion.div>
 

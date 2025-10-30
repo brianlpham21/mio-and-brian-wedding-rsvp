@@ -16,5 +16,22 @@
   "venue-address": "802 Mateo St, Los Angeles, CA 90021",
   "welcome": "Welcome",
   "cocktails": "Cocktails",
-  "additional-details": "Additional Details"
+  "additional-details": "Additional Details",
+  "ceremony-details": "Please arrive 30 minutes early to be seated. The ceremony will be outdoors — light attire recommended!",
+  "reception-details": "Dinner, drinks, and dancing to follow. Valet parking will be available on-site.",
+  "itinerary-subheader": "Here’s a look at the special moments planned for our big day.",
+  "welcome-itinerary-description": "Join us for an intimate ceremony surrounded by nature and love.",
+  "ceremony-itinerary-description": "Enjoy drinks and hors d’oeuvres while we take wedding photos.",
+  "cocktails-itinerary-description": "Let’s celebrate with dinner, speeches, and dancing!",
+  "reception-itinerary-description": "Help us close the night with a sparkler sendoff!",
+  "rsvp-subheader": "We’d love to know if you can join us in celebrating our wedding day. Please RSVP by January 20, 2026 so we can plan accordingly.",
+  "enter-your-full-name": "Enter your full name",
+  "loading": "Loading...",
+  "attending": "Attending",
+  "not-attending": "Not Attending",
+  "submit": "Submit",
+  "submitting": "Submitting...",
+  "start-over": "Start Over",
+  "additional-details-subheader": "Here’s everything you might want to know to help plan your time with us.",
+  "thank-you-message": "Thank you for celebrating with us! After the wedding, please return to this website to see all the photos and relive the memories from our special day."
 }

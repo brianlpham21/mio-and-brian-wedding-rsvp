@@ -5,8 +5,10 @@ import GuestsDisplay from './guestsDisplay';
 
 import { AttendingConfirmationProps } from '@/app/types';
 import ExistingConfirmation from './existingConfirmation';
+import { useTranslation } from '@/hooks/useTranslation';
 
 export default function AttendingConfirmation({
+  selectedLang,
   nameAvailable,
   rsvp,
   party,
@@ -23,6 +25,8 @@ export default function AttendingConfirmation({
   handleSubmit,
   submitted,
 }: AttendingConfirmationProps) {
+  const { t } = useTranslation({ locale: selectedLang.code });
+
   if (!nameAvailable) return null;
 
   if (submitted) return <SuccessConfirmation />;
@@ -44,7 +48,7 @@ export default function AttendingConfirmation({
             onChange={() => setAttending(true)}
             className="h-4 w-4 text-pastel-green-250 focus:ring-pink-300"
           />
-          <span className="text-sm sm:text-base">Attending</span>
+          <span className="text-sm sm:text-base">{t('attending')}</span>
         </label>
 
         <label className="flex items-center gap-2 cursor-pointer">
@@ -56,7 +60,7 @@ export default function AttendingConfirmation({
             onChange={() => setAttending(false)}
             className="h-4 w-4 text-pastel-green-250 focus:ring-pink-300"
           />
-          <span className="text-sm sm:text-base">Not Attending</span>
+          <span className="text-sm sm:text-base">{t('not-attending')}</span>
         </label>
       </div>
 
@@ -77,6 +81,7 @@ export default function AttendingConfirmation({
       {/* Submission Button */}
       <div className="flex justify-center">
         <Submission
+          selectedLang={selectedLang}
           nameAvailable={nameAvailable}
           attending={attending}
           submitting={submitting}
