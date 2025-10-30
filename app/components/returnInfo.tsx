@@ -3,6 +3,7 @@
 import { motion, useAnimation, Variants } from 'framer-motion';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
+import Image from 'next/image';
 
 export default function ReturnInfo() {
   const controls = useAnimation();
@@ -27,13 +28,13 @@ export default function ReturnInfo() {
   }, [controls, inView]);
 
   return (
-    <section className="w-full py-16 px-6 sm:px-8 md:px-12 text-gray-800 overflow-hidden">
+    <section className="w-full py-16 px-6 sm:px-8 md:px-12 text-gray-800 overflow-hidden relative">
       <motion.div
         ref={ref}
         initial="hidden"
         animate={controls}
         variants={containerVariants}
-        className="max-w-3xl mx-auto text-center"
+        className="max-w-3xl mx-auto text-center relative z-10"
       >
         <motion.p
           variants={itemVariants}
@@ -43,6 +44,11 @@ export default function ReturnInfo() {
           all the photos and relive the memories from our special day.
         </motion.p>
       </motion.div>
+
+      {/* Fixed bottom-right PNG */}
+      <div className="absolute bottom-3 right-3 z-20">
+        <Image src="/maggie-face.png" alt="Maggie" width={30} height={30} />
+      </div>
     </section>
   );
 }
