@@ -2,21 +2,28 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 export default function WeddingInfo() {
   const ref = useRef(null);
-
-  // Track scroll progress relative to this section
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start'],
   });
 
-  // Subtle exit motion — columns move apart when leaving view
-  const leftX = useTransform(scrollYProgress, [0.7, 1], ['0%', '-60%']);
-  const rightX = useTransform(scrollYProgress, [0.7, 1], ['0%', '60%']);
-  const fadeOut = useTransform(scrollYProgress, [0.75, 1], [1, 0]);
+  // Detect mobile view
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize(); // run on mount
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Animations (only apply horizontal movement if not mobile)
+  const leftX = useTransform(scrollYProgress, [0.7, 1], ['0%', isMobile ? '0%' : '-60%']);
+  const rightX = useTransform(scrollYProgress, [0.7, 1], ['0%', isMobile ? '0%' : '60%']);
+  const fadeOut = useTransform(scrollYProgress, [0.85, 1], [1, 0]);
 
   return (
     <section
