@@ -1,16 +1,31 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
+import { useRef } from 'react';
 
 export default function WeddingInfo() {
+  const ref = useRef(null);
+
+  // Track scroll progress relative to this section
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  });
+
+  // Subtle exit motion — columns move apart when leaving view
+  const leftX = useTransform(scrollYProgress, [0.7, 1], ['0%', '-60%']);
+  const rightX = useTransform(scrollYProgress, [0.7, 1], ['0%', '60%']);
+  const fadeOut = useTransform(scrollYProgress, [0.75, 1], [1, 0]);
+
   return (
     <section
+      ref={ref}
       id="info"
-      className="w-full sm:px-8 md:px-12 text-gray-800 pt-16 md:pt-20 pb-2 md:pb-6 lg:pb-10 px-6"
+      className="relative w-full sm:px-8 md:px-12 text-gray-800 pt-16 md:pt-20 pb-2 md:pb-6 lg:pb-10 px-6 overflow-hidden"
     >
       <div className="max-w-5xl mx-auto">
-        {/* Animated Heading */}
+        {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -23,12 +38,13 @@ export default function WeddingInfo() {
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          {/* Left: Animated Photo with Zoom */}
+          {/* Left Column — Image */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+            style={{ x: leftX, opacity: fadeOut }}
             className="relative w-full h-80 md:h-full rounded-2xl overflow-hidden shadow-md group"
           >
             <div className="absolute inset-0 transform transition-transform duration-700 ease-out group-hover:scale-105">
@@ -42,12 +58,13 @@ export default function WeddingInfo() {
             </div>
           </motion.div>
 
-          {/* Right: Animated Details Card */}
+          {/* Right Column — Info Card */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
+            style={{ x: rightX, opacity: fadeOut }}
             className="bg-pastel-green-25 rounded-2xl shadow-sm p-6"
           >
             <h3 className="text-xl font-semibold mb-3 text-black">Ceremony</h3>

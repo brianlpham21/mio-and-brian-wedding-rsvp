@@ -105,7 +105,7 @@ export default function Main() {
       <section id="rsvp" className="w-full py-12 px-6 sm:px-8 md:px-12 bg-pastel-green-25">
         <div className="max-w-5xl mx-auto text-center">
           <h2
-            className="text-center leading-[1em]"
+            className="text-center leading-[1em] mb-3"
             style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' }}
           >
             Rsvp
