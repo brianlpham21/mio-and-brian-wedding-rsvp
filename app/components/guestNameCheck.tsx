@@ -28,7 +28,7 @@ export default function GuestNameCheck({
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Enter your Full Name"
+          placeholder={t('enter-your-full-name')}
           className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-700 placeholder-gray-400 
                focus:border-pink-400 focus:ring-2 focus:ring-pink-300 focus:outline-none transition bg-white"
         />

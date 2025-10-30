@@ -82,9 +82,8 @@ export default function Hero({ selectedLang, setSelectedLang, languages }: HeroP
       />
 
       {/* Header */}
-      <header className="absolute top-0 left-0 w-full z-20 bg-white/20 backdrop-blur-md border-b border-white/30 fixed">
+      <header className="absolute top-0 left-0 w-full z-20 bg-white/20 backdrop-blur-md border-b border-white/30">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between text-gray-800">
-          {/* <h1 className="invisible sm:visible text-md font-medium tracking-wide">Mio & Brian</h1> */}
           {/* Language Dropdown */}
           <div className="relative">
             <button
