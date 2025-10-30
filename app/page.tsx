@@ -109,7 +109,7 @@ export default function Main() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 font-sans text-gray-800">
       <Hero selectedLang={selectedLang} setSelectedLang={setSelectedLang} languages={languages} />
-      <WeddingInfo />
+      <WeddingInfo selectedLang={selectedLang} />
       <Itinerary />
       <section id="rsvp" className="w-full py-12 px-6 sm:px-8 md:px-12 bg-pastel-green-25">
         <div className="max-w-5xl mx-auto text-center">

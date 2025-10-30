@@ -1,10 +1,13 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import Image from 'next/image';
 import { useRef, useState, useEffect } from 'react';
+import Image from 'next/image';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useTranslation } from '@/hooks/useTranslation';
 
-export default function WeddingInfo() {
+export default function WeddingInfo({ selectedLang }: { selectedLang: { code: string } }) {
+  const { t } = useTranslation({ locale: selectedLang.code });
+
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -41,7 +44,7 @@ export default function WeddingInfo() {
           className="text-center mb-12 leading-[1em]"
           style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' }}
         >
-          Wedding Day Information
+          {t('wedding-day-information')}
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">

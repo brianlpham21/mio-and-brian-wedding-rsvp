@@ -163,7 +163,7 @@ export default function Hero({ selectedLang, setSelectedLang, languages }: HeroP
         >
           {t('mio-and-brian')}
         </h2>
-        <p className={`text-white mx-auto md:tracking-[.2em] ${dateTimeLocationSize}`}>
+        <p className={`not-prose text-white mx-auto md:tracking-[.2em] ${dateTimeLocationSize}`}>
           {t('date')} | {t('city-location')}
         </p>
       </motion.div>
