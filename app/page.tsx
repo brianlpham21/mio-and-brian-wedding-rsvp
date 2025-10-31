@@ -15,6 +15,7 @@ import OurStory from './components/ourStory';
 
 import { useTranslation } from '@/hooks/useTranslation';
 import Image from 'next/image';
+import MaggieIcon from './components/maggieIcon';
 
 /** ---------- LANGUAGE DROPDOWN STATE ---------- */
 const languages = [
@@ -177,31 +178,7 @@ export default function Main() {
       <AdditionalDetails selectedLang={selectedLang} />
       <ReturnInfo selectedLang={selectedLang} />
 
-      {/* Maggie */}
-      <div
-        className="fixed z-20 group"
-        style={{
-          bottom: 'calc(env(safe-area-inset-bottom, 0px) + 14px)',
-          right: 'calc(env(safe-area-inset-right, 0px) + 14px)',
-        }}
-      >
-        {/* Speech bubble */}
-        <div className="absolute bottom-1/2 right-full mr-5 translate-y-1/2 bg-white text-gray-700 text-sm px-3 py-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
-          {t('maggie-message')}
-          <div className="absolute top-1/2 -translate-y-1/2 right-[-6px] w-0 h-0 border-l-8 border-l-white border-y-8 border-y-transparent" />
-        </div>
-
-        {/* Image */}
-        <div className="relative">
-          <Image
-            src="/maggie-face.png"
-            alt="Maggie"
-            width={25}
-            height={25}
-            className="transition-all duration-500 opacity-70 ease-in-out transform group-hover:scale-150 group-hover:opacity-100 cursor-pointer"
-          />
-        </div>
-      </div>
+      <MaggieIcon selectedLang={selectedLang} />
     </div>
   );
 }
