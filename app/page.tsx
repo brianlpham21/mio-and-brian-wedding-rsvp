@@ -8,14 +8,12 @@ import AttendingConfirmation from './components/confirmation/attendingConfirmati
 import WeddingInfo from './components/weddingInfo';
 import ReturnInfo from './components/returnInfo';
 import Itinerary from './components/itinerary';
-
-import { RsvpPayload } from './types';
 import AdditionalDetails from './components/additionalDetails';
 import OurStory from './components/ourStory';
+import MaggieIcon from './components/maggieIcon';
 
 import { useTranslation } from '@/hooks/useTranslation';
-import Image from 'next/image';
-import MaggieIcon from './components/maggieIcon';
+import { RsvpPayload } from './types';
 
 /** ---------- LANGUAGE DROPDOWN STATE ---------- */
 const languages = [

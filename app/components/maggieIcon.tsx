@@ -1,14 +1,27 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useTranslation } from '@/hooks/useTranslation';
 
 export default function MaggieIcon({ selectedLang }: { selectedLang: { code: string } }) {
   const { t } = useTranslation({ locale: selectedLang.code });
   const [showBubble, setShowBubble] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const toggleBubble = () => setShowBubble((prev) => !prev);
+  // Detect if device is mobile
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const handleClick = () => {
+    if (isMobile) {
+      setShowBubble((prev) => !prev); // toggle on mobile
+    }
+  };
 
   return (
     <div
@@ -21,15 +34,15 @@ export default function MaggieIcon({ selectedLang }: { selectedLang: { code: str
       {/* Speech bubble */}
       <div
         className={`absolute bottom-1/2 right-full mr-5 translate-y-1/2 bg-white text-gray-700 text-sm px-3 py-2 rounded-lg shadow-lg whitespace-nowrap transition-all duration-300
-        ${showBubble ? 'opacity-100' : 'opacity-0'}
-        group-hover:opacity-100`}
+          ${showBubble ? 'opacity-100' : 'opacity-0'}
+          group-hover:opacity-100`}
       >
         {t('maggie-message')}
         <div className="absolute top-1/2 -translate-y-1/2 right-[-6px] w-0 h-0 border-l-8 border-l-white border-y-8 border-y-transparent" />
       </div>
 
       {/* Image */}
-      <div className="relative" onClick={toggleBubble}>
+      <div className="relative" onClick={handleClick}>
         <Image
           src="/maggie-face.png"
           alt="Maggie"
