@@ -178,7 +178,13 @@ export default function Main() {
       <ReturnInfo selectedLang={selectedLang} />
 
       {/* Fixed bottom-right PNG */}
-      <div className="absolute bottom-3 right-3 z-20 fixed opacity-70">
+      <div
+        className="absolute z-20 fixed opacity-80"
+        style={{
+          bottom: 'calc(env(safe-area-inset-bottom, 0px) + 14px)',
+          right: 'calc(env(safe-area-inset-right, 0px) + 14px)',
+        }}
+      >
         <Image src="/maggie-face.png" alt="Maggie" width={20} height={20} />
       </div>
     </div>
