@@ -42,6 +42,24 @@ export default function Main() {
   const [submitting, setSubmitting] = React.useState(false);
   const [submitted, setSubmitted] = React.useState(false);
 
+  const handleStartOver = () => {
+    setName('');
+    setNameAvailable(null);
+    setParty([]);
+    setRowIndex(null);
+    setRsvp(null);
+
+    setAttending(null);
+    setPlusOne(null);
+    setBringingPlusOne(false);
+    setPlusOneFirstName('');
+    setPlusOneLastName('');
+
+    setLoading(false);
+    setSubmitting(false);
+    setSubmitted(false);
+  };
+
   async function fetchGuest() {
     if (!name) return;
     setLoading(true);
@@ -109,6 +127,11 @@ export default function Main() {
     }
   }
 
+  const headerFont =
+    selectedLang.code === 'vi'
+      ? { fontSize: 'clamp(3rem, 4vw, 4rem)', fontStyle: 'italic', fontWeight: '500' }
+      : { fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' };
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 font-sans text-gray-800">
       <Hero selectedLang={selectedLang} setSelectedLang={setSelectedLang} languages={languages} />
@@ -116,10 +139,7 @@ export default function Main() {
       <Itinerary selectedLang={selectedLang} />
       <section id="rsvp" className="w-full py-12 px-6 sm:px-8 md:px-12 bg-pastel-green-25">
         <div className="max-w-5xl mx-auto text-center">
-          <h2
-            className="text-center leading-[1em] mb-3"
-            style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' }}
-          >
+          <h2 className="text-center leading-[1em] mb-3" style={headerFont}>
             {t('rsvp')}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">{t('rsvp-subheader')}</p>
@@ -148,6 +168,7 @@ export default function Main() {
             submitting={submitting}
             handleSubmit={handleSubmit}
             submitted={submitted}
+            startOver={handleStartOver}
           />
         </div>
       </section>

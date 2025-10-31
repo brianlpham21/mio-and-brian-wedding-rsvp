@@ -7,6 +7,11 @@ import { useTranslation } from '@/hooks/useTranslation';
 export default function OurStory({ selectedLang }: { selectedLang: { code: string } }) {
   const { t } = useTranslation({ locale: selectedLang.code });
 
+  const headerFont =
+    selectedLang.code === 'vi'
+      ? { fontSize: 'clamp(3rem, 4vw, 4rem)', fontStyle: 'italic', fontWeight: '500' }
+      : { fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' };
+
   return (
     <section
       id="our-story"
@@ -20,10 +25,7 @@ export default function OurStory({ selectedLang }: { selectedLang: { code: strin
         transition={{ duration: 1.2, ease: 'easeOut' }}
         className="flex-1 max-w-3xl relative z-10 text-center md:text-left"
       >
-        <h2
-          className="text-5xl sm:text-6xl text-gray-800 mb-6 tracking-tight"
-          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' }}
-        >
+        <h2 className="text-5xl sm:text-6xl text-gray-800 mb-6 tracking-tight" style={headerFont}>
           {t('our-story')}
         </h2>
         <p className="text-gray-600 text-lg sm:text-xl leading-relaxed">

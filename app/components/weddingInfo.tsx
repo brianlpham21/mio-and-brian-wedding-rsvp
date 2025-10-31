@@ -28,6 +28,11 @@ export default function WeddingInfo({ selectedLang }: { selectedLang: { code: st
   const rightX = useTransform(scrollYProgress, [0.7, 1], ['0%', isMobile ? '0%' : '60%']);
   const fadeOut = useTransform(scrollYProgress, [0.85, 1], [1, 0]);
 
+  const headerFont =
+    selectedLang.code === 'vi'
+      ? { fontSize: 'clamp(3rem, 4vw, 4rem)', fontStyle: 'italic', fontWeight: '500' }
+      : { fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' };
+
   return (
     <section
       ref={ref}
@@ -42,7 +47,7 @@ export default function WeddingInfo({ selectedLang }: { selectedLang: { code: st
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
           className="text-center mb-12 leading-[1em]"
-          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' }}
+          style={headerFont}
         >
           {t('wedding-day-information')}
         </motion.h2>

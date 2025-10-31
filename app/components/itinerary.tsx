@@ -25,6 +25,11 @@ const itinerary = [
 export default function Itinerary({ selectedLang }: { selectedLang: { code: string } }) {
   const { t } = useTranslation({ locale: selectedLang.code });
 
+  const headerFont =
+    selectedLang.code === 'vi'
+      ? { fontSize: 'clamp(3rem, 4vw, 4rem)', fontStyle: 'italic', fontWeight: '500' }
+      : { fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' };
+
   return (
     <section id="itinerary" className="w-full py-16 px-6 sm:px-8 md:px-12 text-gray-800">
       <div className="max-w-5xl mx-auto text-center mb-12">
@@ -33,7 +38,7 @@ export default function Itinerary({ selectedLang }: { selectedLang: { code: stri
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' }}
+          style={headerFont}
         >
           {t('itinerary')}
         </motion.h2>

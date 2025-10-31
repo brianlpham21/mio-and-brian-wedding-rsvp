@@ -29,6 +29,11 @@ const details = [
 export default function AdditionalDetails({ selectedLang }: { selectedLang: { code: string } }) {
   const { t } = useTranslation({ locale: selectedLang.code });
 
+  const headerFont =
+    selectedLang.code === 'vi'
+      ? { fontSize: 'clamp(3rem, 4vw, 4rem)', fontStyle: 'italic', fontWeight: '500' }
+      : { fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' };
+
   return (
     <section
       id="details"
@@ -40,8 +45,8 @@ export default function AdditionalDetails({ selectedLang }: { selectedLang: { co
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-black"
-          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(3.2rem, 5vw, 5.5rem)' }}
+          className="text-black leading-[1em] mb-3"
+          style={headerFont}
         >
           {t('additional-details')}
         </motion.h2>

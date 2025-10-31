@@ -15,6 +15,7 @@ export interface RsvpPayload {
 }
 
 export type GuestsDisplayProps = {
+  selectedLang: { code: string; name: string; flag: string };
   party: string[];
 };
 
@@ -44,6 +45,7 @@ export type AttendingConfirmationProps = {
   submitting: boolean;
   handleSubmit: (e: React.MouseEvent<HTMLButtonElement>) => Promise<void>;
   submitted: boolean;
+  startOver: () => void;
 };
 
 export type PlusOneConfirmationProps = {
@@ -63,4 +65,5 @@ export type SubmissionProps = {
   attending: boolean | null;
   submitting: boolean;
   handleSubmit: (e: React.MouseEvent<HTMLButtonElement>) => Promise<void>;
+  startOver: () => void;
 };

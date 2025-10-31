@@ -1,4 +1,14 @@
-export default function ExistingConfirmation() {
+import { useTranslation } from '@/hooks/useTranslation';
+
+export default function ExistingConfirmation({
+  selectedLang,
+  startOver,
+}: {
+  selectedLang: { code: string; name: string; flag: string };
+  startOver: () => void;
+}) {
+  const { t } = useTranslation({ locale: selectedLang.code });
+
   return (
     <div className="flex flex-col items-center justify-center text-center bg-white rounded-lg shadow-md p-8 mt-8 max-w-md mx-auto">
       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-yellow-100 mb-4">
@@ -17,17 +27,14 @@ export default function ExistingConfirmation() {
         </svg>
       </div>
 
-      <h2 className="text-2xl font-semibold text-gray-800 mb-2">RSVP Already Submitted</h2>
-      <p className="text-gray-600 mb-6">
-        It looks like you’ve already submitted your RSVP. If you need to make changes, please
-        contact us directly.
-      </p>
+      <h2 className="text-2xl font-semibold text-gray-800 mb-2">{t('rsvp-already-submitted')}!</h2>
+      <p className="text-gray-600 mb-6">{t('rsvp-already-submitted-message')}</p>
 
       <button
-        onClick={() => window.location.reload()}
+        onClick={startOver}
         className="px-6 py-3 rounded-lg font-medium text-white bg-pastel-green-250 hover:bg-black transition focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-offset-2 cursor-pointer bg-gray-800"
       >
-        Back to Start
+        {t('back-to-start')}
       </button>
     </div>
   );

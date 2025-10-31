@@ -7,6 +7,7 @@ export default function Submission({
   attending,
   submitting,
   handleSubmit,
+  startOver,
 }: SubmissionProps) {
   const { t } = useTranslation({ locale: selectedLang.code });
 
@@ -27,7 +28,7 @@ export default function Submission({
       </button>
 
       <button
-        onClick={() => window.location.reload()}
+        onClick={startOver}
         className="flex items-center justify-center rounded-lg px-6 py-3 font-medium text-gray-700 
                bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300
                focus:ring-offset-2 transition whitespace-nowrap cursor-pointer"
