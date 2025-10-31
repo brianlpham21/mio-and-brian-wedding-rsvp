@@ -177,15 +177,33 @@ export default function Main() {
       <AdditionalDetails selectedLang={selectedLang} />
       <ReturnInfo selectedLang={selectedLang} />
 
-      {/* Fixed bottom-right PNG */}
+      {/* Maggie */}
       <div
-        className="absolute z-20 fixed opacity-80"
+        className="fixed z-20 group"
         style={{
           bottom: 'calc(env(safe-area-inset-bottom, 0px) + 14px)',
           right: 'calc(env(safe-area-inset-right, 0px) + 14px)',
         }}
       >
-        <Image src="/maggie-face.png" alt="Maggie" width={20} height={20} />
+        {/* Speech bubble */}
+        <div
+          className="absolute bottom-1/2 right-full mr-3 translate-y-1/2 bg-white text-gray-700 text-sm px-3 py-2 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap"
+          style={{ fontFamily: 'sans-serif' }}
+        >
+          Woof Woof! 💕
+          <div className="absolute top-1/2 -translate-y-1/2 right-[-6px] w-0 h-0 border-l-8 border-l-white border-y-8 border-y-transparent" />
+        </div>
+
+        {/* Image */}
+        <div className="relative">
+          <Image
+            src="/maggie-face.png"
+            alt="Maggie"
+            width={25}
+            height={25}
+            className="transition-all duration-500 opacity-70 ease-in-out transform group-hover:scale-150 group-hover:opacity-100 cursor-pointer"
+          />
+        </div>
       </div>
     </div>
   );
