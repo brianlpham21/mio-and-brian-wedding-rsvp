@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-import Image from 'next/image';
 import { motion, useAnimation, Variants } from 'framer-motion';
 import { useTranslation } from '@/hooks/useTranslation';
 
@@ -46,11 +45,6 @@ export default function ReturnInfo({ selectedLang }: { selectedLang: { code: str
           {t('thank-you-message')}
         </motion.p>
       </motion.div>
-
-      {/* Fixed bottom-right PNG */}
-      <div className="absolute bottom-3 right-3 z-20">
-        <Image src="/maggie-face.png" alt="Maggie" width={30} height={30} />
-      </div>
     </section>
   );
 }

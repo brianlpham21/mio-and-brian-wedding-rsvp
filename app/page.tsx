@@ -14,6 +14,7 @@ import AdditionalDetails from './components/additionalDetails';
 import OurStory from './components/ourStory';
 
 import { useTranslation } from '@/hooks/useTranslation';
+import Image from 'next/image';
 
 /** ---------- LANGUAGE DROPDOWN STATE ---------- */
 const languages = [
@@ -175,6 +176,11 @@ export default function Main() {
       <OurStory selectedLang={selectedLang} />
       <AdditionalDetails selectedLang={selectedLang} />
       <ReturnInfo selectedLang={selectedLang} />
+
+      {/* Fixed bottom-right PNG */}
+      <div className="absolute bottom-3 right-3 z-20 fixed opacity-70">
+        <Image src="/maggie-face.png" alt="Maggie" width={20} height={20} />
+      </div>
     </div>
   );
 }
