@@ -13,7 +13,7 @@ import OurStory from './components/ourStory';
 import MaggieIcon from './components/maggieIcon';
 
 import { useTranslation } from '@/hooks/useTranslation';
-import { RsvpPayload } from './types';
+import { ContactInfo, RsvpPayload } from './types';
 
 /** ---------- LANGUAGE DROPDOWN STATE ---------- */
 const languages = [
@@ -33,6 +33,14 @@ export default function Main() {
   const [rsvp, setRsvp] = React.useState<string | null>(null);
 
   const [attending, setAttending] = React.useState<boolean | null>(null);
+  const [selectedGuests, setSelectedGuests] = React.useState<string[]>([]);
+  const [contactInfo, setContactInfo] = React.useState<ContactInfo>({
+    email: '',
+    addressLine: '',
+    city: '',
+    state: '',
+    zip: '',
+  });
   const [plusOne, setPlusOne] = React.useState<boolean | null>(null);
   const [bringingPlusOne, setBringingPlusOne] = React.useState(false);
   const [plusOneFirstName, setPlusOneFirstName] = React.useState('');
@@ -50,6 +58,13 @@ export default function Main() {
     setRsvp(null);
 
     setAttending(null);
+    setContactInfo({
+      email: '',
+      addressLine: '',
+      city: '',
+      state: '',
+      zip: '',
+    });
     setPlusOne(null);
     setBringingPlusOne(false);
     setPlusOneFirstName('');
@@ -77,6 +92,7 @@ export default function Main() {
       const data = await res.json();
       setNameAvailable(data.available);
       setParty(data.party || []);
+      setSelectedGuests(data.party || []);
       setRowIndex(data.row || null);
       setPlusOne(data.plus_one || null);
       setRsvp(data.rsvp || null);
@@ -93,15 +109,25 @@ export default function Main() {
     e.preventDefault();
     if (!rowIndex || attending === null) return;
 
+    // Determine guests not attending
+    const notAttending = party.filter((name) => !selectedGuests.includes(name));
+
     const payload: RsvpPayload = {
       rowIndex,
       attending,
+      notAttending,
     };
 
+    // Include plus one info if applicable
     if (bringingPlusOne) {
       payload.plusOne = true;
       payload.plusOneFirst = plusOneFirstName;
       payload.plusOneLast = plusOneLastName;
+    }
+
+    // Include contact info only if attending
+    if (attending && contactInfo) {
+      payload.contactInfo = { ...contactInfo };
     }
 
     setSubmitting(true);
@@ -158,6 +184,10 @@ export default function Main() {
             party={party}
             attending={attending}
             setAttending={setAttending}
+            selectedGuests={selectedGuests}
+            setSelectedGuests={setSelectedGuests}
+            contactInfo={contactInfo}
+            setContactInfo={setContactInfo}
             plusOne={plusOne}
             setBringingPlusOne={setBringingPlusOne}
             bringingPlusOne={bringingPlusOne}

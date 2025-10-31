@@ -14,6 +14,10 @@ export default function AttendingConfirmation({
   party,
   attending,
   setAttending,
+  selectedGuests,
+  setSelectedGuests,
+  contactInfo,
+  setContactInfo,
   plusOne,
   setBringingPlusOne,
   bringingPlusOne,
@@ -29,12 +33,19 @@ export default function AttendingConfirmation({
   const { t } = useTranslation({ locale: selectedLang.code });
 
   if (!nameAvailable) return null;
+
   if (submitted) return <SuccessConfirmation selectedLang={selectedLang} startOver={startOver} />;
   if (rsvp) return <ExistingConfirmation selectedLang={selectedLang} startOver={startOver} />;
 
   return (
     <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-sm px-6 py-8 text-gray-800">
-      <GuestsDisplay selectedLang={selectedLang} party={party} />
+      <GuestsDisplay
+        attending={attending}
+        selectedLang={selectedLang}
+        party={party}
+        selectedGuests={selectedGuests}
+        setSelectedGuests={setSelectedGuests}
+      />
 
       {/* Attendance Selection */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
@@ -93,6 +104,8 @@ export default function AttendingConfirmation({
               placeholder={t('enter-your-email')}
               className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300"
               required
+              value={contactInfo.email}
+              onChange={(e) => setContactInfo((prev) => ({ ...prev, email: e.target.value }))}
             />
           </div>
 
@@ -108,6 +121,8 @@ export default function AttendingConfirmation({
               placeholder={t('street-address')}
               className="w-full rounded-md border border-gray-300 px-3 py-2 mb-3 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300"
               required
+              value={contactInfo.addressLine}
+              onChange={(e) => setContactInfo((prev) => ({ ...prev, addressLine: e.target.value }))}
             />
 
             {/* City, State, Zip */}
@@ -119,6 +134,8 @@ export default function AttendingConfirmation({
                 placeholder={t('city')}
                 className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300"
                 required
+                value={contactInfo.city}
+                onChange={(e) => setContactInfo((prev) => ({ ...prev, city: e.target.value }))}
               />
               <input
                 type="text"
@@ -127,6 +144,8 @@ export default function AttendingConfirmation({
                 placeholder={t('state')}
                 className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300"
                 required
+                value={contactInfo.state}
+                onChange={(e) => setContactInfo((prev) => ({ ...prev, state: e.target.value }))}
               />
               <input
                 type="text"
@@ -135,6 +154,8 @@ export default function AttendingConfirmation({
                 placeholder={t('zip')}
                 className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300"
                 required
+                value={contactInfo.zip}
+                onChange={(e) => setContactInfo((prev) => ({ ...prev, zip: e.target.value }))}
               />
             </div>
           </div>
@@ -147,6 +168,7 @@ export default function AttendingConfirmation({
           selectedLang={selectedLang}
           nameAvailable={nameAvailable}
           attending={attending}
+          contactInfo={contactInfo}
           submitting={submitting}
           handleSubmit={handleSubmit}
           startOver={startOver}

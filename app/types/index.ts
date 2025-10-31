@@ -12,11 +12,16 @@ export interface RsvpPayload {
   plusOne?: boolean;
   plusOneFirst?: string;
   plusOneLast?: string;
+  contactInfo?: ContactInfo;
+  notAttending: string[];
 }
 
 export type GuestsDisplayProps = {
+  attending: boolean | null;
   selectedLang: { code: string; name: string; flag: string };
   party: string[];
+  selectedGuests: string[];
+  setSelectedGuests: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
 export type GuestNameCheckProps = {
@@ -28,6 +33,14 @@ export type GuestNameCheckProps = {
   loading: boolean;
 };
 
+export interface ContactInfo {
+  email: string;
+  addressLine: string;
+  city: string;
+  state: string;
+  zip: string;
+}
+
 export type AttendingConfirmationProps = {
   selectedLang: { code: string; name: string; flag: string };
   nameAvailable: boolean | null;
@@ -35,6 +48,10 @@ export type AttendingConfirmationProps = {
   party: string[];
   attending: boolean | null;
   setAttending: (attending: boolean) => void;
+  selectedGuests: string[];
+  setSelectedGuests: React.Dispatch<React.SetStateAction<string[]>>;
+  contactInfo: ContactInfo;
+  setContactInfo: React.Dispatch<React.SetStateAction<ContactInfo>>;
   plusOne: boolean | null;
   setBringingPlusOne: (bringing: boolean) => void;
   bringingPlusOne: boolean;
@@ -63,6 +80,7 @@ export type SubmissionProps = {
   selectedLang: { code: string; name: string; flag: string };
   nameAvailable: boolean | null;
   attending: boolean | null;
+  contactInfo: ContactInfo;
   submitting: boolean;
   handleSubmit: (e: React.MouseEvent<HTMLButtonElement>) => Promise<void>;
   startOver: () => void;

@@ -5,16 +5,31 @@ export default function Submission({
   selectedLang,
   nameAvailable,
   attending,
+  contactInfo,
   submitting,
   handleSubmit,
   startOver,
 }: SubmissionProps) {
   const { t } = useTranslation({ locale: selectedLang.code });
 
+  // Check if all contact info fields are filled
+  const isContactComplete =
+    contactInfo?.email &&
+    contactInfo?.addressLine &&
+    contactInfo?.city &&
+    contactInfo?.state &&
+    contactInfo?.zip;
+
+  const isDisabled =
+    !nameAvailable ||
+    attending === null ||
+    submitting ||
+    (attending === true && !isContactComplete);
+
   return (
     <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6">
       <button
-        disabled={!nameAvailable || attending === null || submitting}
+        disabled={isDisabled}
         onClick={handleSubmit}
         className={`flex items-center justify-center gap-2 rounded-lg px-6 py-3 font-medium text-white 
                 focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-offset-2 transition 
