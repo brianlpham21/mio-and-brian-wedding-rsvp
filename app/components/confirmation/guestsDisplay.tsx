@@ -41,10 +41,10 @@ export default function GuestsDisplay({
           {party.map((name, index) => (
             <label
               key={index}
-              className={`flex items-center gap-2 text-sm sm:text-base justify-center ${attending ? 'text-gray-700' : 'text-gray-400'}`}
+              className={`flex items-center gap-2 text-sm sm:text-base justify-center ${attending || attending === null ? 'text-gray-700' : 'text-gray-400'}`}
             >
               <input
-                disabled={!attending}
+                disabled={attending === false}
                 type="checkbox"
                 checked={selectedGuests.includes(name)}
                 onChange={() => toggleGuest(name)}
