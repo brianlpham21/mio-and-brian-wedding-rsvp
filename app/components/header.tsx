@@ -15,11 +15,11 @@ export default function Header({ selectedLang, setSelectedLang, languages }: Hea
   const { scrollY } = useScroll();
   const background = useTransform(
     scrollY,
-    [0, 100],
-    ['rgba(255,255,255,0.2)', 'rgba(255,255,255,0.9)']
+    [0, 500],
+    ['rgba(255,255,255,0.3)', 'rgba(255,255,255,0.9)']
   );
-  const height = useTransform(scrollY, [0, 100], [60, 47]);
-  const blur = useTransform(scrollY, [0, 100], ['blur(8px)', 'blur(16px)']);
+  const height = useTransform(scrollY, [0, 400], [75, 60]);
+  const blur = useTransform(scrollY, [0, 400], ['blur(0px)', 'blur(6px)']);
 
   // --- Dropdown handling ---
   useEffect(() => {
@@ -78,9 +78,9 @@ export default function Header({ selectedLang, setSelectedLang, languages }: Hea
         <div className="relative" ref={dropdownRef}>
           <button
             onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="flex items-center gap-2 border border-gray-300 rounded-md px-2 py-1 hover:bg-white/30 transition cursor-pointer"
+            className="flex items-center gap-2 border border-gray-300 rounded-md px-2.5 py-1.5 hover:bg-white/30 transition cursor-pointer"
           >
-            <Image src={selectedLang.flag} alt={selectedLang.name} width={24} height={16} />
+            <Image src={selectedLang.flag} alt={selectedLang.name} width={28} height={18} />
           </button>
           {dropdownOpen && (
             <div className="absolute top-full left-0 mt-1 w-35 bg-gray-100 rounded-md shadow-lg border border-gray-200 overflow-hidden z-50">

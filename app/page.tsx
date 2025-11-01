@@ -2,6 +2,7 @@
 
 import React from 'react';
 
+import Header from './components/header';
 import Hero from './components/hero';
 import GuestNameCheck from './components/guestNameCheck';
 import AttendingConfirmation from './components/confirmation/attendingConfirmation';
@@ -14,7 +15,6 @@ import MaggieIcon from './components/maggieIcon';
 
 import { useTranslation } from '@/hooks/useTranslation';
 import { ContactInfo, RsvpPayload } from './types';
-import Header from './components/header';
 
 /** ---------- LANGUAGE DROPDOWN STATE ---------- */
 const languages = [
