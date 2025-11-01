@@ -37,6 +37,8 @@ export default function AttendingConfirmation({
   if (submitted) return <SuccessConfirmation selectedLang={selectedLang} startOver={startOver} />;
   if (rsvp) return <ExistingConfirmation selectedLang={selectedLang} startOver={startOver} />;
 
+  const noGuestsSelected = selectedGuests.length === 0;
+
   return (
     <div className="w-full max-w-md mx-auto bg-white rounded-lg shadow-sm px-6 py-8 text-gray-800">
       <GuestsDisplay
@@ -238,6 +240,7 @@ export default function AttendingConfirmation({
           selectedLang={selectedLang}
           nameAvailable={nameAvailable}
           attending={attending}
+          noGuestsSelected={noGuestsSelected}
           contactInfo={contactInfo}
           submitting={submitting}
           handleSubmit={handleSubmit}

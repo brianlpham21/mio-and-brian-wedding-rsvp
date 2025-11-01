@@ -44,6 +44,7 @@
   "submit": "送信",
   "submitting": "送信中...",
   "start-over": "最初からやり直す",
+  "please-select-at-least-one-guest": "誰が来るのかな？ 少なくとも1人は選んでくださいね！",
   "rsvp-submitted": "出席確認を送信しました",
   "rsvp-success-message": "お知らせいただきありがとうございます。一緒にお祝いできるのを楽しみにしています！",
   "rsvp-already-submitted": "すでに出席確認が送信されています",

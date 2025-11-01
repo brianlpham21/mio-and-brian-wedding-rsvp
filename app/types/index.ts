@@ -80,6 +80,7 @@ export type SubmissionProps = {
   selectedLang: { code: string; name: string; flag: string };
   nameAvailable: boolean | null;
   attending: boolean | null;
+  noGuestsSelected: boolean;
   contactInfo: ContactInfo;
   submitting: boolean;
   handleSubmit: (e: React.MouseEvent<HTMLButtonElement>) => Promise<void>;

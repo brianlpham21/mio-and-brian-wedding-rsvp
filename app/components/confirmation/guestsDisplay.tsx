@@ -48,7 +48,7 @@ export default function GuestsDisplay({
                 type="checkbox"
                 checked={selectedGuests.includes(name)}
                 onChange={() => toggleGuest(name)}
-                className="h-4 w-4 accent-pastel-green focus:ring-pink-300"
+                className="h-4 w-4 accent-black focus:ring-pink-300"
               />
               {capitalizeWords(name)}
             </label>
