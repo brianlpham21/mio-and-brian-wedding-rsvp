@@ -14,6 +14,7 @@ import MaggieIcon from './components/maggieIcon';
 
 import { useTranslation } from '@/hooks/useTranslation';
 import { ContactInfo, RsvpPayload } from './types';
+import Header from './components/header';
 
 /** ---------- LANGUAGE DROPDOWN STATE ---------- */
 const languages = [
@@ -160,7 +161,8 @@ export default function Main() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 font-sans text-gray-800">
-      <Hero selectedLang={selectedLang} setSelectedLang={setSelectedLang} languages={languages} />
+      <Header selectedLang={selectedLang} setSelectedLang={setSelectedLang} languages={languages} />
+      <Hero selectedLang={selectedLang} />
       <WeddingInfo selectedLang={selectedLang} />
       <Itinerary selectedLang={selectedLang} />
       <section id="rsvp" className="w-full py-12 px-6 sm:px-8 md:px-12 bg-pastel-green-25">

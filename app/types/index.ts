@@ -1,9 +1,13 @@
-export type HeroProps = {
+export type HeaderProps = {
   selectedLang: { code: string; name: string; flag: string };
   setSelectedLang: React.Dispatch<
     React.SetStateAction<{ code: string; name: string; flag: string }>
   >;
   languages: { code: string; name: string; flag: string }[];
+};
+
+export type HeroProps = {
+  selectedLang: { code: string; name: string; flag: string };
 };
 
 export interface RsvpPayload {

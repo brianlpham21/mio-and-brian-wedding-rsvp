@@ -1,27 +1,13 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
+import { useCallback } from 'react';
 import { motion, useTransform, useScroll } from 'framer-motion';
 
 import { HeroProps } from '../types';
 import { useTranslation } from '@/hooks/useTranslation';
 
-export default function Hero({ selectedLang, setSelectedLang, languages }: HeroProps) {
+export default function Hero({ selectedLang }: HeroProps) {
   const { t } = useTranslation({ locale: selectedLang.code });
-
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setDropdownOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
 
   // Scroll-based fade for text
   const { scrollY } = useScroll();
@@ -49,18 +35,6 @@ export default function Hero({ selectedLang, setSelectedLang, languages }: HeroP
     requestAnimationFrame(step);
   }, []);
 
-  const handleScrollToSection = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, sectionId: string) => {
-      e.preventDefault();
-      const section = document.querySelector(sectionId);
-      if (section) {
-        const targetY = section.getBoundingClientRect().top + window.scrollY;
-        smoothScrollTo(targetY, 1200); // adjust duration for smoother deceleration
-      }
-    },
-    [smoothScrollTo]
-  );
-
   const mainNameFontSize =
     selectedLang.code === 'ja'
       ? 'clamp(1rem, 10vw, 8rem)' // smaller for Japanese
@@ -80,68 +54,6 @@ export default function Hero({ selectedLang, setSelectedLang, languages }: HeroP
         loop
         playsInline
       />
-
-      {/* Header */}
-      <header className="absolute top-0 left-0 w-full z-20 bg-white/20 backdrop-blur-md border-b border-white/30">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between text-gray-800">
-          {/* Language Dropdown */}
-          <div className="relative">
-            <button
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="flex items-center gap-2 border border-gray-300 rounded-md px-2 py-1 hover:bg-white/30 transition cursor-pointer"
-            >
-              <Image src={selectedLang.flag} alt={selectedLang.name} width={24} height={16} />
-            </button>
-            {dropdownOpen && (
-              <div className="absolute top-full left-0 mt-1 w-35 bg-gray-100 rounded-md shadow-lg border border-gray-200 overflow-hidden z-50">
-                {languages.map((lang) => (
-                  <button
-                    key={lang.code}
-                    onClick={() => {
-                      setSelectedLang(lang);
-                      setDropdownOpen(false);
-                    }}
-                    className="w-full flex items-center gap-2 px-3 py-2 hover:bg-gray-200 transition text-sm cursor-pointer"
-                  >
-                    <Image src={lang.flag} alt={lang.name} width={24} height={16} />
-                    {lang.name}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-          <nav className="flex gap-6 text-sm font-medium items-center">
-            <a
-              href="#our-story"
-              onClick={(e) => handleScrollToSection(e, '#our-story')}
-              className="hidden sm:flex transition hover:text-black/50"
-            >
-              {t('our-story')}
-            </a>
-            <a
-              href="#info"
-              onClick={(e) => handleScrollToSection(e, '#info')}
-              className="transition hover:text-black/50"
-            >
-              {t('information')}
-            </a>
-            <a
-              href="#itinerary"
-              onClick={(e) => handleScrollToSection(e, '#itinerary')}
-              className="hidden sm:flex transition hover:text-black/50"
-            >
-              {t('itinerary')}
-            </a>
-            <a
-              href="#rsvp"
-              onClick={(e) => handleScrollToSection(e, '#rsvp')}
-              className="transition border border-black/12 px-3 py-1 font-semibold rounded-md hover:bg-white/20 hover:text-black/70"
-            >
-              {t('rsvp').toUpperCase()}
-            </a>
-          </nav>
-        </div>
-      </header>
 
       {/* Hero Text */}
       <motion.div
