@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import Header from './components/header';
 import Hero from './components/hero';
@@ -165,45 +166,64 @@ export default function Main() {
       <Hero selectedLang={selectedLang} />
       <WeddingInfo selectedLang={selectedLang} />
       <Itinerary selectedLang={selectedLang} />
+
       <section id="rsvp" className="w-full py-12 px-6 sm:px-8 md:px-12 bg-pastel-green-25">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-center leading-[1em] mb-3" style={headerFont}>
             {t('rsvp')}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">{t('rsvp-subheader')}</p>
-          <GuestNameCheck
-            selectedLang={selectedLang}
-            nameAvailable={nameAvailable}
-            name={name}
-            setName={setName}
-            fetchGuest={fetchGuest}
-            loading={loading}
-          />
-          <AttendingConfirmation
-            selectedLang={selectedLang}
-            nameAvailable={nameAvailable}
-            rsvp={rsvp}
-            party={party}
-            attending={attending}
-            setAttending={setAttending}
-            selectedGuests={selectedGuests}
-            setSelectedGuests={setSelectedGuests}
-            contactInfo={contactInfo}
-            setContactInfo={setContactInfo}
-            plusOne={plusOne}
-            setBringingPlusOne={setBringingPlusOne}
-            bringingPlusOne={bringingPlusOne}
-            plusOneFirstName={plusOneFirstName}
-            setPlusOneFirstName={setPlusOneFirstName}
-            plusOneLastName={plusOneLastName}
-            setPlusOneLastName={setPlusOneLastName}
-            submitting={submitting}
-            handleSubmit={handleSubmit}
-            submitted={submitted}
-            startOver={handleStartOver}
-          />
+
+          <div className="relative">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={nameAvailable === true ? 'attendingConfirmation' : 'guestNameCheck'}
+                layout
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+              >
+                {nameAvailable === true ? (
+                  <AttendingConfirmation
+                    selectedLang={selectedLang}
+                    nameAvailable={nameAvailable}
+                    rsvp={rsvp}
+                    party={party}
+                    attending={attending}
+                    setAttending={setAttending}
+                    selectedGuests={selectedGuests}
+                    setSelectedGuests={setSelectedGuests}
+                    contactInfo={contactInfo}
+                    setContactInfo={setContactInfo}
+                    plusOne={plusOne}
+                    setBringingPlusOne={setBringingPlusOne}
+                    bringingPlusOne={bringingPlusOne}
+                    plusOneFirstName={plusOneFirstName}
+                    setPlusOneFirstName={setPlusOneFirstName}
+                    plusOneLastName={plusOneLastName}
+                    setPlusOneLastName={setPlusOneLastName}
+                    submitting={submitting}
+                    handleSubmit={handleSubmit}
+                    submitted={submitted}
+                    startOver={handleStartOver}
+                  />
+                ) : (
+                  <GuestNameCheck
+                    selectedLang={selectedLang}
+                    nameAvailable={nameAvailable}
+                    name={name}
+                    setName={setName}
+                    fetchGuest={fetchGuest}
+                    loading={loading}
+                  />
+                )}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </div>
       </section>
+
       <OurStory selectedLang={selectedLang} />
       <AdditionalDetails selectedLang={selectedLang} />
       <ReturnInfo selectedLang={selectedLang} />
