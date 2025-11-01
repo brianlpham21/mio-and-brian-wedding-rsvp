@@ -41,8 +41,8 @@ export default function Submission({
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-3 text-center w-full max-w-md mx-auto">
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full">
+    <div className="flex flex-col items-center justify-center gap-3 text-center w-full max-w-md mx-auto mt-6">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full items-stretch">
         <motion.button
           disabled={isDisabled}
           onClick={handleSubmit}
