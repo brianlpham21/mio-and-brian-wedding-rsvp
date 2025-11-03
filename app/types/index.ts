@@ -13,6 +13,7 @@ export type HeroProps = {
 export interface RsvpPayload {
   rowIndex: number;
   attending: boolean;
+  party: string[];
   plusOne?: boolean;
   plusOneFirst?: string;
   plusOneLast?: string;

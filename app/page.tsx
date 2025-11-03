@@ -115,6 +115,7 @@ export default function Main() {
     const notAttending = party.filter((name) => !selectedGuests.includes(name));
 
     const payload: RsvpPayload = {
+      party,
       rowIndex,
       attending,
       notAttending,

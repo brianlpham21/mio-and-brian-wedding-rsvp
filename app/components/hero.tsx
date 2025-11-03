@@ -75,7 +75,7 @@ export default function Hero({ selectedLang }: HeroProps) {
           {t('mio-and-brian')}
         </h2>
         <p className={`not-prose text-white mx-auto md:tracking-[.2em] ${dateTimeLocationSize}`}>
-          {t('wedding-date')} | {t('city-location')}
+          {t('wedding-date').toUpperCase()} | {t('city-location')}
         </p>
       </motion.div>
 
