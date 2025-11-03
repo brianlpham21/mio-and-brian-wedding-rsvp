@@ -2,10 +2,12 @@ import { capitalizeWords } from '@/app/helpers/capitalize';
 import { google } from 'googleapis';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function sendConfirmationEmail(data: any) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  if (!process.env.RESEND_API_KEY) {
+    throw new Error('RESEND_API_KEY is not defined in production!');
+  }
   if (!data.contactInfo?.email) return;
 
   const { email } = data.contactInfo;
