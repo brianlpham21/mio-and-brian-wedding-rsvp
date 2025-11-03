@@ -2,7 +2,7 @@ import { capitalizeWords } from '@/app/helpers/capitalize';
 import { google } from 'googleapis';
 import { Resend } from 'resend';
 
-const resend = new Resend('re_NsQh2aBz_HeLC7j4r6fGWGr1WTFqdPrHt');
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function sendConfirmationEmail(data: any) {
