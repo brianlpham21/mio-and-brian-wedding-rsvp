@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useTranslation } from '@/hooks/useTranslation';
@@ -14,18 +14,7 @@ export default function WeddingInfo({ selectedLang }: { selectedLang: { code: st
     offset: ['start end', 'end start'],
   });
 
-  // Detect mobile view
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize(); // run on mount
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   // Animations (only apply horizontal movement if not mobile)
-  const leftX = useTransform(scrollYProgress, [0.7, 1], ['0%', isMobile ? '0%' : '-60%']);
-  const rightX = useTransform(scrollYProgress, [0.7, 1], ['0%', isMobile ? '0%' : '60%']);
   const fadeOut = useTransform(scrollYProgress, [0.85, 1], [1, 0]);
 
   const headerFont =
@@ -59,7 +48,7 @@ export default function WeddingInfo({ selectedLang }: { selectedLang: { code: st
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            style={{ x: leftX, opacity: fadeOut }}
+            style={{ opacity: fadeOut }}
             className="relative w-full h-80 md:h-full rounded-2xl overflow-hidden shadow-md group"
           >
             <div className="absolute inset-0 transform transition-transform duration-700 ease-out group-hover:scale-105">
@@ -79,7 +68,7 @@ export default function WeddingInfo({ selectedLang }: { selectedLang: { code: st
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            style={{ x: rightX, opacity: fadeOut }}
+            style={{ opacity: fadeOut }}
             className="bg-pastel-green-25 rounded-2xl shadow-sm p-6"
           >
             <h3 className="text-xl font-semibold mb-3 text-black">{t('ceremony')}</h3>
