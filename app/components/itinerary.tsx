@@ -5,11 +5,11 @@ import { useTranslation } from '@/hooks/useTranslation';
 
 const itinerary = [
   {
-    time: '3:00 PM',
+    time: '4:30 PM',
     title: 'welcome',
   },
   {
-    time: '4:00 PM',
+    time: '5:00 PM',
     title: 'ceremony',
   },
   {
@@ -17,7 +17,7 @@ const itinerary = [
     title: 'cocktails',
   },
   {
-    time: '6:00 PM',
+    time: '6:30 PM',
     title: 'reception',
   },
 ];

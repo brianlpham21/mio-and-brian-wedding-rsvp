@@ -33,7 +33,7 @@ async function sendConfirmationEmail(data: any) {
       <p style="font-size: 16px;"><strong>Wedding Details:</strong></p>
       <ul style="font-size: 16px; padding-left: 20px;">
         <li><strong>Date:</strong> March 20, 2026</li>
-        <li><strong>Time:</strong> 4:00 PM</li>
+        <li><strong>Time:</strong> 5:00 PM</li>
         <li><strong>Location:</strong> 802 Mateo St, Los Angeles, CA 90021</li>
         <li><strong>Reception:</strong> Immediately following the ceremony</li>
       </ul>

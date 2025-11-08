@@ -21,8 +21,20 @@ const details = [
   },
   {
     title: 'Gifts',
-    description:
-      'Your presence means the world to us! For those who wish to give a gift, we are registered at Crate & Barrel and Zola.',
+    description: (
+      <>
+        Your presence means the world to us! For those who wish to give a gift, we are registered at{' '}
+        <a
+          href="https://minted.sendbirdie.com/r/mioandbrian?cko=0"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 underline"
+        >
+          Minted
+        </a>
+        .
+      </>
+    ),
   },
 ];
 

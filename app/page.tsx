@@ -16,6 +16,7 @@ import MaggieIcon from './components/maggieIcon';
 
 import { useTranslation } from '@/hooks/useTranslation';
 import { ContactInfo, RsvpPayload } from './types';
+import Countdown from './components/countdown';
 
 /** ---------- LANGUAGE DROPDOWN STATE ---------- */
 const languages = [
@@ -227,6 +228,7 @@ export default function Main() {
 
       <OurStory selectedLang={selectedLang} />
       <AdditionalDetails selectedLang={selectedLang} />
+      <Countdown selectedLang={selectedLang} />
       <ReturnInfo selectedLang={selectedLang} />
 
       <MaggieIcon selectedLang={selectedLang} />

@@ -76,7 +76,7 @@ export default function WeddingInfo({ selectedLang }: { selectedLang: { code: st
               <strong>{t('date')}:</strong> {t('wedding-date')}
             </p>
             <p className="text-gray-700 mb-2">
-              <strong>{t('time')}:</strong> 4:00 PM
+              <strong>{t('time')}:</strong> 5:00 PM
             </p>
             <p className="text-gray-700 mb-2">
               <strong>{t('location')}:</strong> 802 Mateo St, Los Angeles, CA 90021
@@ -87,7 +87,7 @@ export default function WeddingInfo({ selectedLang }: { selectedLang: { code: st
 
             <h3 className="text-xl font-semibold mb-3 text-black">{t('reception')}</h3>
             <p className="text-gray-700 mb-2">
-              <strong>{t('time')}:</strong> 6:00 PM – 11:00 PM
+              <strong>{t('time')}:</strong> 6:30 PM – 10:00 PM
             </p>
             <p className="text-gray-700 mb-2">
               <strong>{t('location')}:</strong> 802 Mateo St, Los Angeles, CA 90021
