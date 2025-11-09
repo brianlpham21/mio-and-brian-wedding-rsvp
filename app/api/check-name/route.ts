@@ -30,14 +30,23 @@ export async function POST(req: Request) {
 
     for (let i = 0; i < rows.length; i++) {
       const row = rows[i];
-      if (
-        row.slice(1, 6).some((cell) => cell?.trim().toLowerCase() === name.trim().toLowerCase())
-      ) {
+
+      // Extract the party names from columns B-F
+      const partyCells = row.slice(1, 6).filter((cell) => cell?.trim());
+
+      // Normalize input name
+      const inputNameWords = name.trim().toLowerCase().split(/\s+/).sort();
+
+      // Check if any party name matches the input ignoring word order
+      const match = partyCells.some((cell) => {
+        const cellWords = cell.trim().toLowerCase().split(/\s+/).sort();
+        return JSON.stringify(cellWords) === JSON.stringify(inputNameWords);
+      });
+
+      if (match) {
         found = true;
-        partyNames = row
-          .slice(1, 6)
-          .filter((cell) => cell?.trim())
-          .map((cell) => cell.trim());
+
+        partyNames = partyCells.map((cell) => cell!.trim());
         rowIndex = i + 1;
 
         const plusOneCell = row[6]?.trim().toUpperCase(); // handle TRUE / FALSE from Sheets
