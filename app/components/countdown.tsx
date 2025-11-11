@@ -2,12 +2,15 @@
 
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from '@/hooks/useTranslation';
 
 interface CountdownProps {
   selectedLang: { code: string; name: string; flag: string };
 }
 
 export default function Countdown({ selectedLang }: CountdownProps) {
+  const { t } = useTranslation({ locale: selectedLang.code });
+
   const targetDate = '2026-03-20T17:00:00';
 
   const [timeLeft, setTimeLeft] = useState(getTimeLeft());
@@ -56,7 +59,7 @@ export default function Countdown({ selectedLang }: CountdownProps) {
 
       <div className="relative z-10 flex flex-col items-center">
         <h2
-          className="mb-8 text-gray-900 drop-shadow-sm leading-[1em]"
+          className="mb-8 text-gray-900 drop-shadow-sm leading-[1em] translate-y-[.25em]"
           style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(4.25rem, 8vw, 6rem)' }}
         >
           Counting Down to &quot;I Do&quot;
