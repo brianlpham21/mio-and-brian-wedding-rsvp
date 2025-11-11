@@ -17,9 +17,19 @@ export function renderGiftLink(translation: string) {
               href="https://minted.sendbirdie.com/r/mioandbrian?cko=0"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 underline"
+              className="text-blue-600 underline inline-flex items-center gap-1"
             >
               Minted
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+                className="w-4 h-4"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5M5 5h14v14" />
+              </svg>
             </a>
           )}
         </React.Fragment>

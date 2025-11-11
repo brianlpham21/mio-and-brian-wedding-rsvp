@@ -1,4 +1,39 @@
 import { useTranslation } from '@/hooks/useTranslation';
+import React from 'react';
+
+export function renderGiftLink(translation: string) {
+  const parts = translation.split('Minted');
+
+  return (
+    <>
+      {parts.map((part, index) => (
+        <React.Fragment key={index}>
+          {part}
+          {index < parts.length - 1 && (
+            <a
+              href="https://minted.sendbirdie.com/r/mioandbrian?cko=0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline inline-flex items-center gap-1"
+            >
+              Minted
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+                className="w-4 h-4"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5M5 5h14v14" />
+              </svg>
+            </a>
+          )}
+        </React.Fragment>
+      ))}
+    </>
+  );
+}
 
 export default function ExistingConfirmation({
   selectedLang,
@@ -29,6 +64,8 @@ export default function ExistingConfirmation({
 
       <h2 className="text-2xl font-semibold text-gray-800 mb-2">{t('rsvp-already-submitted')}!</h2>
       <p className="text-gray-600 mb-6">{t('rsvp-already-submitted-message')}</p>
+
+      <p className="text-gray-700 mb-4 text-sm">{renderGiftLink(t('gift-message'))}</p>
 
       <button
         onClick={startOver}
