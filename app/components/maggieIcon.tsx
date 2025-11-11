@@ -48,6 +48,7 @@ export default function MaggieIcon({ selectedLang }: { selectedLang: { code: str
           alt="Maggie"
           width={25}
           height={25}
+          style={{ width: 'auto', height: 'auto' }}
           className={`transition-all duration-500 ease-in-out transform cursor-pointer
             ${showBubble ? 'scale-150 opacity-100' : 'opacity-70 group-hover:scale-150 group-hover:opacity-100'}`}
         />

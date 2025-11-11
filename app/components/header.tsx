@@ -91,7 +91,7 @@ export default function Header({ selectedLang, setSelectedLang, languages }: Hea
                     setSelectedLang(lang);
                     setDropdownOpen(false);
                   }}
-                  className="w-full flex items-center gap-2 px-3 py-2 hover:bg-gray-200 transition text-sm cursor-pointer"
+                  className="w-full flex items-center gap-2 px-3 py-3 hover:bg-gray-200 transition text-sm cursor-pointer"
                 >
                   <Image src={lang.flag} alt={lang.name} width={24} height={16} />
                   {lang.name}

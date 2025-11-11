@@ -85,8 +85,9 @@ export async function POST(req: Request) {
     plusOne,
     plusOneFirst,
     plusOneLast,
-    contactInfo, // new object: { email, address, city, state, zip }
+    contactInfo, // new object: { email, address, city, state, zip, message }
     notAttending,
+    message,
   } = body;
 
   if (!rowIndex) {
@@ -114,6 +115,14 @@ export async function POST(req: Request) {
         range: `Sheet1!A${rowIndex}`,
         valueInputOption: 'USER_ENTERED',
         requestBody: { values: [[attending ? 'Yes' : 'No']] },
+      })
+    );
+    requests.push(
+      sheets.spreadsheets.values.update({
+        spreadsheetId,
+        range: `Sheet1!Q${rowIndex}`,
+        valueInputOption: 'USER_ENTERED',
+        requestBody: { values: [[message || '']] },
       })
     );
 
@@ -156,46 +165,25 @@ export async function POST(req: Request) {
     // Contact info columns: K–O
     if (contactInfo) {
       const { email, addressLine, city, state, zip } = contactInfo;
-      requests.push(
-        sheets.spreadsheets.values.update({
-          spreadsheetId,
-          range: `Sheet1!K${rowIndex}`,
-          valueInputOption: 'USER_ENTERED',
-          requestBody: { values: [[email || '']] },
-        })
-      );
-      requests.push(
-        sheets.spreadsheets.values.update({
-          spreadsheetId,
-          range: `Sheet1!L${rowIndex}`,
-          valueInputOption: 'USER_ENTERED',
-          requestBody: { values: [[addressLine || '']] },
-        })
-      );
-      requests.push(
-        sheets.spreadsheets.values.update({
-          spreadsheetId,
-          range: `Sheet1!M${rowIndex}`,
-          valueInputOption: 'USER_ENTERED',
-          requestBody: { values: [[city || '']] },
-        })
-      );
-      requests.push(
-        sheets.spreadsheets.values.update({
-          spreadsheetId,
-          range: `Sheet1!N${rowIndex}`,
-          valueInputOption: 'USER_ENTERED',
-          requestBody: { values: [[state || '']] },
-        })
-      );
-      requests.push(
-        sheets.spreadsheets.values.update({
-          spreadsheetId,
-          range: `Sheet1!O${rowIndex}`,
-          valueInputOption: 'USER_ENTERED',
-          requestBody: { values: [[zip || '']] },
-        })
-      );
+
+      const columns: Record<string, string | undefined> = {
+        K: email,
+        L: addressLine,
+        M: city,
+        N: state,
+        O: zip,
+      };
+
+      for (const [col, value] of Object.entries(columns)) {
+        requests.push(
+          sheets.spreadsheets.values.update({
+            spreadsheetId,
+            range: `Sheet1!${col}${rowIndex}`,
+            valueInputOption: 'USER_ENTERED',
+            requestBody: { values: [[value || '']] },
+          })
+        );
+      }
     }
 
     await Promise.all(requests);

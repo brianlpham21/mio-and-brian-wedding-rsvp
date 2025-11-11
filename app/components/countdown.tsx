@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useTransform, useScroll } from 'framer-motion';
 import { useTranslation } from '@/hooks/useTranslation';
 
 interface CountdownProps {
@@ -10,6 +10,22 @@ interface CountdownProps {
 
 export default function Countdown({ selectedLang }: CountdownProps) {
   const { t } = useTranslation({ locale: selectedLang.code });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const { scrollY } = useScroll();
+  // const scrollYPos = useTransform(scrollY, [2800, 3500], [0, -100]);
+  const scrollYPos = useTransform(
+    scrollY,
+    isMobile ? [5500, 5800] : [2800, 3500], // mobile vs desktop scroll ranges
+    isMobile ? [0, 0] : [0, -100] // how much to move image vertically
+  );
 
   const targetDate = '2026-03-20T17:00:00';
 
@@ -46,28 +62,35 @@ export default function Countdown({ selectedLang }: CountdownProps) {
   ];
 
   return (
-    <section
-      className="relative w-screen py-20 flex flex-col items-center justify-center text-center text-gray-900"
-      style={{
-        backgroundImage: "url('/dinner.png')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
-    >
-      {/* overlay */}
-      <div className="absolute inset-0 bg-white/60 backdrop-blur-[1px]" />
+    <section className="relative w-screen py-14 md:py-20 flex flex-col items-center justify-center text-center text-gray-900 overflow-hidden">
+      <motion.img
+        src="/dinner.png"
+        alt="Dinner background"
+        className={
+          isMobile
+            ? 'h-full object-cover absolute top-0 left-0'
+            : 'w-full h-auto absolute top-0 left-0'
+        }
+        style={{
+          y: scrollYPos,
+        }}
+      />
 
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-white/60 backdrop-blur-[1px] z-10" />
+
+      {/* Foreground content */}
       <div className="relative z-10 flex flex-col items-center">
         <h2
           className="mb-8 text-gray-900 drop-shadow-sm leading-[1em] translate-y-[.25em]"
-          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(4.25rem, 8vw, 6rem)' }}
+          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(3.7rem, 8vw, 6rem)' }}
         >
           Counting Down to &quot;I Do&quot;
         </h2>
 
         {/* Countdown container */}
-        <div className="flex flex-col md:flex-row md:gap-6 font-mono justify-center items-center w-full max-w-3xl px-6 md:px-0">
-          {/* Top row (Days + Hours) */}
+        <div className="flex flex-col md:flex-row md:gap-6 font-mono justify-center items-center w-full max-w-3xl px-15 md:px-0">
+          {/* Top row */}
           <div className="grid grid-cols-2 gap-3 w-full md:flex md:w-auto md:gap-6 justify-center items-center">
             {topUnits.map((unit) => (
               <div
@@ -81,7 +104,7 @@ export default function Countdown({ selectedLang }: CountdownProps) {
                     animate={{ rotateX: 0, opacity: 1 }}
                     exit={{ rotateX: -90, opacity: 0 }}
                     transition={{ duration: 0.4 }}
-                    className="text-5xl md:text-6xl font-bold text-gray-900"
+                    className="text-3xl md:text-6xl font-bold text-gray-900"
                   >
                     {unit.value.toString().padStart(2, '0')}
                   </motion.div>
@@ -91,7 +114,7 @@ export default function Countdown({ selectedLang }: CountdownProps) {
             ))}
           </div>
 
-          {/* Bottom row (Minutes + Seconds) */}
+          {/* Bottom row */}
           <div className="grid grid-cols-2 gap-3 w-full md:flex md:w-auto md:gap-6 justify-center items-center mt-3 md:mt-0">
             {bottomUnits.map((unit) => (
               <div
@@ -105,7 +128,7 @@ export default function Countdown({ selectedLang }: CountdownProps) {
                     animate={{ rotateX: 0, opacity: 1 }}
                     exit={{ rotateX: -90, opacity: 0 }}
                     transition={{ duration: 0.4 }}
-                    className="text-5xl md:text-6xl font-bold text-gray-900"
+                    className="text-3xl md:text-6xl font-bold text-gray-900"
                   >
                     {unit.value.toString().padStart(2, '0')}
                   </motion.div>

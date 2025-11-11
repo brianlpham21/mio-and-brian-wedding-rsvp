@@ -261,6 +261,31 @@ export default function AttendingConfirmation({
         )}
       </AnimatePresence>
 
+      <AnimatePresence>
+        <motion.div
+          layout
+          key="guestMessage"
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          className="space-y-2 mb-6 overflow-hidden"
+        >
+          <label htmlFor="guestMessage" className="block text-sm font-medium text-gray-700">
+            {t('your-message')}
+          </label>
+          <textarea
+            id="guestMessage"
+            name="guestMessage"
+            placeholder={t('enter-your-message')}
+            value={contactInfo.message || ''}
+            onChange={(e) => setContactInfo((prev) => ({ ...prev, message: e.target.value }))}
+            className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300 resize-none"
+            rows={4}
+          />
+        </motion.div>
+      </AnimatePresence>
+
       {/* Submission Button */}
       <div className="flex justify-center">
         <Submission

@@ -56,6 +56,7 @@ export default function WeddingInfo({ selectedLang }: { selectedLang: { code: st
                 src="/venue.png"
                 alt="Mio and Brian's wedding venue"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
                 priority
               />

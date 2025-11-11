@@ -43,6 +43,7 @@ export default function Main() {
     city: '',
     state: '',
     zip: '',
+    message: '',
   });
   const [plusOne, setPlusOne] = React.useState<boolean | null>(null);
   const [bringingPlusOne, setBringingPlusOne] = React.useState(false);
@@ -67,6 +68,7 @@ export default function Main() {
       city: '',
       state: '',
       zip: '',
+      message: '',
     });
     setPlusOne(null);
     setBringingPlusOne(false);
@@ -120,6 +122,7 @@ export default function Main() {
       rowIndex,
       attending,
       notAttending,
+      message: contactInfo.message,
     };
 
     // Include plus one info if applicable

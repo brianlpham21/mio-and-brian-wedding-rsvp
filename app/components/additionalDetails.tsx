@@ -15,9 +15,9 @@ const details = [
       'Complimentary parking is available at the venue. Rideshare is encouraged if you plan to enjoy drinks during the reception.',
   },
   {
-    title: 'Accommodations',
+    title: 'Reception Menu',
     description:
-      'We have reserved a room block at The Langham Hotel in Pasadena. Mention “Mio & Brian Wedding” when booking for the group rate.',
+      "Dinner will be buffet style, featuring a mix of our favorite comfort foods. (Tacos by Leo's Taco Truck and Pho by Cater Pho You)",
   },
   {
     title: 'Gifts',

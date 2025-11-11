@@ -19,6 +19,7 @@ export interface RsvpPayload {
   plusOneLast?: string;
   contactInfo?: ContactInfo;
   notAttending: string[];
+  message?: string;
 }
 
 export type GuestsDisplayProps = {
@@ -44,6 +45,7 @@ export interface ContactInfo {
   city: string;
   state: string;
   zip: string;
+  message: string;
 }
 
 export type AttendingConfirmationProps = {
