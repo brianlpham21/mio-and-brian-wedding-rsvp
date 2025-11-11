@@ -56,18 +56,21 @@ export default function Countdown({ selectedLang }: CountdownProps) {
 
       <div className="relative z-10 flex flex-col items-center">
         <h2
-          className="font-semibold mb-8 text-gray-900 drop-shadow-sm"
-          style={{ fontSize: 'clamp(2.5rem, 6vw, 3rem)' }}
+          className="mb-8 text-gray-900 drop-shadow-sm leading-[1em]"
+          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(4.25rem, 8vw, 6rem)' }}
         >
-          Counting Down to ‘I Do’
+          Counting Down to &quot;I Do&quot;
         </h2>
 
         {/* Countdown container */}
-        <div className="flex flex-col gap-3 md:flex-row md:gap-6 font-mono justify-center items-center">
+        <div className="flex flex-col md:flex-row md:gap-6 font-mono justify-center items-center w-full max-w-3xl px-6 md:px-0">
           {/* Top row (Days + Hours) */}
-          <div className="flex gap-3 md:gap-6 justify-center items-center">
+          <div className="grid grid-cols-2 gap-3 w-full md:flex md:w-auto md:gap-6 justify-center items-center">
             {topUnits.map((unit) => (
-              <div key={unit.label} className="bg-white/90 rounded-xl py-3 px-6 shadow-md">
+              <div
+                key={unit.label}
+                className="bg-white/90 rounded-xl py-3 px-6 shadow-md flex flex-col items-center justify-center w-full"
+              >
                 <AnimatePresence mode="popLayout">
                   <motion.div
                     key={unit.value}
@@ -75,7 +78,7 @@ export default function Countdown({ selectedLang }: CountdownProps) {
                     animate={{ rotateX: 0, opacity: 1 }}
                     exit={{ rotateX: -90, opacity: 0 }}
                     transition={{ duration: 0.4 }}
-                    className="text-4xl md:text-6xl font-bold text-gray-900"
+                    className="text-5xl md:text-6xl font-bold text-gray-900"
                   >
                     {unit.value.toString().padStart(2, '0')}
                   </motion.div>
@@ -86,9 +89,12 @@ export default function Countdown({ selectedLang }: CountdownProps) {
           </div>
 
           {/* Bottom row (Minutes + Seconds) */}
-          <div className="flex gap-3 md:gap-6 justify-center items-center">
+          <div className="grid grid-cols-2 gap-3 w-full md:flex md:w-auto md:gap-6 justify-center items-center mt-3 md:mt-0">
             {bottomUnits.map((unit) => (
-              <div key={unit.label} className="bg-white/90 rounded-xl py-3 px-6 shadow-md">
+              <div
+                key={unit.label}
+                className="bg-white/90 rounded-xl py-3 px-6 shadow-md flex flex-col items-center justify-center w-full"
+              >
                 <AnimatePresence mode="popLayout">
                   <motion.div
                     key={unit.value}
@@ -96,7 +102,7 @@ export default function Countdown({ selectedLang }: CountdownProps) {
                     animate={{ rotateX: 0, opacity: 1 }}
                     exit={{ rotateX: -90, opacity: 0 }}
                     transition={{ duration: 0.4 }}
-                    className="text-4xl md:text-6xl font-bold text-gray-900"
+                    className="text-5xl md:text-6xl font-bold text-gray-900"
                   >
                     {unit.value.toString().padStart(2, '0')}
                   </motion.div>
