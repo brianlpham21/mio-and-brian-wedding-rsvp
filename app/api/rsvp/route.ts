@@ -38,10 +38,6 @@ async function sendConfirmationEmail(data: any) {
         <li><strong>Reception:</strong> Immediately following the ceremony</li>
       </ul>
       <p style="font-size: 16px;">We look forward to celebrating with you!</p>
-      <p style="font-size: 16px; margin-top: 20px;">
-      Your presence is the best gift! If you’d like to give a gift, you can find our registry at 
-      <a href="https://minted.sendbirdie.com/r/mioandbrian?cko=0" target="_blank" rel="noopener noreferrer" style="color:#e91e63; text-decoration:underline;">Minted</a>.
-    </p>
       <p style="text-align: center; margin-top: 30px;">
         <span style="background-color: #e91e63; color: #fff; padding: 10px 20px; border-radius: 5px;">See You Soon!</span>
       </p>
@@ -54,10 +50,6 @@ async function sendConfirmationEmail(data: any) {
         <li><strong>Guests Not Attending:</strong> ${notAttending.length > 0 ? capitalizeWords(notAttending.join(', ')) : 'None'}</li>
       </ul>
       <p style="font-size: 16px;">Thank you for letting us know!</p>
-      <p style="font-size: 16px; margin-top: 20px;">
-      Your presence is the best gift! If you’d like to give a gift, you can find our registry at 
-      <a href="https://minted.sendbirdie.com/r/mioandbrian?cko=0" target="_blank" rel="noopener noreferrer" style="color:#e91e63; text-decoration:underline;">Minted</a>.
-    </p>
       <p style="text-align: center; margin-top: 30px;">
         <span style="background-color: #9e9e9e; color: #fff; padding: 10px 20px; border-radius: 5px;">We’ll Miss You!</span>
       </p>
