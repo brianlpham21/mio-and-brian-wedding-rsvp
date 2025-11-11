@@ -65,7 +65,7 @@ export default function GuestNameCheck({
           </AnimatePresence>
 
           {/* Text crossfade */}
-          <div className="relative overflow-hidden w-16 text-center">
+          <div className="relative overflow-hidden text-center">
             <AnimatePresence mode="wait">
               {loading ? (
                 <motion.span
@@ -85,7 +85,7 @@ export default function GuestNameCheck({
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -10, opacity: 0 }}
                   transition={{ duration: 0.25 }}
-                  className="block"
+                  className="block whitespace-nowrap"
                 >
                   {t('rsvp').toUpperCase()}
                 </motion.span>

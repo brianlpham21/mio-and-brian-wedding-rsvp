@@ -1,45 +1,53 @@
 'use client';
 
-import { useTranslation } from '@/hooks/useTranslation';
+import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from '@/hooks/useTranslation';
 
-const details = [
-  {
-    title: 'Dress Code',
-    description:
-      'Formal attire is requested. Gentlemen, please wear suits or dress shirts and ties. Ladies, dresses or formal evening wear are perfect.',
-  },
-  {
-    title: 'Parking & Transportation',
-    description:
-      'Complimentary parking is available at the venue. Rideshare is encouraged if you plan to enjoy drinks during the reception.',
-  },
-  {
-    title: 'Reception Menu',
-    description:
-      "Dinner will be buffet style, featuring a mix of our favorite comfort foods. (Tacos by Leo's Taco Truck and Pho by Cater Pho You)",
-  },
-  {
-    title: 'Gifts',
-    description: (
-      <>
-        Your presence means the world to us! For those who wish to give a gift, we are registered at{' '}
-        <a
-          href="https://minted.sendbirdie.com/r/mioandbrian?cko=0"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 underline"
-        >
-          Minted
-        </a>
-        .
-      </>
-    ),
-  },
-];
+export function renderGiftLink(translation: string) {
+  const parts = translation.split('Minted');
+
+  return (
+    <>
+      {parts.map((part, index) => (
+        <React.Fragment key={index}>
+          {part}
+          {index < parts.length - 1 && (
+            <a
+              href="https://minted.sendbirdie.com/r/mioandbrian?cko=0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 underline"
+            >
+              Minted
+            </a>
+          )}
+        </React.Fragment>
+      ))}
+    </>
+  );
+}
 
 export default function AdditionalDetails({ selectedLang }: { selectedLang: { code: string } }) {
   const { t } = useTranslation({ locale: selectedLang.code });
+  const details = [
+    {
+      title: t('dress-code-title'),
+      description: t('dress-code-description'),
+    },
+    {
+      title: t('parking-title'),
+      description: t('parking-description'),
+    },
+    {
+      title: t('reception-menu-title'),
+      description: t('reception-menu-description'),
+    },
+    {
+      title: t('gifts-title'),
+      description: renderGiftLink(t('gifts-description')),
+    },
+  ];
 
   const headerFont =
     selectedLang.code === 'vi'

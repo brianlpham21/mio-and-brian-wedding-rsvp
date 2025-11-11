@@ -29,13 +29,10 @@ export default function OurStory({ selectedLang }: { selectedLang: { code: strin
           {t('our-story')}
         </h2>
         <p className="text-gray-600 text-lg sm:text-xl leading-relaxed">
-          It all began with a chance encounter in Los Angeles — two paths crossing unexpectedly,
-          quickly becoming one journey. Over the years, we’ve shared countless adventures, laughter,
-          and dreams that brought us closer with each passing moment.
-        </p>
-        <p className="text-gray-600 text-lg sm:text-xl leading-relaxed mt-6">
-          Now, we can’t wait to celebrate this next chapter surrounded by our favorite people. Thank
-          you for being part of our story — the beginning of our forever.
+          {t('our-story-paragraph-1')}
+          <br />
+          <br />
+          {t('our-story-paragraph-2')}
         </p>
       </motion.div>
 

@@ -52,14 +52,21 @@ export default function Countdown({ selectedLang }: CountdownProps) {
   }, [targetDate]);
 
   const topUnits = [
-    { label: 'Days', value: timeLeft.days },
-    { label: 'Hours', value: timeLeft.hours },
+    { label: t('days'), value: timeLeft.days },
+    { label: t('hours'), value: timeLeft.hours },
   ];
 
   const bottomUnits = [
-    { label: 'Minutes', value: timeLeft.minutes },
-    { label: 'Seconds', value: timeLeft.seconds },
+    { label: t('minutes'), value: timeLeft.minutes },
+    { label: t('seconds'), value: timeLeft.seconds },
   ];
+
+  const headerFont =
+    selectedLang.code === 'vi'
+      ? { fontSize: 'clamp(3rem, 4vw, 4rem)', fontStyle: 'italic', fontWeight: '500' }
+      : selectedLang.code === 'ja'
+        ? { fontSize: 'clamp(2.25rem, 5vw, 4rem)' }
+        : { fontFamily: 'Brother, serif', fontSize: 'clamp(3.7rem, 8vw, 6rem)' };
 
   return (
     <section className="relative w-screen py-14 md:py-20 flex flex-col items-center justify-center text-center text-gray-900 overflow-hidden">
@@ -82,10 +89,10 @@ export default function Countdown({ selectedLang }: CountdownProps) {
       {/* Foreground content */}
       <div className="relative z-10 flex flex-col items-center">
         <h2
-          className="mb-8 text-gray-900 drop-shadow-sm leading-[1em] translate-y-[.25em]"
-          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(3.7rem, 8vw, 6rem)' }}
+          className={`mb-8 text-gray-900 drop-shadow-sm leading-[1em] ${selectedLang.code === 'en' ? 'translate-y-[.25em]' : ''}`}
+          style={headerFont}
         >
-          Counting Down to &quot;I Do&quot;
+          {t('countingDownToIDo')}
         </h2>
 
         {/* Countdown container */}
