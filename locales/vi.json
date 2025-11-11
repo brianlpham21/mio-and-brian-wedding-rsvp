@@ -41,6 +41,8 @@
   "loading": "Đang tải...",
   "attending": "Tham dự",
   "not-attending": "Không tham dự",
+  "optional-message": "Lời nhắn (tùy chọn)",
+  "optional-message-placeholder": "Thêm một lời nhắn cá nhân hoặc chi tiết về RSVP của bạn.",
   "submit": "Gửi",
   "submitting": "Đang gửi...",
   "start-over": "Làm lại từ đầu",

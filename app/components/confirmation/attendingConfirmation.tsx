@@ -272,12 +272,12 @@ export default function AttendingConfirmation({
           className="space-y-2 mb-6 overflow-hidden"
         >
           <label htmlFor="guestMessage" className="block text-sm font-medium text-gray-700">
-            {t('your-message')}
+            {t('optional-message')}
           </label>
           <textarea
             id="guestMessage"
             name="guestMessage"
-            placeholder={t('enter-your-message')}
+            placeholder={t('optional-message-placeholder')}
             value={contactInfo.message || ''}
             onChange={(e) => setContactInfo((prev) => ({ ...prev, message: e.target.value }))}
             className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300 resize-none"

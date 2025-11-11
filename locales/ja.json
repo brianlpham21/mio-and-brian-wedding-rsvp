@@ -41,6 +41,8 @@
   "loading": "読み込み中...",
   "attending": "出席します",
   "not-attending": "欠席します",
+  "optional-message": "メッセージ（任意)",
+  "optional-message-placeholder": "RSVPについての個人的なメッセージや詳細を追加してください。",
   "submit": "送信",
   "submitting": "送信中...",
   "start-over": "最初からやり直す",
