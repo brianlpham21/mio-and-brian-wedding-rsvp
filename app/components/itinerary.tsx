@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useTranslation } from '@/hooks/useTranslation';
 
@@ -7,18 +8,22 @@ const itinerary = [
   {
     time: '4:30 PM',
     title: 'welcome',
+    image: '/welcome.svg',
   },
   {
     time: '5:00 PM',
     title: 'ceremony',
+    image: '/ceremony.svg',
   },
   {
     time: '5:30 PM',
     title: 'cocktails',
+    image: '/cocktails.svg',
   },
   {
     time: '6:30 PM',
     title: 'reception',
+    image: '/heartarrow.svg',
   },
 ];
 
@@ -61,9 +66,23 @@ export default function Itinerary({ selectedLang }: { selectedLang: { code: stri
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.15 }}
             viewport={{ once: true }}
-            className="bg-pastel-green-25 rounded-xl shadow-sm p-6 border border-gray-100 text-center"
+            className="bg-pastel-green-25 rounded-xl shadow-sm p-6 border border-gray-100 text-center flex flex-col items-center"
           >
-            <h3 className="text-gray-600 tracking-[.001em] text-xl font-medium mb-1">
+            <div className="mb-4 w-20 h-20 relative">
+              {event.image ? (
+                <Image
+                  src={event.image}
+                  alt={event.title}
+                  fill
+                  sizes="80px"
+                  className="object-contain opacity-70"
+                />
+              ) : (
+                <div className="w-16 h-16 bg-gray-200 rounded-full" />
+              )}
+            </div>
+
+            <h3 className="text-gray-800 tracking-[.001em] text-xl font-medium mb-1">
               {t(event.title)}
             </h3>
             <p className="text-sm text-gray-500 mb-2">
