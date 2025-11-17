@@ -177,7 +177,10 @@ export default function Main() {
           <h2 className="text-center leading-[1em] mb-3" style={headerFont}>
             {t('rsvp')}
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">{t('rsvp-subheader')}</p>
+          <p
+            className="text-lg text-gray-600 max-w-2xl mx-auto mb-6"
+            dangerouslySetInnerHTML={{ __html: t('rsvp-subheader') }}
+          />
 
           <div className="relative">
             <AnimatePresence mode="wait">

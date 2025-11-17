@@ -82,7 +82,10 @@ export default function WeddingInfo({ selectedLang }: { selectedLang: { code: st
             <p className="text-gray-700 mb-2">
               <strong>{t('location')}:</strong> 802 Mateo St, Los Angeles, CA 90021
             </p>
-            <p className="text-gray-600 mt-4">{t('ceremony-details')}</p>
+            <p
+              className="text-gray-600 mt-4"
+              dangerouslySetInnerHTML={{ __html: t('ceremony-details') }}
+            />
 
             <hr className="my-5 h-0.5 border-t-0 bg-neutral-100 dark:bg-black/5" />
 
