@@ -5,37 +5,28 @@ import { motion } from 'framer-motion';
 import { useTranslation } from '@/hooks/useTranslation';
 
 export function renderGiftLink(translation: string) {
-  const parts = translation.split('Minted');
+  const linkHTML = `
+    <a
+      href="https://minted.sendbirdie.com/r/mioandbrian?cko=0"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-blue-600 underline inline-flex items-center gap-1"
+    >
+      Minted
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        stroke="currentColor"
+        class="w-4 h-4"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 19L19 5M5 5h14v14" />
+      </svg>
+    </a>
+  `;
 
-  return (
-    <>
-      {parts.map((part, index) => (
-        <React.Fragment key={index}>
-          {part}
-          {index < parts.length - 1 && (
-            <a
-              href="https://minted.sendbirdie.com/r/mioandbrian?cko=0"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 underline inline-flex items-center gap-1"
-            >
-              Minted
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className="w-4 h-4"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5M5 5h14v14" />
-              </svg>
-            </a>
-          )}
-        </React.Fragment>
-      ))}
-    </>
-  );
+  return translation.replace(/Minted/g, linkHTML);
 }
 
 export default function AdditionalDetails({ selectedLang }: { selectedLang: { code: string } }) {
@@ -54,6 +45,14 @@ export default function AdditionalDetails({ selectedLang }: { selectedLang: { co
       description: t('reception-menu-description'),
     },
     {
+      title: t('travel-title'),
+      description: t('travel-description'),
+    },
+    {
+      title: t('kids-title'),
+      description: t('kids-description'),
+    },
+    {
       title: t('gifts-title'),
       description: renderGiftLink(t('gifts-description')),
     },
@@ -69,7 +68,7 @@ export default function AdditionalDetails({ selectedLang }: { selectedLang: { co
       id="details"
       className="w-full bg-pastel-green-25 py-12 md:py-16 px-6 sm:px-8 md:px-12 text-gray-800"
     >
-      <div className="max-w-5xl mx-auto text-center mb-12">
+      <div className="max-w-5xl mx-auto text-center mb-8">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -91,7 +90,7 @@ export default function AdditionalDetails({ selectedLang }: { selectedLang: { co
         </motion.p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+      <div className="grid md:grid-cols-2 gap-3 max-w-5xl mx-auto">
         {details.map((item, index) => (
           <motion.div
             key={index}
@@ -99,12 +98,15 @@ export default function AdditionalDetails({ selectedLang }: { selectedLang: { co
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.15 }}
             viewport={{ once: true }}
-            className="bg-white rounded-xl shadow-sm p-6 border border-gray-100 text-left"
+            className="bg-white rounded-xl shadow-sm px-6 py-4 border border-gray-100 text-left"
           >
-            <div className="flex items-center gap-3 mb-3">
-              <h3 className="text-xl font-medium text-black">{item.title}</h3>
+            <div className="flex items-center gap-3 mb-1">
+              <h3 className="text-lg font-medium text-black">{item.title}</h3>
             </div>
-            <p className="text-gray-700 leading-relaxed">{item.description}</p>
+            <p
+              className="text-gray-700 leading-relaxed text-sm"
+              dangerouslySetInnerHTML={{ __html: item.description }}
+            />
           </motion.div>
         ))}
       </div>
