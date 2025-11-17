@@ -33,7 +33,13 @@ export default function OurStory({ selectedLang }: { selectedLang: { code: strin
           <br />
           <br />
           {t('our-story-paragraph-2')}
+          <br />
+          <br />
         </p>
+        <p
+          className="text-gray-600 text-lg sm:text-xl leading-relaxed"
+          dangerouslySetInnerHTML={{ __html: t('our-story-paragraph-3') }}
+        />
       </motion.div>
 
       {/* Circular Cutout Image with Shadow */}
