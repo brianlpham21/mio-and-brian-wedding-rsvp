@@ -1,9 +1,9 @@
 'use client';
 
 import { useRef } from 'react';
-import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useTranslation } from '@/hooks/useTranslation';
+import WeddingInfoImages from './weddingInfoImages';
 
 export default function WeddingInfo({ selectedLang }: { selectedLang: { code: string } }) {
   const { t } = useTranslation({ locale: selectedLang.code });
@@ -42,28 +42,8 @@ export default function WeddingInfo({ selectedLang }: { selectedLang: { code: st
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          {/* Left Column — Image */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            style={{ opacity: fadeOut }}
-            className="relative w-full h-80 md:h-full rounded-2xl overflow-hidden shadow-md group"
-          >
-            <div className="absolute inset-0 transform transition-transform duration-700 ease-out group-hover:scale-105">
-              <Image
-                src="/venue.png"
-                alt="Mio and Brian's wedding venue"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
-                priority
-              />
-            </div>
-          </motion.div>
+          <WeddingInfoImages />
 
-          {/* Right Column — Info Card */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -87,7 +67,7 @@ export default function WeddingInfo({ selectedLang }: { selectedLang: { code: st
               dangerouslySetInnerHTML={{ __html: t('ceremony-details') }}
             />
 
-            <hr className="my-5 h-0.5 border-t-0 bg-neutral-100 dark:bg-black/5" />
+            <hr className="my-6 border-t border-pink-75" />
 
             <h3 className="text-xl font-semibold mb-3 text-black">{t('reception')}</h3>
             <p className="text-gray-700 mb-2">
