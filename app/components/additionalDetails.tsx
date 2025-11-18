@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from '@/hooks/useTranslation';
 
@@ -10,7 +9,7 @@ export function renderGiftLink(translation: string) {
       href="https://minted.sendbirdie.com/r/mioandbrian?cko=0"
       target="_blank"
       rel="noopener noreferrer"
-      class="text-blue-600 underline inline-flex items-center gap-1"
+      class="text-coral underline inline-flex items-center gap-1 font-bold"
     >
       Minted
       <svg
@@ -66,7 +65,7 @@ export default function AdditionalDetails({ selectedLang }: { selectedLang: { co
   return (
     <section
       id="details"
-      className="w-full bg-pastel-green-25 py-12 md:py-16 px-6 sm:px-8 md:px-12 text-gray-800"
+      className="w-full bg-peach-50 py-12 md:py-16 px-6 sm:px-8 md:px-12 text-gray-800"
     >
       <div className="max-w-5xl mx-auto text-center mb-8">
         <motion.h2
@@ -98,7 +97,7 @@ export default function AdditionalDetails({ selectedLang }: { selectedLang: { co
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.15 }}
             viewport={{ once: true }}
-            className="bg-white rounded-xl shadow-sm px-6 py-4 border border-gray-100 text-left"
+            className="bg-white rounded-xl shadow-sm px-6 py-4 border border-pink-75 text-left"
           >
             <div className="flex items-center gap-3 mb-1">
               <h3 className="text-md font-medium text-black">{item.title}</h3>

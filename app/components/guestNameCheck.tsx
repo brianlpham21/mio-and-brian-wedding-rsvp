@@ -32,7 +32,7 @@ export default function GuestNameCheck({
           onChange={(e) => setName(e.target.value)}
           placeholder={t('enter-your-full-name')}
           className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-700 placeholder-gray-400 
-               focus:border-pink-400 focus:ring-2 focus:ring-pink-300 focus:outline-none transition bg-white"
+               focus:border-coral focus:ring-2 focus:ring-coral focus:outline-none transition bg-white"
         />
 
         {/* Framer Motion Button */}
@@ -41,12 +41,12 @@ export default function GuestNameCheck({
           disabled={!name || loading}
           initial={false}
           animate={{
-            backgroundColor: loading ? '#F9A8D4' : '#1A1A1A',
+            backgroundColor: loading ? 'pink' : 'coral',
             scale: loading ? 0.98 : 1,
           }}
           transition={{ duration: 0.3 }}
           className={`relative flex items-center justify-center gap-2 rounded-lg px-5 py-3 font-medium text-white 
-            focus:outline-none focus:ring-2 focus:ring-pink-300 transition disabled:opacity-50 disabled:cursor-not-allowed`}
+            focus:outline-none focus:ring-2 focus:ring-coral transition disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer`}
         >
           {/* Spinner fade-in */}
           <AnimatePresence mode="wait" initial={false}>

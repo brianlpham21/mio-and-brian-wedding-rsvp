@@ -14,7 +14,7 @@ export function renderGiftLink(translation: string) {
               href="https://minted.sendbirdie.com/r/mioandbrian?cko=0"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 underline inline-flex items-center gap-1"
+              className="text-coral underline inline-flex items-center gap-1 font-bold"
             >
               Minted
               <svg
@@ -69,7 +69,7 @@ export default function ExistingConfirmation({
 
       <button
         onClick={startOver}
-        className="px-6 py-3 rounded-lg font-medium text-white bg-pastel-green-250 hover:bg-black transition focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-offset-2 cursor-pointer bg-gray-800"
+        className="px-6 py-3 rounded-lg font-medium text-black/80 hover:bg-black transition focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-offset-2 cursor-pointer bg-coral"
       >
         {t('back-to-start')}
       </button>

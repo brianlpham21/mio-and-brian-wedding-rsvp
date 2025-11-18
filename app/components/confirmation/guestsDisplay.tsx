@@ -66,7 +66,7 @@ export default function GuestsDisplay({
                   type="checkbox"
                   checked={isChecked}
                   onChange={() => toggleGuest(name)}
-                  className="h-4 w-4 accent-black focus:ring-pink-300"
+                  className="h-4 w-4 accent-coral focus:ring-pink-300"
                 />
                 <motion.span
                   layout

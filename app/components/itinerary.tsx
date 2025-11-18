@@ -36,7 +36,7 @@ export default function Itinerary({ selectedLang }: { selectedLang: { code: stri
       : { fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' };
 
   return (
-    <section id="itinerary" className="w-full py-16 px-6 sm:px-8 md:px-12 text-gray-800">
+    <section id="itinerary" className="w-full pt-12 pb-16 px-6 sm:px-8 md:px-12 text-gray-800">
       <div className="max-w-5xl mx-auto text-center mb-8">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -66,7 +66,7 @@ export default function Itinerary({ selectedLang }: { selectedLang: { code: stri
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.15 }}
             viewport={{ once: true }}
-            className="bg-pastel-green-25 rounded-xl shadow-sm p-6 border border-gray-100 text-center flex flex-col items-center"
+            className="bg-peach-50 rounded-xl shadow-sm p-6 border border-pink-75 text-center flex flex-col items-center"
           >
             <div className="mb-4 w-20 h-20 relative">
               {event.image ? (

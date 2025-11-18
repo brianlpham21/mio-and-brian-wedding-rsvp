@@ -10,10 +10,22 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-montserrat);
   --font-mono: var(--font-montserrat);
-  --color-pastel-green: #c1e1c1;
-  --color-pastel-green-75: #c1e1c1bf;
-  --color-pastel-green-50: #c1e1c180;
-  --color-pastel-green-25: #c1e1c140;
+
+  /* Ivory (Primary Background) */
+  --color-ivory: #fff8e7;
+  --color-ivory-50: #fff8e780;
+
+  /* Peach (Card / Soft Backgrounds) */
+  --color-peach: #fdd8c5;
+  --color-peach-50: #fdd8c580;
+
+  /* Coral (Primary Accent) */
+  --color-coral: #f9a59a;
+  --color-coral-75: #f9a59abf;
+
+  /* Pink (Secondary Accent) */
+  --color-pink: #f7c4d6;
+  --color-pink-75: #f7c4d6bf;
 }
 
 @media (prefers-color-scheme: dark) {

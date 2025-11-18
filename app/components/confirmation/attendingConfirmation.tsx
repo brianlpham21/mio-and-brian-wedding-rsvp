@@ -66,7 +66,7 @@ export default function AttendingConfirmation({
             value="yes"
             checked={attending === true}
             onChange={() => setAttending(true)}
-            className="h-4 w-4 text-pastel-green-250 focus:ring-pink-300"
+            className="h-4 w-4 focus:ring-coral accent-coral"
           />
           <span className="text-sm sm:text-base">{t('attending')}</span>
         </label>
@@ -78,7 +78,7 @@ export default function AttendingConfirmation({
             value="no"
             checked={attending === false}
             onChange={() => setAttending(false)}
-            className="h-4 w-4 text-pastel-green-250 focus:ring-pink-300"
+            className="h-4 w-4 focus:ring-coral accent-coral"
           />
           <span className="text-sm sm:text-base">{t('not-attending')}</span>
         </label>
@@ -134,7 +134,7 @@ export default function AttendingConfirmation({
                 id="email"
                 name="email"
                 placeholder={t('enter-your-email')}
-                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300"
+                className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-coral"
                 required
                 value={contactInfo.email}
                 onChange={(e) => setContactInfo((prev) => ({ ...prev, email: e.target.value }))}
@@ -150,7 +150,7 @@ export default function AttendingConfirmation({
                 id="address-line"
                 name="address-line"
                 placeholder={t('street-address')}
-                className="w-full rounded-md border border-gray-300 px-3 py-2 mb-3 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300"
+                className="w-full rounded-md border border-gray-300 px-3 py-2 mb-3 text-sm focus:outline-none focus:ring-2 focus:ring-coral"
                 required
                 value={contactInfo.addressLine}
                 onChange={(e) =>
@@ -164,7 +164,7 @@ export default function AttendingConfirmation({
                   id="city"
                   name="city"
                   placeholder={t('city')}
-                  className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300"
+                  className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-cora"
                   required
                   value={contactInfo.city}
                   onChange={(e) => setContactInfo((prev) => ({ ...prev, city: e.target.value }))}
@@ -176,7 +176,7 @@ export default function AttendingConfirmation({
                     required
                     value={contactInfo.state}
                     onChange={(e) => setContactInfo((prev) => ({ ...prev, state: e.target.value }))}
-                    className="w-full rounded-md border border-gray-300 px-3 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300 bg-white appearance-none cursor-pointer"
+                    className="w-full rounded-md border border-gray-300 px-3 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-coral bg-white appearance-none cursor-pointer"
                   >
                     <option value="">{t('state')}</option>
                     <option value="AL">Alabama</option>
@@ -250,7 +250,7 @@ export default function AttendingConfirmation({
                   id="zip"
                   name="zip"
                   placeholder={t('zip')}
-                  className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300"
+                  className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-coral"
                   required
                   value={contactInfo.zip}
                   onChange={(e) => setContactInfo((prev) => ({ ...prev, zip: e.target.value }))}
@@ -280,7 +280,7 @@ export default function AttendingConfirmation({
             placeholder={t('optional-message-placeholder')}
             value={contactInfo.message || ''}
             onChange={(e) => setContactInfo((prev) => ({ ...prev, message: e.target.value }))}
-            className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300 resize-none"
+            className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-coral resize-none"
             rows={4}
           />
         </motion.div>

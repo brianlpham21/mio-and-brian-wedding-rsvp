@@ -13,14 +13,14 @@ export default function PlusOneConfirmation({
   if (!attending || !plusOne) return null;
 
   return (
-    <div className="w-full mt-4">
+    <div className="w-full my-4">
       {/* Checkbox */}
       <label className="flex items-center gap-2 text-gray-800 cursor-pointer">
         <input
           type="checkbox"
           checked={bringingPlusOne}
           onChange={(e) => setBringingPlusOne(e.target.checked)}
-          className="w-4 h-4 text-pastel-green-250 rounded focus:ring-pink-300"
+          className="w-4 h-4 rounded focus:ring-coral"
         />
         <span className="text-sm sm:text-base">I will be bringing a plus one</span>
       </label>
@@ -37,7 +37,7 @@ export default function PlusOneConfirmation({
             focus:outline-none focus:ring-2 
             ${
               bringingPlusOne
-                ? 'border-gray-300 focus:border-pink-400 focus:ring-pink-200 bg-white'
+                ? 'border-gray-300 focus:border-coral focus:ring-coral bg-white'
                 : 'border-gray-200 bg-gray-100 cursor-not-allowed opacity-60'
             }`}
         />
@@ -51,11 +51,12 @@ export default function PlusOneConfirmation({
             focus:outline-none focus:ring-2 
             ${
               bringingPlusOne
-                ? 'border-gray-300 focus:border-pink-400 focus:ring-pink-200 bg-white'
+                ? 'border-gray-300 focus:border-coral focus:ring-coral bg-white'
                 : 'border-gray-200 bg-gray-100 cursor-not-allowed opacity-60'
             }`}
         />
       </div>
+      <hr className="my-6 border-t border-coral-75" />
     </div>
   );
 }

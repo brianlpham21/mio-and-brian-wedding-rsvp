@@ -20,7 +20,7 @@ async function sendConfirmationEmail(data: any) {
   let emailHtml = `
   <div style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px; color: #333;">
     <div style="max-width: 600px; margin: auto; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); padding: 30px;">
-      <h2 style="color: #e91e63; text-align: center; margin-top: 0;">${attending ? 'Your RSVP is Confirmed!' : 'We’ll Miss You!'}</h2>
+      <h2 style="color: #f9a59a; text-align: center; margin-top: 0;">${attending ? 'Your RSVP is Confirmed!' : 'We’ll Miss You!'}</h2>
 `;
 
   if (attending) {
@@ -33,13 +33,13 @@ async function sendConfirmationEmail(data: any) {
       <p style="font-size: 16px;"><strong>Wedding Details:</strong></p>
       <ul style="font-size: 16px; padding-left: 20px;">
         <li><strong>Date:</strong> March 20, 2026</li>
-        <li><strong>Time:</strong> 5:00 PM</li>
+        <li><strong>Time:</strong> 4:30 PM</li>
         <li><strong>Location:</strong> 802 Mateo St, Los Angeles, CA 90021</li>
         <li><strong>Reception:</strong> Immediately following the ceremony</li>
       </ul>
       <p style="font-size: 16px;">We look forward to celebrating with you!</p>
       <p style="text-align: center; margin-top: 30px;">
-        <span style="background-color: #e91e63; color: #fff; padding: 10px 20px; border-radius: 5px;">See You Soon!</span>
+        <span style="background-color: #f9a59a; color: #fff; padding: 10px 20px; border-radius: 5px;">See You Soon!</span>
       </p>
   `;
   } else {

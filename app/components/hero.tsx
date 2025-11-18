@@ -87,7 +87,7 @@ export default function Hero({ selectedLang }: HeroProps) {
           aria-label="Scroll down"
         >
           <svg
-            className="w-8 h-8 text-white animate-bounce hover:text-black/40 transition"
+            className="w-8 h-8 text-white animate-bounce hover:text-coral transition"
             fill="none"
             stroke="currentColor"
             strokeWidth="2"

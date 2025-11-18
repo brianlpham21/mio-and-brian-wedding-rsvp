@@ -70,7 +70,7 @@ export default function WeddingInfo({ selectedLang }: { selectedLang: { code: st
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
             style={{ opacity: fadeOut }}
-            className="bg-pastel-green-25 rounded-2xl shadow-sm p-6"
+            className="bg-peach-50 rounded-2xl shadow-sm p-6 border-1 border-pink"
           >
             <h3 className="text-xl font-semibold mb-3 text-black">{t('ceremony')}</h3>
             <p className="text-gray-700 mb-2">

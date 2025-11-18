@@ -106,28 +106,28 @@ export default function Header({ selectedLang, setSelectedLang, languages }: Hea
           <a
             href="#info"
             onClick={(e) => handleScrollToSection(e, '#info')}
-            className="transition hover:text-black/50"
+            className="transition hover:text-coral-75"
           >
             {t('information')}
           </a>
           <a
             href="#itinerary"
             onClick={(e) => handleScrollToSection(e, '#itinerary')}
-            className="hidden sm:flex transition hover:text-black/50"
+            className="hidden sm:flex transition hover:text-coral-75"
           >
             {t('itinerary')}
           </a>
           <a
             href="#our-story"
             onClick={(e) => handleScrollToSection(e, '#our-story')}
-            className="hidden sm:flex transition hover:text-black/50"
+            className="hidden sm:flex transition hover:text-coral-75"
           >
             {t('our-story')}
           </a>
           <a
             href="#rsvp"
             onClick={(e) => handleScrollToSection(e, '#rsvp')}
-            className="transition border border-black/12 px-3 py-1 font-semibold rounded-md hover:bg-white/20 hover:text-black/70"
+            className="transition border border-black/12 px-3 py-1 font-semibold rounded-md hover:text-white/70 bg-coral-75 text-black/80"
           >
             {t('rsvp').toUpperCase()}
           </a>

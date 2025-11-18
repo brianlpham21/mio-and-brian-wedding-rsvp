@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useTransform, useScroll } from 'framer-motion';
 import { useTranslation } from '@/hooks/useTranslation';
 
@@ -12,6 +12,8 @@ export default function Countdown({ selectedLang }: CountdownProps) {
   const { t } = useTranslation({ locale: selectedLang.code });
   const [isMobile, setIsMobile] = useState(false);
 
+  const sectionRef = useRef(null);
+
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
@@ -19,13 +21,15 @@ export default function Countdown({ selectedLang }: CountdownProps) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const { scrollY } = useScroll();
-  // const scrollYPos = useTransform(scrollY, [2800, 3500], [0, -100]);
-  const scrollYPos = useTransform(
-    scrollY,
-    isMobile ? [5500, 5800] : [2800, 3500], // mobile vs desktop scroll ranges
-    isMobile ? [0, 0] : [0, -100] // how much to move image vertically
-  );
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+
+  const vw = typeof window !== 'undefined' ? window.innerWidth : 1200;
+
+  const moveRange = [-0.15 * vw, -0.23 * vw];
+  const scrollYPos = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : moveRange);
 
   const targetDate = '2026-03-20T17:00:00';
 
@@ -69,9 +73,12 @@ export default function Countdown({ selectedLang }: CountdownProps) {
         : { fontFamily: 'Brother, serif', fontSize: 'clamp(3.75rem, 8vw, 6rem)' };
 
   return (
-    <section className="relative w-screen py-14 md:py-20 flex flex-col items-center justify-center text-center text-gray-900 overflow-hidden">
+    <section
+      className="relative w-screen py-14 md:py-20 flex flex-col items-center justify-center text-center text-gray-900 overflow-hidden"
+      ref={sectionRef}
+    >
       <motion.img
-        src="/dinner.png"
+        src="/countdown-photo.jpeg"
         alt="Dinner background"
         className={
           isMobile
@@ -84,7 +91,7 @@ export default function Countdown({ selectedLang }: CountdownProps) {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-white/60 backdrop-blur-[1px] z-10" />
+      <div className="absolute inset-0 bg-white/40 backdrop-blur-[1px] z-10" />
 
       {/* Foreground content */}
       <div className="relative z-10 flex flex-col items-center">
@@ -102,7 +109,7 @@ export default function Countdown({ selectedLang }: CountdownProps) {
             {topUnits.map((unit) => (
               <div
                 key={unit.label}
-                className="bg-white/90 rounded-xl py-3 px-6 shadow-md flex flex-col items-center justify-center w-full"
+                className="bg-white/70 rounded-xl py-3 px-6 shadow-md flex flex-col items-center justify-center w-full border-1 border-peach"
               >
                 <AnimatePresence mode="popLayout">
                   <motion.div
@@ -126,7 +133,7 @@ export default function Countdown({ selectedLang }: CountdownProps) {
             {bottomUnits.map((unit) => (
               <div
                 key={unit.label}
-                className="bg-white/90 rounded-xl py-3 px-6 shadow-md flex flex-col items-center justify-center w-full"
+                className="bg-white/70 rounded-xl py-3 px-6 shadow-md flex flex-col items-center justify-center w-full border-1 border-peach"
               >
                 <AnimatePresence mode="popLayout">
                   <motion.div
