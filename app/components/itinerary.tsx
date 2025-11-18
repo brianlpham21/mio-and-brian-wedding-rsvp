@@ -37,7 +37,7 @@ export default function Itinerary({ selectedLang }: { selectedLang: { code: stri
 
   return (
     <section id="itinerary" className="w-full py-16 px-6 sm:px-8 md:px-12 text-gray-800">
-      <div className="max-w-5xl mx-auto text-center mb-12">
+      <div className="max-w-5xl mx-auto text-center mb-8">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -58,7 +58,7 @@ export default function Itinerary({ selectedLang }: { selectedLang: { code: stri
         </motion.p>
       </div>
 
-      <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+      <div className="grid md:grid-cols-4 gap-4 md:gap-8 max-w-5xl mx-auto">
         {itinerary.map((event, index) => (
           <motion.div
             key={index}
@@ -82,13 +82,13 @@ export default function Itinerary({ selectedLang }: { selectedLang: { code: stri
               )}
             </div>
 
-            <h3 className="text-gray-800 tracking-[.001em] text-xl font-medium mb-1">
+            <h3 className="text-gray-800 tracking-[.001em] text-lg font-medium mb-1">
               {t(event.title)}
             </h3>
             <p className="text-sm text-gray-500 mb-2">
               <span className="font-medium">{event.time}</span>
             </p>
-            <p className="text-gray-700 leading-relaxed text-left">
+            <p className="text-sm text-gray-700 leading-relaxed text-left">
               {t(`${event.title}-itinerary-description`)}
             </p>
           </motion.div>

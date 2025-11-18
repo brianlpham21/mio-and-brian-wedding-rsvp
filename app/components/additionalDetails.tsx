@@ -101,7 +101,7 @@ export default function AdditionalDetails({ selectedLang }: { selectedLang: { co
             className="bg-white rounded-xl shadow-sm px-6 py-4 border border-gray-100 text-left"
           >
             <div className="flex items-center gap-3 mb-1">
-              <h3 className="text-lg font-medium text-black">{item.title}</h3>
+              <h3 className="text-md font-medium text-black">{item.title}</h3>
             </div>
             <p
               className="text-gray-700 leading-relaxed text-sm"

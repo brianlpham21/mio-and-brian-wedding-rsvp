@@ -104,13 +104,6 @@ export default function Header({ selectedLang, setSelectedLang, languages }: Hea
         {/* Navigation */}
         <nav className="flex gap-6 text-sm font-medium items-center">
           <a
-            href="#our-story"
-            onClick={(e) => handleScrollToSection(e, '#our-story')}
-            className="hidden sm:flex transition hover:text-black/50"
-          >
-            {t('our-story')}
-          </a>
-          <a
             href="#info"
             onClick={(e) => handleScrollToSection(e, '#info')}
             className="transition hover:text-black/50"
@@ -123,6 +116,13 @@ export default function Header({ selectedLang, setSelectedLang, languages }: Hea
             className="hidden sm:flex transition hover:text-black/50"
           >
             {t('itinerary')}
+          </a>
+          <a
+            href="#our-story"
+            onClick={(e) => handleScrollToSection(e, '#our-story')}
+            className="hidden sm:flex transition hover:text-black/50"
+          >
+            {t('our-story')}
           </a>
           <a
             href="#rsvp"

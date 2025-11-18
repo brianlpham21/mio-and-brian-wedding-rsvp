@@ -66,7 +66,7 @@ export default function Countdown({ selectedLang }: CountdownProps) {
       ? { fontSize: 'clamp(3rem, 4vw, 4rem)', fontStyle: 'italic', fontWeight: '500' }
       : selectedLang.code === 'ja'
         ? { fontSize: 'clamp(2.25rem, 5vw, 4rem)' }
-        : { fontFamily: 'Brother, serif', fontSize: 'clamp(3.7rem, 8vw, 6rem)' };
+        : { fontFamily: 'Brother, serif', fontSize: 'clamp(3.75rem, 8vw, 6rem)' };
 
   return (
     <section className="relative w-screen py-14 md:py-20 flex flex-col items-center justify-center text-center text-gray-900 overflow-hidden">
