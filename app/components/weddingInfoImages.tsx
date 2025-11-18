@@ -31,7 +31,7 @@ export default function WeddingInfoImages() {
     >
       {/* Bottom Image */}
       <motion.div
-        className="absolute top-8 left-0 h-[92%] w-[90%]  rounded-2xl shadow-md cursor-pointer"
+        className="absolute top-12 left-0 right-12 bottom-0 rounded-2xl shadow-md cursor-pointer"
         whileHover={{ scale: 1.03 }}
         drag
         dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
@@ -44,7 +44,7 @@ export default function WeddingInfoImages() {
 
       {/* Top Image */}
       <motion.div
-        className="absolute top-0 left-12 h-[92%] w-[90%] rounded-2xl shadow-lg cursor-pointer overflow-hidden"
+        className="absolute top-0 left-12 right-0 bottom-12 rounded-2xl shadow-lg cursor-pointer overflow-hidden"
         whileHover={{ scale: 1.03 }}
         drag
         dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
