@@ -95,7 +95,7 @@ export default function Countdown({ selectedLang }: CountdownProps) {
 
       {/* Foreground content */}
       <div className="relative z-10 flex flex-col items-center">
-        <h2 className="mb-8 text-gray-900 drop-shadow-sm leading-[1em]" style={headerFont}>
+        <h2 className={`mb-8 text-gray-900 drop-shadow-sm leading-[1.3em]`} style={headerFont}>
           {t('countingDownToIDo')}
         </h2>
 
