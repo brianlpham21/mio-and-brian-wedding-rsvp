@@ -1,9 +1,9 @@
 'use client';
 
 import { useRef } from 'react';
+import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useTranslation } from '@/hooks/useTranslation';
-import WeddingInfoImages from './weddingInfoImages';
 
 export default function WeddingInfo({ selectedLang }: { selectedLang: { code: string } }) {
   const { t } = useTranslation({ locale: selectedLang.code });
@@ -41,8 +41,26 @@ export default function WeddingInfo({ selectedLang }: { selectedLang: { code: st
           {t('wedding-day-information')}
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          <WeddingInfoImages />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          <motion.div
+            ref={ref}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.01, boxShadow: '10px 10px 15px rgba(0,0,0,.2)' }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            style={{ opacity: fadeOut }}
+            className="relative w-full aspect-[3/4] rounded-2xl overflow-visible"
+          >
+            <Image
+              src="/photoshoot-main-web.jpg"
+              alt="photoshoot of Mio & Brian"
+              fill
+              className="object-cover rounded-2xl"
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 640px"
+              priority
+            />
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}

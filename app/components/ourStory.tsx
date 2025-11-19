@@ -47,21 +47,22 @@ export default function OurStory({ selectedLang }: { selectedLang: { code: strin
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 1.2, ease: 'easeOut' }}
-        className="flex-1 max-w-xs relative z-10 flex flex-col items-center"
+        className="flex-1 w-full md:max-w-xs relative z-10 flex flex-col items-center"
       >
         {/* Circle Image */}
         <motion.div
-          whileHover={{ scale: 1.02, boxShadow: '10px 20px 15px rgba(0,0,0,.7)' }}
+          // whileHover={{ scale: 1.02, boxShadow: '10px 20px 15px rgba(0,0,0,.7)' }}
+          whileHover={{ scale: 1.02 }}
           transition={{ duration: 1, ease: 'easeOut' }}
-          style={{ boxShadow: '10px 20px 15px rgba(0,0,0,0.5)' }}
-          className="w-64 h-64 md:w-72 md:h-72 rounded-full overflow-hidden relative shadow-md transition-shadow duration-300 ease-out mr-0 md:mr-30 z-1"
+          // style={{ boxShadow: '10px 20px 15px rgba(0,0,0,0.5)' }}
+          className="w-64 h-64 md:w-50 md:h-50 rounded-full overflow-hidden relative shadow-md transition-shadow duration-300 ease-out mb-8"
         >
           <Image
             src="/photoshoot-ring.png"
             alt="Mio & Brian"
             fill
             className="object-cover scale-125"
-            sizes="(max-width: 768px) 16rem, 18rem"
+            sizes="(max-width: 768px) 256px, 288px"
             priority
           />
         </motion.div>
@@ -70,16 +71,17 @@ export default function OurStory({ selectedLang }: { selectedLang: { code: strin
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          whileHover={{ scale: 1.02 }} // zoom on hover
+          whileHover={{ scale: 1.02 }}
           transition={{ duration: 1.2, ease: 'easeOut', delay: 0.3 }}
-          className="w-80 md:w-90 h-90 md:h-110 rounded-xl overflow-hidden shadow-md -mt-40 relative"
+          className="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-md relative"
         >
           <Image
             src="/photoshoot-window-web.jpg"
             alt="Wedding detail"
             fill
-            className="object-cover scale-120"
-            style={{ objectPosition: '50% 10%' }}
+            className="object-cover"
+            // style={{ objectPosition: '50% 10%' }}
+            sizes="(max-width: 768px) 320px, 360px"
             priority
           />
         </motion.div>
