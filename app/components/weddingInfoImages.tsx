@@ -53,7 +53,7 @@ export default function WeddingInfoImages() {
         onClick={() => bringToFront('second')}
       >
         <Image
-          src="/photoshoot-main.jpg"
+          src="/photoshoot-main-web.jpg"
           alt="Venue 2"
           fill
           className="object-cover rounded-2xl"

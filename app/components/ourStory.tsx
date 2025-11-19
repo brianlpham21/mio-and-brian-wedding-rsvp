@@ -100,7 +100,7 @@ export default function OurStory({ selectedLang }: { selectedLang: { code: strin
           className="w-80 md:w-90 h-90 md:h-110 rounded-xl overflow-hidden shadow-md -mt-40 relative"
         >
           <Image
-            src="/photoshoot-window.jpg"
+            src="/photoshoot-window-web.jpg"
             alt="Wedding detail"
             fill
             className="object-cover scale-120"
