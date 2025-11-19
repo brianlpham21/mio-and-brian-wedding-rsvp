@@ -15,7 +15,7 @@ export default function OurStory({ selectedLang }: { selectedLang: { code: strin
   return (
     <section
       id="our-story"
-      className="w-full relative flex flex-col md:flex-row justify-center items-center px-6 sm:px-12 py-20 gap-10"
+      className="w-full relative flex flex-col md:flex-row justify-center items-center px-6 sm:px-12 py-17 gap-16"
     >
       {/* Text Column */}
       <motion.div
@@ -28,7 +28,7 @@ export default function OurStory({ selectedLang }: { selectedLang: { code: strin
         <h2 className="text-5xl sm:text-6xl text-gray-800 mb-6 tracking-tight" style={headerFont}>
           {t('our-story')}
         </h2>
-        <p className="text-gray-600 text-lg sm:text-xl leading-relaxed">
+        <p className="text-gray-600 text-lg leading-relaxed">
           {t('our-story-paragraph-1')}
           <br />
           <br />
@@ -37,35 +37,11 @@ export default function OurStory({ selectedLang }: { selectedLang: { code: strin
           <br />
         </p>
         <p
-          className="text-gray-600 text-lg sm:text-xl leading-relaxed"
+          className="text-gray-600 text-lg leading-relaxed"
           dangerouslySetInnerHTML={{ __html: t('our-story-paragraph-3') }}
         />
       </motion.div>
 
-      {/* Circular Cutout Image with Shadow */}
-      {/* <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 1.2, ease: 'easeOut' }}
-        className="flex-1 max-w-xs relative z-10"
-      >
-        <motion.div
-          whileHover={{ scale: 1.01, boxShadow: '0 10px 15px rgba(0,0,0,0.3)' }}
-          transition={{ duration: 1, ease: 'easeOut' }}
-          className="w-64 h-64 md:w-72 md:h-72 mx-auto rounded-full overflow-hidden relative shadow-md transition-shadow duration-300 ease-out"
-        >
-          <Image
-            src="/story.jpg"
-            alt="Mio & Brian"
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 16rem, 18rem"
-            priority
-          />
-        </motion.div>
-      </motion.div> */}
-      {/* Image Column */}
       <motion.div
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -90,7 +66,6 @@ export default function OurStory({ selectedLang }: { selectedLang: { code: strin
           />
         </motion.div>
 
-        {/* Rectangular Image Below, Slightly Staggered */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -104,7 +79,7 @@ export default function OurStory({ selectedLang }: { selectedLang: { code: strin
             alt="Wedding detail"
             fill
             className="object-cover scale-120"
-            style={{ objectPosition: '50% 10%' }} // controls visible area
+            style={{ objectPosition: '50% 10%' }}
             priority
           />
         </motion.div>
