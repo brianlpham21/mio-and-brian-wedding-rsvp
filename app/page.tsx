@@ -163,7 +163,7 @@ export default function Main() {
   const headerFont =
     selectedLang.code === 'vi'
       ? { fontSize: 'clamp(3rem, 4vw, 4rem)', fontStyle: 'italic', fontWeight: '500' }
-      : { fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' };
+      : { fontFamily: 'Norway, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-ivory-50 font-sans text-gray-800">

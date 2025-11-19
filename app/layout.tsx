@@ -4,6 +4,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 
 const brother = localFont({ src: './BrotherSignature.otf' });
+const norway = localFont({ src: './Norway.ttf' });
 
 const montserrat = Montserrat({
   weight: ['300', '400', '500', '700'],
@@ -35,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${brother.className} ${montserrat.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${brother.className} ${norway.className} ${montserrat.variable} antialiased`}
       >
         {children}
       </body>

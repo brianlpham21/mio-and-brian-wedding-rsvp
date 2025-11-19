@@ -70,7 +70,7 @@ export default function Countdown({ selectedLang }: CountdownProps) {
       ? { fontSize: 'clamp(3rem, 4vw, 4rem)', fontStyle: 'italic', fontWeight: '500' }
       : selectedLang.code === 'ja'
         ? { fontSize: 'clamp(2.25rem, 5vw, 4rem)' }
-        : { fontFamily: 'Brother, serif', fontSize: 'clamp(3.75rem, 10vw, 6rem)' };
+        : { fontFamily: 'Norway, serif', fontSize: 'clamp(3.75rem, 10vw, 6rem)' };
 
   return (
     <section
@@ -95,10 +95,7 @@ export default function Countdown({ selectedLang }: CountdownProps) {
 
       {/* Foreground content */}
       <div className="relative z-10 flex flex-col items-center">
-        <h2
-          className={`mb-8 text-gray-900 drop-shadow-sm leading-[1em] ${selectedLang.code === 'en' ? 'translate-y-[.25em]' : ''}`}
-          style={headerFont}
-        >
+        <h2 className="mb-8 text-gray-900 drop-shadow-sm leading-[1em]" style={headerFont}>
           {t('countingDownToIDo')}
         </h2>
 

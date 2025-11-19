@@ -33,7 +33,7 @@ export default function Itinerary({ selectedLang }: { selectedLang: { code: stri
   const headerFont =
     selectedLang.code === 'vi'
       ? { fontSize: 'clamp(3rem, 4vw, 4rem)', fontStyle: 'italic', fontWeight: '500' }
-      : { fontFamily: 'Brother, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' };
+      : { fontFamily: 'Norway, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' };
 
   return (
     <section id="itinerary" className="w-full pt-12 pb-16 px-6 sm:px-8 md:px-12 text-gray-800">
@@ -82,9 +82,7 @@ export default function Itinerary({ selectedLang }: { selectedLang: { code: stri
               )}
             </div>
 
-            <h3 className="text-gray-800 tracking-[.001em] text-lg font-medium mb-1">
-              {t(event.title)}
-            </h3>
+            <h3 className="text-gray-800 text-lg font-medium mb-1">{t(event.title)}</h3>
             <p className="text-sm text-gray-500 mb-2">
               <span className="font-medium">{event.time}</span>
             </p>
