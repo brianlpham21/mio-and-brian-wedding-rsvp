@@ -17,7 +17,6 @@ export default function OurStory({ selectedLang }: { selectedLang: { code: strin
       id="our-story"
       className="w-full relative flex flex-col md:flex-row justify-center items-center px-6 sm:px-12 py-17 gap-16"
     >
-      {/* Text Column */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -49,38 +48,20 @@ export default function OurStory({ selectedLang }: { selectedLang: { code: strin
         transition={{ duration: 1.2, ease: 'easeOut' }}
         className="flex-1 w-full md:max-w-xs relative z-10 flex flex-col items-center"
       >
-        {/* Circle Image */}
         <motion.div
-          // whileHover={{ scale: 1.02, boxShadow: '10px 20px 15px rgba(0,0,0,.7)' }}
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 1, ease: 'easeOut' }}
-          // style={{ boxShadow: '10px 20px 15px rgba(0,0,0,0.5)' }}
-          className="w-64 h-64 md:w-50 md:h-50 rounded-full overflow-hidden relative shadow-md transition-shadow duration-300 ease-out mb-8"
-        >
-          <Image
-            src="/photoshoot-ring.png"
-            alt="Mio & Brian"
-            fill
-            className="object-cover scale-125"
-            sizes="(max-width: 768px) 256px, 288px"
-            priority
-          />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 30, boxShadow: '0px 0px 0px rgba(0,0,0,0)' }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 1.2, ease: 'easeOut', delay: 0.3 }}
-          className="w-full aspect-[3/4] rounded-xl overflow-hidden shadow-md relative"
+          whileHover={{ scale: 1.02, boxShadow: '10px 15px 15px rgba(0,0,0,0.2)' }}
+          transition={{ duration: 0.8 }}
+          className="w-64 h-64 md:w-100 md:h-100 rounded-full overflow-hidden shadow-md relative"
         >
           <Image
             src="/photoshoot-window-web.jpg"
             alt="Wedding detail"
             fill
             className="object-cover"
-            // style={{ objectPosition: '50% 10%' }}
+            style={{ objectPosition: '10% 65%' }}
             sizes="(max-width: 768px) 320px, 360px"
             priority
           />
