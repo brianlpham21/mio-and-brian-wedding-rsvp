@@ -104,7 +104,7 @@ export default function AdditionalDetails({ selectedLang }: { selectedLang: { co
             </div>
 
             <p
-              className="text-gray-700 leading-snug text-xs sm:text-sm"
+              className="text-gray-700 leading-snug text-sm md:text-base"
               dangerouslySetInnerHTML={{ __html: item.description }}
             />
           </motion.div>

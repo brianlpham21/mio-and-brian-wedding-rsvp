@@ -82,13 +82,13 @@ export default function Itinerary({ selectedLang }: { selectedLang: { code: stri
               )}
             </div>
 
-            <h3 className="text-gray-800 text-base md:text-lg font-medium mb-1">
-              {t(event.title)}
-            </h3>
-            <p className="text-xs md:text-sm text-gray-500 mb-1">
+            <h3 className="text-gray-800 text-sm md:text-lg font-medium mb-1">{t(event.title)}</h3>
+
+            <p className="text-sm md:text-base text-gray-500 mb-1">
               <span className="font-medium">{event.time}</span>
             </p>
-            <p className="text-xs md:text-sm text-gray-700 leading-snug text-left">
+
+            <p className="text-sm md:text-base text-gray-700 leading-snug text-left">
               {t(`${event.title}-itinerary-description`)}
             </p>
           </motion.div>
