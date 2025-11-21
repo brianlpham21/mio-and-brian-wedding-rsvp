@@ -89,21 +89,22 @@ export default function AdditionalDetails({ selectedLang }: { selectedLang: { co
         </motion.p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-3 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 max-w-5xl mx-auto">
         {details.map((item, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.15 }}
+            transition={{ duration: 0.5, delay: index * 0.12 }}
             viewport={{ once: true }}
-            className="bg-white rounded-xl shadow-sm px-6 py-4 border border-pink-75 text-left"
+            className="bg-white rounded-xl shadow-sm px-4 py-3 md:px-6 md:py-4 border border-pink-75 text-left"
           >
-            <div className="flex items-center gap-3 mb-1">
-              <h3 className="text-md font-medium text-black">{item.title}</h3>
+            <div className="flex items-center gap-2 mb-0.5">
+              <h3 className="text-sm sm:text-md font-medium text-black">{item.title}</h3>
             </div>
+
             <p
-              className="text-gray-700 leading-relaxed text-sm"
+              className="text-gray-700 leading-snug text-xs sm:text-sm"
               dangerouslySetInnerHTML={{ __html: item.description }}
             />
           </motion.div>
