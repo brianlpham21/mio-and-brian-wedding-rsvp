@@ -15,7 +15,7 @@ export default function OurStory({ selectedLang }: { selectedLang: { code: strin
   return (
     <section
       id="our-story"
-      className="w-full relative flex flex-col md:flex-row justify-center items-center px-6 sm:px-12 py-17 gap-16"
+      className="w-full relative flex flex-col md:flex-row justify-center items-center px-6 sm:px-12 py-17 gap-10"
     >
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -54,7 +54,7 @@ export default function OurStory({ selectedLang }: { selectedLang: { code: strin
           viewport={{ once: true, amount: 0.2 }}
           whileHover={{ scale: 1.02, boxShadow: '10px 15px 15px rgba(0,0,0,0.2)' }}
           transition={{ duration: 0.8 }}
-          className="w-64 h-64 md:w-100 md:h-100 rounded-full overflow-hidden shadow-md relative"
+          className="w-full aspect-square rounded-full overflow-hidden shadow-md relative"
         >
           <Image
             src="/photoshoot-window-web.jpg"

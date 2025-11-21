@@ -58,35 +58,37 @@ export default function Itinerary({ selectedLang }: { selectedLang: { code: stri
         </motion.p>
       </div>
 
-      <div className="grid md:grid-cols-4 gap-4 md:gap-8 max-w-5xl mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 lg:gap-8 max-w-5xl mx-auto">
         {itinerary.map((event, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.15 }}
+            transition={{ duration: 0.5, delay: index * 0.12 }}
             viewport={{ once: true }}
-            className="bg-peach-50 rounded-xl shadow-sm p-6 border border-pink-75 text-center flex flex-col items-center"
+            className="bg-peach-50 rounded-xl shadow-sm p-4 md:p-6 border border-pink-75 text-center flex flex-col items-center"
           >
-            <div className="mb-4 w-20 h-20 relative">
+            <div className="mb-2 md:mb-4 w-14 h-14 md:w-20 md:h-20 relative">
               {event.image ? (
                 <Image
                   src={event.image}
                   alt={event.title}
                   fill
-                  sizes="80px"
+                  sizes="64px"
                   className="object-contain opacity-70"
                 />
               ) : (
-                <div className="w-16 h-16 bg-gray-200 rounded-full" />
+                <div className="w-12 h-12 bg-gray-200 rounded-full" />
               )}
             </div>
 
-            <h3 className="text-gray-800 text-lg font-medium mb-1">{t(event.title)}</h3>
-            <p className="text-sm text-gray-500 mb-2">
+            <h3 className="text-gray-800 text-base md:text-lg font-medium mb-1">
+              {t(event.title)}
+            </h3>
+            <p className="text-xs md:text-sm text-gray-500 mb-1">
               <span className="font-medium">{event.time}</span>
             </p>
-            <p className="text-sm text-gray-700 leading-relaxed text-left">
+            <p className="text-xs md:text-sm text-gray-700 leading-snug text-left">
               {t(`${event.title}-itinerary-description`)}
             </p>
           </motion.div>
