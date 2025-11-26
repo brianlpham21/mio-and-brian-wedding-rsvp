@@ -178,7 +178,7 @@ export default function Main() {
       >
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-center leading-[1em] mb-3" style={headerFont}>
-            {t('rsvp')}
+            {t('rsvp-section-header')}
           </h2>
           <p
             className="text-lg text-gray-600 max-w-2xl mx-auto mb-6"

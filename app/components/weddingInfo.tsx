@@ -20,13 +20,15 @@ export default function WeddingInfo({ selectedLang }: { selectedLang: { code: st
   const headerFont =
     selectedLang.code === 'vi'
       ? { fontSize: 'clamp(3rem, 4vw, 4rem)', fontStyle: 'italic', fontWeight: '500' }
-      : { fontFamily: 'Norway, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' };
+      : selectedLang.code === 'ja'
+        ? { fontFamily: 'Norway, serif', fontSize: 'clamp(3.2rem, 6vw, 5.5rem)' }
+        : { fontFamily: 'Norway, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' };
 
   return (
     <section
       ref={ref}
       id="info"
-      className="relative w-full sm:px-8 md:px-12 text-gray-800 pt-16 md:pt-20 pb-2 md:pb-6 lg:pb-10 px-6 overflow-hidden"
+      className="relative w-full sm:px-8 md:px-12 text-gray-800 pt-12 md:pt-20 pb-2 md:pb-6 lg:pb-10 px-6 overflow-hidden"
     >
       <div className="max-w-5xl mx-auto">
         {/* Heading */}

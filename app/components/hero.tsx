@@ -35,11 +35,6 @@ export default function Hero({ selectedLang }: HeroProps) {
     requestAnimationFrame(step);
   }, []);
 
-  const mainNameFontSize =
-    selectedLang.code === 'ja'
-      ? 'clamp(1rem, 10vw, 8rem)' // smaller for Japanese
-      : 'clamp(4.5rem, 15vw, 11.5rem)'; // original size
-  const headerTranslateY = selectedLang.code === 'ja' ? 'translate-y-[-1.2em]' : 'lg:translate-y-5';
   const dateTimeLocationSize = selectedLang.code === 'ja' ? 'text-sm md:text-lg' : 'text-lg';
 
   return (
@@ -64,18 +59,19 @@ export default function Hero({ selectedLang }: HeroProps) {
         className="relative z-10 container mx-auto px-6 sm:px-8"
       >
         <p
-          className={`text-base sm:text-lg text-white max-w-xl mx-auto md:tracking-[.2em] ${headerTranslateY}`}
+          className={`text-base sm:text-lg text-white max-w-xl mx-auto md:tracking-[.2em] lg:translate-y-5`}
         >
           {t('the-wedding-of')}
         </p>
         <h2
           className="text-white"
-          style={{ fontFamily: 'Brother, serif', fontSize: mainNameFontSize }}
+          style={{ fontFamily: 'Brother, serif', fontSize: 'clamp(4.5rem, 15vw, 11.5rem)' }}
         >
           {t('mio-and-brian')}
         </h2>
         <p className={`not-prose text-white mx-auto md:tracking-[.2em] ${dateTimeLocationSize}`}>
-          {t('wedding-date').toUpperCase()} | {t('city-location')}
+          {selectedLang.code === 'en' ? t('wedding-date').toUpperCase() : t('wedding-date')} |{' '}
+          {t('city-location')}
         </p>
       </motion.div>
 

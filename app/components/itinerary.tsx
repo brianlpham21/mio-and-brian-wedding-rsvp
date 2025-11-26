@@ -33,7 +33,9 @@ export default function Itinerary({ selectedLang }: { selectedLang: { code: stri
   const headerFont =
     selectedLang.code === 'vi'
       ? { fontSize: 'clamp(3rem, 4vw, 4rem)', fontStyle: 'italic', fontWeight: '500' }
-      : { fontFamily: 'Norway, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' };
+      : selectedLang.code === 'ja'
+        ? { fontFamily: 'Norway, serif', fontSize: 'clamp(3.2rem, 6vw, 5.5rem)' }
+        : { fontFamily: 'Norway, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' };
 
   return (
     <section id="itinerary" className="w-full pt-12 pb-16 px-6 sm:px-8 md:px-12 text-gray-800">
