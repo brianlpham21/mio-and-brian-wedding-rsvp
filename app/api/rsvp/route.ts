@@ -6,21 +6,30 @@ import { Resend } from 'resend';
 async function sendConfirmationEmail(data: any) {
   const resend = new Resend(process.env.RESEND_API_KEY);
 
-  if (!data.contactInfo?.email) return;
+  if (!data.contactInfo?.email) {
+    console.log('No email provided, skipping confirmation email.');
+    return;
+  }
 
   const { email } = data.contactInfo;
   const { attending, plusOne, plusOneFirst, plusOneLast, party, notAttending } = data;
 
-  // Determine attending guests (exclude notAttending)
-  const attendingGuests = party.filter((guest: string) => !notAttending.includes(guest));
-  if (plusOne && plusOneFirst && plusOneLast) {
+  // Safe arrays
+  const attendingGuests = Array.isArray(party)
+    ? party.filter((guest) => !notAttending?.includes(guest))
+    : [];
+  if (plusOne && plusOneFirst && plusOneLast && attending) {
     attendingGuests.push(`${plusOneFirst} ${plusOneLast}`);
   }
+
+  const notAttendingGuests = Array.isArray(notAttending) ? notAttending : [];
 
   let emailHtml = `
   <div style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px; color: #333;">
     <div style="max-width: 600px; margin: auto; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); padding: 30px;">
-      <h2 style="color: #f9a59a; text-align: center; margin-top: 0;">${attending ? 'Your RSVP is Confirmed!' : 'We’ll Miss You!'}</h2>
+      <h2 style="color: #f9a59a; text-align: center; margin-top: 0;">
+        ${attending ? 'Your RSVP is Confirmed!' : 'We’ll Miss You!'}
+      </h2>
 `;
 
   if (attending) {
@@ -37,7 +46,16 @@ async function sendConfirmationEmail(data: any) {
         <li><strong>Location:</strong> 802 Mateo St, Los Angeles, CA 90021</li>
         <li><strong>Reception:</strong> Immediately following the ceremony</li>
       </ul>
-      <p style="font-size: 16px;">We look forward to celebrating with you!</p>
+      <p style="font-size: 16px;">
+        If you have any questions or need to update your RSVP, feel free to contact us at:
+        <br><strong>Email:</strong> brianlpham21@gmail.com
+        <br><strong>Phone:</strong> (661) 373-9790
+      </p>
+      <p style="font-size: 16px; text-align: center;">
+        For more details, please visit our website: 
+        <a href="https://mioandbrian.love" style="color: #f9a59a; text-decoration: underline;">mioandbrian.love</a>
+      </p>
+      <p style="font-size: 16px; text-align: center;">We look forward to celebrating with you!</p>
       <p style="text-align: center; margin-top: 30px;">
         <span style="background-color: #f9a59a; color: #fff; padding: 10px 20px; border-radius: 5px;">See You Soon!</span>
       </p>
@@ -47,7 +65,7 @@ async function sendConfirmationEmail(data: any) {
       <p style="font-size: 16px;">We’re sorry you won’t be able to join us. Your RSVP has been recorded as:</p>
       <ul style="font-size: 16px; padding-left: 20px;">
         <li><strong>Attending:</strong> No</li>
-        <li><strong>Guests Not Attending:</strong> ${notAttending.length > 0 ? capitalizeWords(notAttending.join(', ')) : 'None'}</li>
+        <li><strong>Guests Not Attending:</strong> ${notAttendingGuests.length > 0 ? capitalizeWords(notAttendingGuests.join(', ')) : 'None'}</li>
       </ul>
       <p style="font-size: 16px;">Thank you for letting us know!</p>
       <p style="text-align: center; margin-top: 30px;">
@@ -85,9 +103,10 @@ export async function POST(req: Request) {
     plusOne,
     plusOneFirst,
     plusOneLast,
-    contactInfo, // new object: { email, address, city, state, zip, message }
+    contactInfo,
     notAttending,
     message,
+    party,
   } = body;
 
   if (!rowIndex) {
@@ -108,7 +127,7 @@ export async function POST(req: Request) {
   try {
     const requests = [];
 
-    // Attending (column A)
+    // Attending status
     requests.push(
       sheets.spreadsheets.values.update({
         spreadsheetId,
@@ -117,6 +136,8 @@ export async function POST(req: Request) {
         requestBody: { values: [[attending ? 'Yes' : 'No']] },
       })
     );
+
+    // Message column
     requests.push(
       sheets.spreadsheets.values.update({
         spreadsheetId,
@@ -126,7 +147,7 @@ export async function POST(req: Request) {
       })
     );
 
-    // Plus One columns
+    // Plus One columns only if attending
     if (attending) {
       requests.push(
         sheets.spreadsheets.values.update({
@@ -134,25 +155,19 @@ export async function POST(req: Request) {
           range: `Sheet1!H${rowIndex}`,
           valueInputOption: 'USER_ENTERED',
           requestBody: { values: [[plusOne ? 'TRUE' : 'FALSE']] },
-        })
-      );
-      requests.push(
+        }),
         sheets.spreadsheets.values.update({
           spreadsheetId,
           range: `Sheet1!I${rowIndex}`,
           valueInputOption: 'USER_ENTERED',
           requestBody: { values: [[plusOneFirst || '']] },
-        })
-      );
-      requests.push(
+        }),
         sheets.spreadsheets.values.update({
           spreadsheetId,
           range: `Sheet1!J${rowIndex}`,
           valueInputOption: 'USER_ENTERED',
           requestBody: { values: [[plusOneLast || '']] },
-        })
-      );
-      requests.push(
+        }),
         sheets.spreadsheets.values.update({
           spreadsheetId,
           range: `Sheet1!P${rowIndex}`,
@@ -165,7 +180,6 @@ export async function POST(req: Request) {
     // Contact info columns: K–O
     if (contactInfo) {
       const { email, addressLine, city, state, zip } = contactInfo;
-
       const columns: Record<string, string | undefined> = {
         K: email,
         L: addressLine,
@@ -173,7 +187,6 @@ export async function POST(req: Request) {
         N: state,
         O: zip,
       };
-
       for (const [col, value] of Object.entries(columns)) {
         requests.push(
           sheets.spreadsheets.values.update({
@@ -186,9 +199,11 @@ export async function POST(req: Request) {
       }
     }
 
+    // Execute all updates
     await Promise.all(requests);
 
-    await sendConfirmationEmail(body);
+    // Only send email after successful sheet update
+    await sendConfirmationEmail({ ...body, party: party || [] });
 
     return Response.json({ message: 'RSVP updated successfully' });
   } catch (err) {

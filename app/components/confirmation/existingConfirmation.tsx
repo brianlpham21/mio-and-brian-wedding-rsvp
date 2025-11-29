@@ -69,7 +69,7 @@ export default function ExistingConfirmation({
 
       <button
         onClick={startOver}
-        className="px-6 py-3 rounded-lg font-medium text-black/80 hover:bg-black transition focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-offset-2 cursor-pointer bg-coral"
+        className="px-6 py-3 rounded-lg font-medium text-black/80 hover:bg-coral-75/75 transition focus:outline-none focus:ring-2 focus:ring-pink-300 focus:ring-offset-2 cursor-pointer bg-coral"
       >
         {t('back-to-start')}
       </button>
