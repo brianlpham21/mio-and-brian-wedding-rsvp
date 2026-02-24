@@ -32,7 +32,8 @@ export default function GuestNameCheck({
           onChange={(e) => setName(e.target.value)}
           placeholder={t('enter-your-full-name')}
           className="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-700 placeholder-gray-400 
-               focus:border-coral focus:ring-2 focus:ring-coral focus:outline-none transition bg-white"
+               focus:border-coral focus:ring-2 focus:ring-coral focus:outline-none transition bg-gray-200 hover:cursor-text disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-400"
+          disabled
         />
 
         {/* Framer Motion Button */}
