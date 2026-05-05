@@ -172,7 +172,7 @@ export default function Main() {
       <Header selectedLang={selectedLang} setSelectedLang={setSelectedLang} languages={languages} />
       <Hero selectedLang={selectedLang} />
       <ThankYouDetails selectedLang={selectedLang} />
-      <PhotoGallery />
+      {/* <PhotoGallery />
       <WeddingInfo selectedLang={selectedLang} />
       <Itinerary selectedLang={selectedLang} />
 
@@ -243,7 +243,7 @@ export default function Main() {
       <OurStory selectedLang={selectedLang} />
       <AdditionalDetails selectedLang={selectedLang} />
       <Countdown selectedLang={selectedLang} />
-      <ReturnInfo selectedLang={selectedLang} />
+      <ReturnInfo selectedLang={selectedLang} /> */}
 
       <MaggieIcon selectedLang={selectedLang} />
     </div>
