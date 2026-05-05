@@ -76,6 +76,7 @@ export default function Countdown({ selectedLang }: CountdownProps) {
     <section
       className="relative w-screen py-14 md:py-20 flex flex-col items-center justify-center text-center text-gray-900 overflow-hidden"
       ref={sectionRef}
+      style={{ opacity: 0.4 }}
     >
       <motion.img
         src="/countdown-photo.jpeg"

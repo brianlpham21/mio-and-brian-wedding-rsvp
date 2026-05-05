@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useTranslation } from '@/hooks/useTranslation';
 
-export default function OurStory({ selectedLang }: { selectedLang: { code: string } }) {
+export default function ThankYouDetails({ selectedLang }: { selectedLang: { code: string } }) {
   const { t } = useTranslation({ locale: selectedLang.code });
 
   const headerFont =
@@ -16,9 +16,8 @@ export default function OurStory({ selectedLang }: { selectedLang: { code: strin
 
   return (
     <section
-      id="our-story"
-      className="w-full relative flex flex-col md:flex-row justify-center items-center px-6 sm:px-12 py-17 gap-10"
-      style={{ opacity: 0.4 }}
+      id="thank-you"
+      className="w-full relative flex flex-col bg-peach-50 md:flex-row justify-center items-center px-6 sm:px-12 py-30 gap-10 border-b-4 border-coral-75"
     >
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -27,21 +26,31 @@ export default function OurStory({ selectedLang }: { selectedLang: { code: strin
         transition={{ duration: 1.2, ease: 'easeOut' }}
         className="flex-1 max-w-3xl relative z-10 text-center md:text-left"
       >
-        <h2 className="text-5xl sm:text-6xl text-gray-800 mb-6" style={headerFont}>
-          {t('our-story')}
+        <h2 className="text-5xl sm:text-6xl text-gray-800 mb-10" style={headerFont}>
+          {/* {t('our-story')} */}
+          Thank You
         </h2>
         <p className="text-gray-600 text-lg leading-relaxed">
-          {t('our-story-paragraph-1')}
+          {/* {t('our-story-paragraph-1')} */}
+          From the bottom of our hearts, thank you for being with us on our wedding day. Having you
+          there made it truly unforgettable — your presence, your laughter, and your love made the
+          celebration everything we dreamed it would be.
           <br />
           <br />
-          {t('our-story-paragraph-2')}
+          {/* {t('our-story-paragraph-2')} */}
+          We are also so deeply grateful for your incredibly generous gifts. Your thoughtfulness and
+          kindness mean the world to us as we begin this new chapter together.
           <br />
           <br />
         </p>
         <p
           className="text-gray-600 text-lg leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: t('our-story-paragraph-3') }}
-        />
+          //   dangerouslySetInnerHTML={{ __html: t('our-story-paragraph-3') }}
+        >
+          Relive the magic — browse the photos from our special day:
+        </p>
+        <br />
+        <p className="text-gray-600 text-lg leading-relaxed">With all our love, Mio & Brian ❤︎</p>
       </motion.div>
 
       <motion.div

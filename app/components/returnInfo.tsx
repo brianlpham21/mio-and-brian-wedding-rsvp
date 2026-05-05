@@ -30,7 +30,10 @@ export default function ReturnInfo({ selectedLang }: { selectedLang: { code: str
   }, [controls, inView]);
 
   return (
-    <section className="w-full py-16 px-6 sm:px-8 md:px-12 text-gray-800 overflow-hidden relative">
+    <section
+      className="w-full py-16 px-6 sm:px-8 md:px-12 text-gray-800 overflow-hidden relative"
+      style={{ opacity: 0.4 }}
+    >
       <motion.div
         ref={ref}
         initial="hidden"

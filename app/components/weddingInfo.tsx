@@ -29,6 +29,7 @@ export default function WeddingInfo({ selectedLang }: { selectedLang: { code: st
       ref={ref}
       id="info"
       className="relative w-full sm:px-8 md:px-12 text-gray-800 pt-12 md:pt-20 pb-2 md:pb-6 lg:pb-10 px-6 overflow-hidden"
+      style={{ opacity: 0.4 }}
     >
       <div className="max-w-5xl mx-auto">
         {/* Heading */}

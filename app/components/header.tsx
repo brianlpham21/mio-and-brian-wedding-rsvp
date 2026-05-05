@@ -76,7 +76,7 @@ export default function Header({ selectedLang, setSelectedLang, languages }: Hea
       <div className="max-w-6xl mx-auto px-6 h-full flex items-center justify-between text-gray-800">
         {/* Language Dropdown */}
         <div className="relative" ref={dropdownRef}>
-          <button
+          {/* <button
             onClick={() => setDropdownOpen(!dropdownOpen)}
             className="flex items-center gap-2 border border-gray-300 rounded-md px-2.5 py-1.5 hover:bg-white/30 transition cursor-pointer"
           >
@@ -98,7 +98,7 @@ export default function Header({ selectedLang, setSelectedLang, languages }: Hea
                 </button>
               ))}
             </div>
-          )}
+          )} */}
         </div>
 
         {/* Navigation */}
@@ -107,6 +107,7 @@ export default function Header({ selectedLang, setSelectedLang, languages }: Hea
             href="#info"
             onClick={(e) => handleScrollToSection(e, '#info')}
             className="transition hover:text-coral-75"
+            style={{ pointerEvents: 'none', opacity: 0.2 }}
           >
             {t('information')}
           </a>
@@ -114,6 +115,7 @@ export default function Header({ selectedLang, setSelectedLang, languages }: Hea
             href="#itinerary"
             onClick={(e) => handleScrollToSection(e, '#itinerary')}
             className="hidden sm:flex transition hover:text-coral-75"
+            style={{ pointerEvents: 'none', opacity: 0.2 }}
           >
             {t('itinerary')}
           </a>
@@ -121,6 +123,7 @@ export default function Header({ selectedLang, setSelectedLang, languages }: Hea
             href="#our-story"
             onClick={(e) => handleScrollToSection(e, '#our-story')}
             className="hidden sm:flex transition hover:text-coral-75"
+            style={{ pointerEvents: 'none', opacity: 0.2 }}
           >
             {t('our-story')}
           </a>
@@ -128,8 +131,17 @@ export default function Header({ selectedLang, setSelectedLang, languages }: Hea
             href="#rsvp"
             onClick={(e) => handleScrollToSection(e, '#rsvp')}
             className="transition border border-black/12 px-3 py-1 font-semibold rounded-md hover:text-white/70 bg-coral-75 text-black/80"
+            style={{ pointerEvents: 'none', opacity: 0.2 }}
           >
             {t('rsvp').toUpperCase()}
+          </a>
+          <a
+            href="#info"
+            onClick={(e) => handleScrollToSection(e, '#thank-you')}
+            className="transition border border-black/12 px-3 py-1 font-semibold rounded-md hover:text-white/70 bg-coral-75 text-black/80"
+          >
+            {/* {t('information')} */}
+            Thank You
           </a>
         </nav>
       </div>

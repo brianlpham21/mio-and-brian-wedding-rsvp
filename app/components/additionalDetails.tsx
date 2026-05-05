@@ -66,6 +66,7 @@ export default function AdditionalDetails({ selectedLang }: { selectedLang: { co
     <section
       id="details"
       className="w-full bg-peach-50 py-12 md:py-16 px-6 sm:px-8 md:px-12 text-gray-800"
+      style={{ opacity: 0.4 }}
     >
       <div className="max-w-5xl mx-auto text-center mb-8">
         <motion.h2

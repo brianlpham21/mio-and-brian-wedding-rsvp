@@ -7,6 +7,7 @@ import Header from './components/header';
 import Hero from './components/hero';
 import GuestNameCheck from './components/guestNameCheck';
 import AttendingConfirmation from './components/confirmation/attendingConfirmation';
+import ThankYouDetails from './components/thankYouDetails';
 import WeddingInfo from './components/weddingInfo';
 import ReturnInfo from './components/returnInfo';
 import Itinerary from './components/itinerary';
@@ -169,12 +170,14 @@ export default function Main() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-ivory-50 font-sans text-gray-800">
       <Header selectedLang={selectedLang} setSelectedLang={setSelectedLang} languages={languages} />
       <Hero selectedLang={selectedLang} />
+      <ThankYouDetails selectedLang={selectedLang} />
       <WeddingInfo selectedLang={selectedLang} />
       <Itinerary selectedLang={selectedLang} />
 
       <section
         id="rsvp"
         className="w-full py-12 px-6 sm:px-8 md:px-12 bg-peach-50 border-t-2 border-b-2 border-coral-75"
+        style={{ opacity: 0.4 }}
       >
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-center leading-[1em] mb-3" style={headerFont}>

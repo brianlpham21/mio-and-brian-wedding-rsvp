@@ -37,7 +37,8 @@ export default function MaggieIcon({ selectedLang }: { selectedLang: { code: str
           ${showBubble ? 'opacity-100' : 'opacity-0'}
           group-hover:opacity-100`}
       >
-        {t('maggie-message')}
+        Thanks fur coming!
+        {/* {t('maggie-message')} */}
         <div className="absolute top-1/2 -translate-y-1/2 right-[-6px] w-0 h-0 border-l-8 border-l-white border-y-8 border-y-transparent" />
       </div>
 

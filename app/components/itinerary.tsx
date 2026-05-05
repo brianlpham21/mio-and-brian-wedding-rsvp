@@ -38,7 +38,11 @@ export default function Itinerary({ selectedLang }: { selectedLang: { code: stri
         : { fontFamily: 'Norway, serif', fontSize: 'clamp(4rem, 6vw, 5.5rem)' };
 
   return (
-    <section id="itinerary" className="w-full pt-12 pb-16 px-6 sm:px-8 md:px-12 text-gray-800">
+    <section
+      id="itinerary"
+      className="w-full pt-12 pb-16 px-6 sm:px-8 md:px-12 text-gray-800"
+      style={{ opacity: 0.4 }}
+    >
       <div className="max-w-5xl mx-auto text-center mb-8">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
