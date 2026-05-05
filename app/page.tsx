@@ -8,6 +8,7 @@ import Hero from './components/hero';
 import GuestNameCheck from './components/guestNameCheck';
 import AttendingConfirmation from './components/confirmation/attendingConfirmation';
 import ThankYouDetails from './components/thankYouDetails';
+import PhotoGallery from './components/photoGallery';
 import WeddingInfo from './components/weddingInfo';
 import ReturnInfo from './components/returnInfo';
 import Itinerary from './components/itinerary';
@@ -171,6 +172,7 @@ export default function Main() {
       <Header selectedLang={selectedLang} setSelectedLang={setSelectedLang} languages={languages} />
       <Hero selectedLang={selectedLang} />
       <ThankYouDetails selectedLang={selectedLang} />
+      <PhotoGallery />
       <WeddingInfo selectedLang={selectedLang} />
       <Itinerary selectedLang={selectedLang} />
 

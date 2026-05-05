@@ -17,7 +17,7 @@ export default function ThankYouDetails({ selectedLang }: { selectedLang: { code
   return (
     <section
       id="thank-you"
-      className="w-full relative flex flex-col bg-peach-50 md:flex-row justify-center items-center px-6 sm:px-12 py-30 gap-10 border-b-4 border-coral-75"
+      className="w-full relative flex flex-col bg-peach-50 md:flex-row justify-center items-center px-6 py-20 lg:py-30 gap-10 border-b-4 border-coral-75"
     >
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -49,6 +49,15 @@ export default function ThankYouDetails({ selectedLang }: { selectedLang: { code
         >
           Relive the magic — browse the photos from our special day:
         </p>
+        <a
+          href="https://photos.app.goo.gl/26Z4zgh57iafc8ZWA"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-4 px-6 py-3 rounded-full bg-coral text-white font-medium text-sm tracking-wide shadow-md hover:brightness-110 active:scale-95 transition-all duration-200"
+        >
+          View Photos
+        </a>
+        <br />
         <br />
         <p className="text-gray-600 text-lg leading-relaxed">With all our love, Mio & Brian ❤︎</p>
       </motion.div>

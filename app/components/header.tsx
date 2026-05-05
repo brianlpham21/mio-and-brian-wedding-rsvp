@@ -138,10 +138,18 @@ export default function Header({ selectedLang, setSelectedLang, languages }: Hea
           <a
             href="#info"
             onClick={(e) => handleScrollToSection(e, '#thank-you')}
-            className="transition border border-black/12 px-3 py-1 font-semibold rounded-md hover:text-white/70 bg-coral-75 text-black/80"
+            className="hidden sm:flex transition hover:text-coral-75"
           >
             {/* {t('information')} */}
             Thank You
+          </a>
+          <a
+            href="https://photos.app.goo.gl/26Z4zgh57iafc8ZWA"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition border border-black/12 px-3 py-1 rounded-md hover:text-white/70 bg-coral-75 text-black/80"
+          >
+            View Wedding Day Photos
           </a>
         </nav>
       </div>
