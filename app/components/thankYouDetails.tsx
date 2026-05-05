@@ -28,13 +28,13 @@ export default function ThankYouDetails({ selectedLang }: { selectedLang: { code
       >
         <h2 className="text-5xl sm:text-6xl text-gray-800 mb-10" style={headerFont}>
           {/* {t('our-story')} */}
-          Thank You
+          Thank You!
         </h2>
         <p className="text-gray-600 text-lg leading-relaxed">
           {/* {t('our-story-paragraph-1')} */}
           From the bottom of our hearts, thank you for being with us on our wedding day. Having you
-          there made it truly unforgettable — your presence, your laughter, and your love made the
-          celebration everything we dreamed it would be.
+          all there made it truly unforgettable — your presence, your laughter, and your love made
+          the celebration everything we dreamed it would be.
           <br />
           <br />
           {/* {t('our-story-paragraph-2')} */}
@@ -68,15 +68,17 @@ export default function ThankYouDetails({ selectedLang }: { selectedLang: { code
           transition={{ duration: 0.8 }}
           className="w-full aspect-square rounded-full overflow-hidden shadow-md relative"
         >
-          <Image
-            src="/photoshoot-window-web.jpg"
-            alt="Wedding detail"
-            fill
-            className="object-cover"
-            style={{ objectPosition: '10% 65%' }}
-            sizes="(max-width: 768px) 320px, 360px"
-            priority
-          />
+          <div style={{ position: 'absolute', inset: '-6%', transform: 'translateX(-5%)' }}>
+            <Image
+              src="/wedding.jpg"
+              alt="Wedding detail"
+              fill
+              className="object-cover"
+              style={{ objectPosition: '10% 15%' }}
+              sizes="(max-width: 768px) 320px, 360px"
+              priority
+            />
+          </div>
         </motion.div>
       </motion.div>
     </section>
