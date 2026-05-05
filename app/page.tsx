@@ -172,8 +172,8 @@ export default function Main() {
       <Header selectedLang={selectedLang} setSelectedLang={setSelectedLang} languages={languages} />
       <Hero selectedLang={selectedLang} />
       <ThankYouDetails selectedLang={selectedLang} />
-      {/* <PhotoGallery />
-      <WeddingInfo selectedLang={selectedLang} />
+      <PhotoGallery />
+      {/* <WeddingInfo selectedLang={selectedLang} />
       <Itinerary selectedLang={selectedLang} />
 
       <section
