@@ -103,7 +103,7 @@ export default function Header({ selectedLang, setSelectedLang, languages }: Hea
 
         {/* Navigation */}
         <nav className="flex gap-6 text-sm font-medium items-center">
-          <a
+          {/* <a
             href="#info"
             onClick={(e) => handleScrollToSection(e, '#info')}
             className="transition hover:text-coral-75"
@@ -134,11 +134,11 @@ export default function Header({ selectedLang, setSelectedLang, languages }: Hea
             style={{ pointerEvents: 'none', opacity: 0.2 }}
           >
             {t('rsvp').toUpperCase()}
-          </a>
+          </a> */}
           <a
             href="#info"
             onClick={(e) => handleScrollToSection(e, '#thank-you')}
-            className="hidden sm:flex transition hover:text-coral-75"
+            className="sm:flex transition hover:text-coral-75"
           >
             {/* {t('information')} */}
             Thank You
@@ -149,7 +149,7 @@ export default function Header({ selectedLang, setSelectedLang, languages }: Hea
             rel="noopener noreferrer"
             className="transition border border-black/12 px-3 py-1 rounded-md hover:text-white/70 bg-coral-75 text-black/80"
           >
-            View Wedding Day Photos
+            View Photos
           </a>
         </nav>
       </div>
